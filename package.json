@@ -1,0 +1,27 @@
+{
+  "name": "poke-final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-uglify-es": "^1.0.4",
+    "gulp-useref": "^3.1.5",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3",
+    "pump": "^3.0.0",
+    "request": "^2.87.0",
+    "uglify": "^0.1.5",
+    "useref": "^1.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
