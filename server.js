@@ -1,7 +1,7 @@
 "use strict";
 
 const express = require("express");
-const page = require("./page-route")
+const page = require("./page-route");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -13,6 +13,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use("/portal", page);
+app.use("/portal", trait);
 
 
 app.use(express.static(__dirname + "/app/public"));

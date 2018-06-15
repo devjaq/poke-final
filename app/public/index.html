@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pokémon</title>
-  <script src="https://cdn.traitify.com/js/widgets/v1.js"></script>
   <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
@@ -16,8 +15,12 @@
     Traitify.setPublicKey("831c91ba0a35411881083e39a52c8f5b");
     Traitify.setHost("https://api-sandbox.traitify.com");
     Traitify.setVersion("v1");
-    var assessmentId = '8fde7e9d-d133-4798-8707-a3e8302ba50c';
+    var assessmentId = 'ec76b20e-ebff-446d-875c-4daeaf666725';
     Traitify.ui.load(assessmentId, ".assessment")
+
+    Traitify.getPersonalityTypes(assessmentId).then((response) => {
+      console.log(response);
+    })
   </script>
 
   <!-- build:js main.js -->
