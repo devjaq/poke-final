@@ -19,7 +19,7 @@ dbRouter.post("/pokemon", (req, res) => {
   // pool.query("SELECT * FROM pokemon ORDER BY id").then((result) => {
   //   res.send(result.rows);
   // });
-  console.log(req.body);
+  console.log(req.body.id);
 });
   
 

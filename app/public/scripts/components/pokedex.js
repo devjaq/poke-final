@@ -2,6 +2,7 @@
 const pokedex = {
   template: `
   <button type="button" ng-click="$ctrl.populate();">Populate</button>
+  <button type="button" ng-click="$ctrl.sendToDb();">Send to Db</button>
   <form ng-submit="$ctrl.search($ctrl.pokemon)">
     <input type="text" ng-model="$ctrl.pokemon.num">
     <button>Search</button>
@@ -20,13 +21,14 @@ const pokedex = {
         <li>{{pokemon.move_4}}</li>
       </ul>
     </section>
-  </div>
-
-
-  `,
+    </div>
+    
+    
+    `,
   controller: ["PokeService", "dbService", function (PokeService, dbService) {
     const vm = this;
     vm.pokearr = [];
+    vm.populateArr = [];
     // for(let x = 1; x<=9; x++){
     // PokeService.getData(x).then((response) => {
     dbService.getData().then((response) => {
@@ -48,7 +50,6 @@ const pokedex = {
     };
 
     vm.populate = () => {
-      vm.populateArr = [];
       console.log("clicked populate");
       for (let i = 10; i <= 15; i++) {
         PokeService.getData(i).then((response) => {
@@ -68,15 +69,26 @@ const pokedex = {
           }
           vm.populateArr.push(vm.pokemonInfo);
           console.log(vm.pokemonInfo);
+          console.log(vm.populateArr.length);
         });
       }
-      for (let j = 0; j < vm.populateArr.length; j++) {
-        // send array 1 at a time to service
-        console.log("loop");
-        // this loop is not running previous loop after
-        dbService.postData(vm.populateArr[j]);
-      }
     };
+    
+    vm.sendToDb = () => {
+      let counter = 10;
+      while(vm.populateArr.length > 0){
+        for (let j = 0; j < vm.populateArr.length; j++) {
+          // send array 1 at a time to service
+          // this loop is not running previous loop after
+          if(counter===vm.populateArr[j].id){
+            dbService.postData(vm.populateArr[j]);
+            counter++;
+            vm.populateArr.splice(j, 1);
+          };
+        }
+
+      }
+    }
   }]
 };
 
