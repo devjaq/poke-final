@@ -9,9 +9,8 @@ const request = require('request');
 
 const pageRouter = express.Router();
 
-pageRouter.get('/', (req, res) => {
-  console.log("GET");
-  request('http://pokeapi.co/api/v2/pokemon/5', (error, response, body) => {
+pageRouter.get('/pokedex/:num', (req, res) => {
+  request('http://pokeapi.co/api/v2/pokemon/'+ req.params.num, (error, response, body) => {
     console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode);
     res.send(body)

@@ -9,23 +9,19 @@
   <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
-  <page></page>
+  <!-- <page></page> -->
+  <pokedex></pokedex>
 
-  <div class="assessment"></div>
-  <script>
-    Traitify.setPublicKey("831c91ba0a35411881083e39a52c8f5b");
-    Traitify.setHost("https://api-sandbox.traitify.com");
-    Traitify.setVersion("v1");
-    var assessmentId = '8fde7e9d-d133-4798-8707-a3e8302ba50c';
-    Traitify.ui.load(assessmentId, ".assessment")
-  </script>
+  
 
   <!-- build:js main.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
   <script src="/scripts/module.js"></script>
   <script src="/scripts/page.js"></script>
+  <script src="/scripts/components/pokedex.js"></script>
   <script src="/scripts/page-service.js"></script>
+  <script src="/scripts/services/poke-service.js"></script>
   <!-- endbuild -->
 </body>
 </html>
