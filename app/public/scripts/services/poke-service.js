@@ -1,11 +1,11 @@
 "use strict";
 
 function PokeService($http) {
-  const getData = (pokemon) => {
+  const getData = (num) => {
     return $http({
       method: "GET",
-      url:"/portal/pokedex/" + pokemon.num,
-      data: pokemon
+      url:"/portal/pokedex/" + num,
+
     })
   }
   return {
