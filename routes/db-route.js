@@ -14,6 +14,13 @@ dbRouter.get("/pokemon", (req, res) => {
     res.send(result.rows);
   });
 });
+
+dbRouter.post("/pokemon", (req, res) => {
+  // pool.query("SELECT * FROM pokemon ORDER BY id").then((result) => {
+  //   res.send(result.rows);
+  // });
+  console.log(req.body);
+});
   
 
 module.exports = dbRouter;
