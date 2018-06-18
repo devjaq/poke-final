@@ -1,10 +1,11 @@
 "use strict";
 
-function PageService($http) {
+function dbService($http) {
   const getData = () => {
     return $http({
       method: "GET",
-      url:"/portal"
+      url:"/portal/pokemon",
+
     })
   }
   return {
@@ -14,4 +15,4 @@ function PageService($http) {
 
 angular
   .module("App")
-  .factory("PageService", PageService)
+  .factory("dbService", dbService)
