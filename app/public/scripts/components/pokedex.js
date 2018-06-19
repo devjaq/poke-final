@@ -6,11 +6,13 @@ const pokedex = {
     <button>Search</button>
   </form>
   <div id="pokedex">
-    <section ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
+    <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
+      <div class="top">
       <p>{{ pokemon.id }}</p>
       <h3>{{ pokemon.name }}</h3>
       <p>Compatability</p>
       <p>{{ pokemon.type }}</p>
+      </div>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="">
       <ul>
         <li>{{pokemon.move_1}}</li>
@@ -20,8 +22,6 @@ const pokedex = {
       </ul>
     </section>
     </div>
-    
-    
     `,
   controller: ["PokeService", "dbService", function (PokeService, dbService) {
     const vm = this;

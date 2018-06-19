@@ -6,6 +6,7 @@ const reload = browserSync.reload;
 const useref = require("gulp-useref");
 const uglify = require("gulp-uglify-es").default;
 const pump = require("pump");
+const sass = require("gulp-ruby-sass");
 
 gulp.task("runServer", () => {
   browserSync({
@@ -28,4 +29,19 @@ gulp.task("minify", (cb) => {
   uglify(), // run the uglify function
   gulp.dest("./dist") // where to place the newly minified file
   ], cb);
+  });
+
+  gulp.task("compile", () => {
+    return sass("./app/public/styles/*.scss")
+    .pipe(gulp.dest("./app/public/styles"))
+    .pipe(reload({ stream:true }));
+  });
+
+  gulp.task("refresh",["compile"], () => {
+    browserSync({
+      server: {
+        baseDir: "./app/public"
+      }
+    })
+    gulp.watch(["index.html", "*.scss", "*.js"], {cwd: "./app/public"}, ["compile"], reload);
   });
