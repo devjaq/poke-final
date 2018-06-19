@@ -1,8 +1,6 @@
 "use strict";
 const pokedex = {
   template: `
-  <button type="button" ng-click="$ctrl.populate();">Populate</button>
-  <button type="button" ng-click="$ctrl.sendToDb();">Send to Db</button>
   <form ng-submit="$ctrl.search($ctrl.pokemon)">
     <input type="text" ng-model="$ctrl.pokemon.num">
     <button>Search</button>
@@ -51,7 +49,7 @@ const pokedex = {
 
     vm.populate = () => {
       console.log("clicked populate");
-      for (let i = 10; i <= 15; i++) {
+      for (let i = 133; i <= 151; i++) {
         PokeService.getData(i).then((response) => {
           vm.pokemon = response.data;
           vm.pokemonInfo = {
@@ -75,11 +73,9 @@ const pokedex = {
     };
     
     vm.sendToDb = () => {
-      let counter = 10;
+      let counter = 133;
       while(vm.populateArr.length > 0){
         for (let j = 0; j < vm.populateArr.length; j++) {
-          // send array 1 at a time to service
-          // this loop is not running previous loop after
           if(counter===vm.populateArr[j].id){
             dbService.postData(vm.populateArr[j]);
             counter++;
@@ -88,7 +84,7 @@ const pokedex = {
         }
 
       }
-    }
+    } // end vm.sendToDb
   }]
 };
 
