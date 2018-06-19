@@ -2,11 +2,11 @@
 const pokedex = {
   template: `
   <form ng-submit="$ctrl.search($ctrl.pokemon)">
-    <input type="text" ng-model="$ctrl.pokemon.num">
+    <input type="text" ng-model="search">
     <button>Search</button>
   </form>
   <div id="pokedex">
-    <section ng-repeat="pokemon in $ctrl.pokearr | orderBy : 'id'">
+    <section ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
       <p>{{ pokemon.id }}</p>
       <h3>{{ pokemon.name }}</h3>
       <p>Compatability</p>
@@ -39,7 +39,7 @@ const pokedex = {
     // }
     vm.search = (pokemon) => {
       vm.pokearr = [];
-      PokeService.getData(pokemon.num).then((response) => {
+      dbService.getData(pokemon).then((response) => {
         vm.pokemondata = response.data;
         vm.pokearr.push(vm.pokemondata);
         console.log(response.data)
