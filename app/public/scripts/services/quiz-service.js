@@ -1,6 +1,16 @@
 "use strict";
 
-function QuizService () {
+function QuizService ($http) {
+  const getQuiz = () => {
+    return $http ({
+      method: "GET",
+      url: "/portal/quiz"
+    })
+  }
+
+  return {
+    getQuiz
+  }
   
 }
 
