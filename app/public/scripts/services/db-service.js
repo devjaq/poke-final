@@ -14,11 +14,24 @@ function dbService($http) {
       data: pokemon
     })
   }
-  return {
-    getData,
-    postData
-  }
+ const searchData = (pokemon) => {
+//    return $http ({
+//      method: "GET",
+//      url: "/portal/pokemon/" + pokemon.id,
+//      data: pokemon
+//    })
+ }
+
+
+ return {
+  getData,
+  postData,
+  searchData
 }
+
+ }
+
+
 
 angular
   .module("App")
