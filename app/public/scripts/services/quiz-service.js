@@ -1,6 +1,6 @@
 "use strict";
 
-function QuizService ($http) {
+function quizService ($http) {
   const getQuiz = () => {
     return $http ({
       method: "GET",
@@ -16,4 +16,4 @@ function QuizService ($http) {
 
 angular
   .module("App")
-  .factory("QuizService", QuizService);
+  .factory("quizService", quizService);
