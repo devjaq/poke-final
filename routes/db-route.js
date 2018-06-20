@@ -21,8 +21,6 @@ dbRouter.post("/pokemon", (req, res) => {
       res.send(result.rows);
     });
   })
-  console.log(req.body.id);
-  console.log(req.body.name);
 
 });
   

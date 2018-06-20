@@ -7,11 +7,11 @@ const quiz = {
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
       <h3>Enter a Username..</h3>
       <input type="text" ng-model="$ctrl.newUser.username">
-      <h3>Enter your Date of Birth</h3>
+      <h3>Enter your Birth Month</h3>
 
       <div>
         <select id='gMonth2' ng-model="$ctrl.newUser.dob">
-          <option value=''>--Select Month--</option>
+          <option value='' disabled>--Select Month--</option>
           <option value='1'>Janaury</option>
           <option value='2'>February</option>
           <option value='3'>March</option>
@@ -53,7 +53,7 @@ const quiz = {
   </div>
   `,
 
-  controller: ["quizService", "$location", function(quizService, $location) {
+  controller: ["quizService", "TrainerService", "$location", function(quizService, TrainerService, $location) {
     const vm = this;
     vm.quizarr = [];
     vm.counter = 0;
@@ -68,7 +68,7 @@ const quiz = {
     vm.adv = 0;
     vm.username = "";
     vm.dob = "";
-    vm.trait = "";
+    vm.trainer = {};
     
     quizService.getQuiz().then((response) => {
       vm.quizarr = response.data;
@@ -112,48 +112,86 @@ const quiz = {
       }
       vm.answers = "";
 
-      if(vm.counter===10){
+      if(vm.counter>=10){
         if(vm.cool > vm.adv && vm.cool > vm.char && vm.cool > vm.orig && vm.cool > vm.kind){
-          console.log("cool");
-          console.log(vm.cool);
+          vm.trainer = {
+            username: vm.newUser.username,
+            quiz_result: "cool",
+            pokemon_1: 7 
+          }
+          TrainerService.addUser(vm.trainer);
+          $location.path('/pokedex');
         } else if(vm.adv > vm.cool && vm.adv > vm.char && vm.adv > vm.orig && vm.adv > vm.kind){
-          console.log("adv");
-          console.log(vm.adv);
+          vm.trainer = {
+            username: vm.newUser.username,
+            quiz_result: "adventurous",
+            pokemon_1: 4  
+          }
+          TrainerService.addUser(vm.trainer);
+          $location.path('/pokedex');
         } else if(vm.char > vm.adv && vm.char > vm.cool && vm.char > vm.orig && vm.char > vm.kind){
-          console.log("char");
-          console.log(vm.char);
+          vm.trainer = {
+            username: vm.newUser.username,
+            quiz_result: "charismatic",
+            pokemon_1: 25  
+          }
+          TrainerService.addUser(vm.trainer);
+          $location.path('/pokedex');
         } else if(vm.orig > vm.adv && vm.orig > vm.char && vm.orig > vm.cool && vm.orig > vm.kind){
-          console.log("orig");
-          console.log(vm.orig);
+          vm.trainer = {
+            username: vm.newUser.username,
+            quiz_result: "original",
+            pokemon_1: 151  
+          }
+          TrainerService.addUser(vm.trainer);
+          $location.path('/pokedex');
         } else if(vm.kind > vm.adv && vm.kind > vm.char && vm.kind > vm.orig && vm.kind > vm.cool){
-          console.log("kind");
-          console.log(vm.kind);
+          vm.trainer = {
+            username: vm.newUser.username,
+            quiz_result: "kind",
+            pokemon_1: 1  
+          }
+          TrainerService.addUser(vm.trainer);
+          $location.path('/pokedex');
         } else{
             if(vm.dob==1 || vm.dob==2 ||vm.dob==3){
               vm.kind++;
-              console.log("kind");
-              console.log(vm.kind);
+              vm.trainer = {
+                username: vm.newUser.username,
+                quiz_result: "kind",
+                pokemon_1: 1  
+              }
+              TrainerService.addUser(vm.trainer);
+              $location.path('/pokedex');
             } else if(vm.dob==4 || vm.dob==5 ||vm.dob==6){
               vm.adv++;
-              console.log("adv");
-              console.log(vm.adv);
+              vm.trainer = {
+                username: vm.newUser.username,
+                quiz_result: "adventurous",
+                pokemon_1: 4  
+              }
+              TrainerService.addUser(vm.trainer);
+              $location.path('/pokedex');
             } else if(vm.dob==7 || vm.dob==8 ||vm.dob==9){
               vm.char++;
-              console.log("char");
-              console.log(vm.char);
+              vm.trainer = {
+                username: vm.newUser.username,
+                quiz_result: "charismatic",
+                pokemon_1: 25  
+              }
+              TrainerService.addUser(vm.trainer);
+              $location.path('/pokedex');
             } else if(vm.dob==10 || vm.dob==11 ||vm.dob==12){
               vm.cool++;
-              console.log("cool");
-              console.log(vm.cool);
+              vm.trainer = {
+                username: vm.newUser.username,
+                quiz_result: "cool",
+                pokemon_1: 7  
+              }
+              TrainerService.addUser(vm.trainer);
+              $location.path('/pokedex');
             };
         };
-        
-
-        
- 
-
-
-        $location.path('/pokedex');
       }
       
     }

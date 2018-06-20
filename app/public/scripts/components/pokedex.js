@@ -27,34 +27,28 @@ const pokedex = {
     </section>
     </div>
     `,
-  controller: ["PokeService", "dbService", function (PokeService, dbService) {
+  controller: ["PokeService", "dbService", "PokemonService", function (PokeService, dbService, PokemonService) {
     const vm = this;
     vm.pokearr = [];
     vm.populateArr = [];
-    // for(let x = 1; x<=9; x++){
-    // PokeService.getData(x).then((response) => {
     dbService.getData().then((response) => {
       vm.pokearr = response.data;
-      // console.log(vm.pokearr);
-    // vm.pokearr.push(vm.pokemondata);
-    // vm.pokemondata = {};
-    // console.log(vm.pokearr);
+      PokemonService.addPokemon(vm.pokearr);
     });
-    // }
-    vm.search = (pokemon) => {
-      vm.pokearr = [];
-      dbService.getData(pokemon).then((response) => {
-        vm.pokemondata = response.data;
-        vm.pokearr.push(vm.pokemondata);
-        console.log(response.data)
-      });
-      vm.pokemon = {};
-    };
+    // vm.search = (pokemon) => {
+    //   vm.pokearr = [];
+    //   dbService.getData(pokemon).then((response) => {
+    //     vm.pokemondata = response.data;
+    //     vm.pokearr.push(vm.pokemondata);
+    //     console.log(response.data)
+    //   });
+    //   vm.pokemon = {};
+    // };
 
     vm.myType = "water";
 
     vm.fireCompatibility = (pokemon) => {
-      console.log(pokemon);
+      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "ground" || pokemon.type === "rock" || pokemon.type === "water") {
@@ -67,7 +61,7 @@ const pokedex = {
     }
 
     vm.waterCompatibility = (pokemon) => {
-      console.log(pokemon);
+      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "grass" || pokemon.type === "electric") {
@@ -80,7 +74,7 @@ const pokedex = {
     }
 
     vm.grassCompatibility = (pokemon) => {
-      console.log(pokemon);
+      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "flying" || pokemon.type === "poison" || pokemon.type === "bug" || pokemon.type === "fire" || pokemon.type === "ice") {
@@ -93,7 +87,7 @@ const pokedex = {
     }
 
     vm.electricCompatibility = (pokemon) => {
-      console.log(pokemon);
+      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "ground") {
@@ -106,7 +100,7 @@ const pokedex = {
     }
 
     vm.psychicCompatibility = (pokemon) => {
-      console.log(pokemon);
+      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "bug" || pokemon.type === "ghost") {
