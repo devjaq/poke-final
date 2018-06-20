@@ -10,7 +10,7 @@ const pokedex = {
       <div class="top">
       <p>{{ pokemon.id }}</p>
       <h3>{{ pokemon.name | uppercase }}</h3>
-      <p>[____%]</p>
+      <p>{{$ctrl.compatibility(pokemon)}}%</p>
      <!-- <p>{{ pokemon.type }}</p> -->
       <img class="type-icon" src="styles/icons/{{pokemon.type}}.png">
       </div>
@@ -50,6 +50,88 @@ const pokedex = {
       });
       vm.pokemon = {};
     };
+
+    vm.myType = "water";
+
+    vm.fireCompatibility = (pokemon) => {
+      console.log(pokemon);
+      if (pokemon.type === vm.myType) {
+        return 75;
+      } else if (pokemon.type === "ground" || pokemon.type === "rock" || pokemon.type === "water") {
+        return 50;
+      } else if (pokemon.type === "bug" || pokemon.type === "grass" || pokemon.type === "ice") {
+        return 100;
+      }  else {
+        return 75;
+      }
+    }
+
+    vm.waterCompatibility = (pokemon) => {
+      console.log(pokemon);
+      if (pokemon.type === vm.myType) {
+        return 75;
+      } else if (pokemon.type === "grass" || pokemon.type === "electric") {
+        return 50;
+      } else if (pokemon.type === "fire" || pokemon.type === "water" || pokemon.type === "ice") {
+        return 100;
+      }  else {
+        return 75;
+      }
+    }
+
+    vm.grassCompatibility = (pokemon) => {
+      console.log(pokemon);
+      if (pokemon.type === vm.myType) {
+        return 75;
+      } else if (pokemon.type === "flying" || pokemon.type === "poison" || pokemon.type === "bug" || pokemon.type === "fire" || pokemon.type === "ice") {
+        return 50;
+      } else if (pokemon.type === "ground" || pokemon.type === "water" || pokemon.type === "grass" || pokemon.type === "electric") {
+        return 100;
+      }  else {
+        return 75;
+      }
+    }
+
+    vm.electricCompatibility = (pokemon) => {
+      console.log(pokemon);
+      if (pokemon.type === vm.myType) {
+        return 75;
+      } else if (pokemon.type === "ground") {
+        return 50;
+      } else if (pokemon.type === "flying" || pokemon.type === "electric") {
+        return 100;
+      }  else {
+        return 75;
+      }
+    }
+
+    vm.psychicCompatibility = (pokemon) => {
+      console.log(pokemon);
+      if (pokemon.type === vm.myType) {
+        return 75;
+      } else if (pokemon.type === "bug" || pokemon.type === "ghost") {
+        return 50;
+      } else if (pokemon.type === "fighting" || pokemon.type === "psychic") {
+        return 100;
+      }  else {
+        return 75;
+      }
+    }
+
+    vm.compatibility = (pokemon) => {
+      
+      if (vm.myType === "fire") {
+       return vm.fireCompatibility(pokemon);
+      } else if (vm.myType === "water") {
+        return vm.waterCompatibility(pokemon);
+      } else if (vm.myType === "grass") {
+      return vm.grassCompatibility(pokemon);
+      } else if (vm.myType === "electric") {
+      return vm.electricCompatibility(pokemon);
+      } else if (vm.myType === "psychic") {
+      return vm.psychicCompatibility(pokemon);
+      } 
+    }
 
     vm.newCrew = (pokemon) => {
       console.log(`Caught ${pokemon.name}!`);
