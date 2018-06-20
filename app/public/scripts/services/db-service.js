@@ -14,19 +14,14 @@ function dbService($http) {
       data: pokemon
     })
   }
- const searchData = (pokemon) => {
-//    return $http ({
-//      method: "GET",
-//      url: "/portal/pokemon/" + pokemon.id,
-//      data: pokemon
-//    })
- }
+
+
+ 
 
 
  return {
   getData,
-  postData,
-  searchData
+  postData
 }
 
  }

@@ -1,17 +1,17 @@
 "use strict";
 
 const express = require("express");
-const page = require("./routes/page-route");
 const pokemon = require("./routes/db-route");
 const quiz = require("./routes/quiz-route");
+const trainer = require("./routes/trainer-route");
 const bodyParser = require("body-parser");
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use("/portal", page);
 app.use("/portal", pokemon);
 app.use("/portal", quiz);
+app.use("/portal", trainer);
 
 
 app.use(express.static(__dirname + "/app/public"));
