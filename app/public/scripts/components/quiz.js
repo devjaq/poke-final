@@ -68,6 +68,7 @@ const quiz = {
     vm.adv = 0;
     vm.username = "";
     vm.dob = "";
+    vm.trait = "";
     
     quizService.getQuiz().then((response) => {
       vm.quizarr = response.data;
@@ -76,18 +77,6 @@ const quiz = {
     vm.addUser = (newUser) => {
       vm.username = newUser.username;
       vm.dob = newUser.dob;
-      if(vm.dob==1 || vm.dob==2 ||vm.dob==3){
-        vm.kind+=2;
-      } else if(vm.dob==4 || vm.dob==5 ||vm.dob==6){
-        vm.adv+=2;
-      } else if(vm.dob==7 || vm.dob==8 ||vm.dob==9){
-        vm.char+=2;
-      } else if(vm.dob==10 || vm.dob==11 ||vm.dob==12){
-        vm.cool+=2;
-      }
-
-      // console.log(vm.username);
-      // console.log(vm.dob);
       vm.show = true;
       vm.hide = false;
     }
@@ -98,37 +87,70 @@ const quiz = {
         case "cool":
         vm.cool++;
         console.log(vm.cool);
+        console.log("cool");
         break;
         case "kind":
         vm.kind++;
         console.log(vm.kind);
+        console.log("kind");
         break;
         case "adventurous":
         vm.adv++;
         console.log(vm.adv);
+        console.log("adv");
         break;
         case "charismatic":
         vm.char++;
         console.log(vm.char);
+        console.log("char");
         break;
         case "original":
         vm.orig++;
         console.log(vm.orig);
+        console.log("orig");
         break;
       }
       vm.answers = "";
 
       if(vm.counter===10){
-        console.log("cool");
-        console.log(vm.cool);
-        console.log("kind");
-        console.log(vm.kind);
-        console.log("adv");
-        console.log(vm.adv);
-        console.log("char");
-        console.log(vm.char);
-        console.log("orig");
-        console.log(vm.orig);
+        if(vm.cool > vm.adv && vm.cool > vm.char && vm.cool > vm.orig && vm.cool > vm.kind){
+          console.log("cool");
+          console.log(vm.cool);
+        } else if(vm.adv > vm.cool && vm.adv > vm.char && vm.adv > vm.orig && vm.adv > vm.kind){
+          console.log("adv");
+          console.log(vm.adv);
+        } else if(vm.char > vm.adv && vm.char > vm.cool && vm.char > vm.orig && vm.char > vm.kind){
+          console.log("char");
+          console.log(vm.char);
+        } else if(vm.orig > vm.adv && vm.orig > vm.char && vm.orig > vm.cool && vm.orig > vm.kind){
+          console.log("orig");
+          console.log(vm.orig);
+        } else if(vm.kind > vm.adv && vm.kind > vm.char && vm.kind > vm.orig && vm.kind > vm.cool){
+          console.log("kind");
+          console.log(vm.kind);
+        } else{
+            if(vm.dob==1 || vm.dob==2 ||vm.dob==3){
+              vm.kind++;
+              console.log("kind");
+              console.log(vm.kind);
+            } else if(vm.dob==4 || vm.dob==5 ||vm.dob==6){
+              vm.adv++;
+              console.log("adv");
+              console.log(vm.adv);
+            } else if(vm.dob==7 || vm.dob==8 ||vm.dob==9){
+              vm.char++;
+              console.log("char");
+              console.log(vm.char);
+            } else if(vm.dob==10 || vm.dob==11 ||vm.dob==12){
+              vm.cool++;
+              console.log("cool");
+              console.log(vm.cool);
+            };
+        };
+        
+
+        
+ 
 
 
         $location.path('/pokedex');
