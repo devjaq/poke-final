@@ -2,24 +2,28 @@
 const pokedex = {
   template: `
   <form ng-submit="$ctrl.search($ctrl.pokemon)">
-    <input type="text" ng-model="search">
+    <input type="text" class="input" ng-model="search">
     <button>Search</button>
   </form>
   <div id="pokedex">
     <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
       <div class="top">
       <p>{{ pokemon.id }}</p>
-      <h3>{{ pokemon.name }}</h3>
-      <p>Compatability</p>
-      <p>{{ pokemon.type }}</p>
+      <h3>{{ pokemon.name | uppercase }}</h3>
+      <p>[____%]</p>
+     <!-- <p>{{ pokemon.type }}</p> -->
+      <img class="type-icon" src="styles/icons/{{pokemon.type}}.png">
       </div>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="">
-      <ul>
-        <li>{{pokemon.move_1}}</li>
-        <li>{{pokemon.move_2}}</li>
-        <li>{{pokemon.move_3}}</li>
-        <li>{{pokemon.move_4}}</li>
-      </ul>
+      <div class="bottom">
+        <ul>
+          <li>{{pokemon.move_1}}</li>
+          <li>{{pokemon.move_2}}</li>
+          <li>{{pokemon.move_3}}</li>
+          <li>{{pokemon.move_4}}</li>
+        </ul>
+        <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+      </div>
     </section>
     </div>
     `,
@@ -46,6 +50,11 @@ const pokedex = {
       });
       vm.pokemon = {};
     };
+
+    vm.newCrew = (pokemon) => {
+      console.log(`Caught ${pokemon.name}!`);
+      
+    }
 
     vm.populate = () => {
       console.log("clicked populate");
