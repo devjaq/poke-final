@@ -15,11 +15,22 @@ function TrainerService($http) {
     })
   }
 
+  const updateTrainer = (trainer) => {
+    console.log(trainer);
+    return $http({
+      method: "PUT",
+      url:"/portal/trainer/" + trainer.id,
+      data: trainer
+    })
+    
+  }
+
 
 
  return {
   getTrainers,
-  addUser
+  addUser,
+  updateTrainer
 }
 
  }

@@ -29,31 +29,17 @@ const pokedex = {
     </section>
     </div>
     `,
-  controller: ["PokeService", "dbService", "PokemonService", function (PokeService, dbService, PokemonService) {
+  controller: ["PokeService", "dbService", "PokemonService", "TrainerService", "$location", function (PokeService, dbService, PokemonService, TrainerService, $location) {
     const vm = this;
     vm.pokearr = [];
     vm.populateArr = [];
-    // dbService.getData().then((response) => {
-    //   vm.pokearr = response.data;
-    //   PokemonService.addPokemon(vm.pokearr);
-    // });
 
     vm.pokearr = PokemonService.getPokemon();
     vm.trainer = PokemonService.getTrainer();
-    // vm.search = (pokemon) => {
-    //   vm.pokearr = [];
-    //   dbService.getData(pokemon).then((response) => {
-    //     vm.pokemondata = response.data;
-    //     vm.pokearr.push(vm.pokemondata);
-    //     console.log(response.data)
-    //   });
-    //   vm.pokemon = {};
-    // };
 
     vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
 
     vm.fireCompatibility = (pokemon) => {
-      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "ground" || pokemon.type === "rock" || pokemon.type === "water") {
@@ -133,9 +119,27 @@ const pokedex = {
     }
 
     vm.newCrew = (pokemon) => {
-      console.log(`Caught ${pokemon.name}!`);
-      
-    }
+        if (vm.trainer.pokemon_2 === null){
+          vm.trainer.pokemon_2 = pokemon.id;
+          TrainerService.updateTrainer(vm.trainer);
+        } else if (vm.trainer.pokemon_3 === null) {
+          vm.trainer.pokemon_3 = pokemon.id;
+          TrainerService.updateTrainer(vm.trainer);
+        } else if (vm.trainer.pokemon_4 === null) {
+          vm.trainer.pokemon_4 = pokemon.id;
+          TrainerService.updateTrainer(vm.trainer);
+        } else if (vm.trainer.pokemon_5 === null) {
+          vm.trainer.pokemon_5 = pokemon.id;
+          TrainerService.updateTrainer(vm.trainer);
+        } else if (vm.trainer.pokemon_6 === null) {
+          vm.trainer.pokemon_6 = pokemon.id;
+          TrainerService.updateTrainer(vm.trainer);
+          $location.path('/trainer');
+        } else {
+          $location.path('/trainer');
+        }
+
+    } 
 
     vm.populate = () => {
       console.log("clicked populate");

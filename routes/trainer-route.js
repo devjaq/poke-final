@@ -23,4 +23,14 @@ trainerRouter.post("/trainer", (req, res) => {
     });
 });
 
+trainerRouter.put("/trainer/:id", (req, res) => {
+    console.log(req.body);
+    
+    pool.query("UPDATE users SET pokemon_2=$1::int, pokemon_3=$2::int, pokemon_4=$3::int, pokemon_5=$4::int, pokemon_6=$5::int WHERE id=$6::int", [req.body.pokemon_2, req.body.pokemon_3, req.body.pokemon_4, req.body.pokemon_5, req.body.pokemon_6, req.params.id]).then(() => {
+        pool.query("SELECT * FROM users ORDER BY id").then((result) => {
+            res.send(result.rows);
+        })
+    })
+})
+
 module.exports = trainerRouter;

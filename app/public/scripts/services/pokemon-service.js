@@ -5,23 +5,17 @@ function PokemonService() {
     let trainer = {};
     const addPokemon = (pokemon) => {
         allPokemon = pokemon;
-        console.log(allPokemon);
-        
     }
 
     const getPokemon = () => {
-        console.log(allPokemon);
         return allPokemon;
     }
 
     const addTrainer = (trainerInfo) => {
-        trainer = trainerInfo;
-        // console.log(trainer);
-        
+        trainer = trainerInfo
     }
 
     const getTrainer = () => {
-        console.log(trainer);
         return trainer;
     }
 
