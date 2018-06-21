@@ -47,16 +47,16 @@ controller: ["TrainerService", "PokemonService", "dbService", function(TrainerSe
 
   TrainerService.getTrainers().then((response) => {
     vm.alltrainers = response.data;
-    console.log(vm.alltrainers);
-    console.log(vm.alltrainers.length);
+    // console.log(vm.alltrainers);
+    // console.log(vm.alltrainers.length);
     vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
-    console.log(vm.trainer);
+    // console.log(vm.trainer);
     PokemonService.addTrainer(vm.trainer)
   });
 
 
 
-  console.log(vm.pokearr);
+//   console.log(vm.pokearr);
   
 
 

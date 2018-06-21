@@ -13,5 +13,8 @@ angular
     .when("/trainer", {
       template: `<trainer></trainer>`
     })
+    .when("/battle", {
+      template: `<battle></battle>`
+    })
     .otherwise({redirectTo: "/pokedex"})
   });
