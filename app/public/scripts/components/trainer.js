@@ -7,13 +7,15 @@ template: `
 
 
 
-<div class="pokedex">
+<div id="pokedex">
 <section class="pokemon">
     <div class="top">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].name | uppercase}}</h3>
         <p>{{$ctrl.compatibility(pokemon)}}%</p>
-        <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].type}}.png">
+        <div class="icon-box">
+            <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].type}}.png">
+        </div>
     </div>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].id}}.png" alt="">
     <div class="bottom">
@@ -32,11 +34,16 @@ template: `
 
 
 
-controller: ["TrainerService", "PokemonService", function(TrainerService, PokemonService) {
+controller: ["TrainerService", "PokemonService", "dbService", function(TrainerService, PokemonService, dbService) {
   const vm = this;
   vm.alltrainers = [];
   vm.trainer = {};
   vm.pokearr = [];
+
+  dbService.getData().then((response) => {
+    vm.pokearr = response.data;
+    PokemonService.addPokemon(vm.pokearr);
+  });
 
   TrainerService.getTrainers().then((response) => {
     vm.alltrainers = response.data;
@@ -44,9 +51,10 @@ controller: ["TrainerService", "PokemonService", function(TrainerService, Pokemo
     console.log(vm.alltrainers.length);
     vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
     console.log(vm.trainer);
+    PokemonService.addTrainer(vm.trainer)
   });
 
-  vm.pokearr = PokemonService.getPokemon();
+
 
   console.log(vm.pokearr);
   

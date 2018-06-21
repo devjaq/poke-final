@@ -2,6 +2,7 @@
 
 function PokemonService() {
     let allPokemon = [];
+    let trainer = {};
     const addPokemon = (pokemon) => {
         allPokemon = pokemon;
         console.log(allPokemon);
@@ -13,9 +14,22 @@ function PokemonService() {
         return allPokemon;
     }
 
+    const addTrainer = (trainerInfo) => {
+        trainer = trainerInfo;
+        // console.log(trainer);
+        
+    }
+
+    const getTrainer = () => {
+        console.log(trainer);
+        return trainer;
+    }
+
     return {
         addPokemon,
-        getPokemon
+        getPokemon,
+        addTrainer,
+        getTrainer
     }
 }
 

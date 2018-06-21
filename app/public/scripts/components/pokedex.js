@@ -1,6 +1,7 @@
 "use strict";
 const pokedex = {
   template: `
+  <p>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].type}}</p>
   <form ng-submit="$ctrl.search($ctrl.pokemon)">
     <input type="text" class="input" ng-model="search">
     <button>Search</button>
@@ -8,11 +9,12 @@ const pokedex = {
   <div id="pokedex">
     <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
       <div class="top">
-      <p>{{ pokemon.id }}</p>
-      <h3>{{ pokemon.name | uppercase }}</h3>
-      <p>{{$ctrl.compatibility(pokemon)}}%</p>
-     <!-- <p>{{ pokemon.type }}</p> -->
-      <img class="type-icon" src="styles/icons/{{pokemon.type}}.png">
+        <p>{{ pokemon.id }}</p>
+        <h3>{{ pokemon.name | uppercase }}</h3>
+        <p>{{$ctrl.compatibility(pokemon)}}%</p>
+        <div class="icon-box">
+          <img class="type-icon" src="styles/icons/{{pokemon.type}}.png">
+        </div>
       </div>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="">
       <div class="bottom">
@@ -31,10 +33,13 @@ const pokedex = {
     const vm = this;
     vm.pokearr = [];
     vm.populateArr = [];
-    dbService.getData().then((response) => {
-      vm.pokearr = response.data;
-      PokemonService.addPokemon(vm.pokearr);
-    });
+    // dbService.getData().then((response) => {
+    //   vm.pokearr = response.data;
+    //   PokemonService.addPokemon(vm.pokearr);
+    // });
+
+    vm.pokearr = PokemonService.getPokemon();
+    vm.trainer = PokemonService.getTrainer();
     // vm.search = (pokemon) => {
     //   vm.pokearr = [];
     //   dbService.getData(pokemon).then((response) => {
@@ -45,7 +50,7 @@ const pokedex = {
     //   vm.pokemon = {};
     // };
 
-    vm.myType = "water";
+    vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
 
     vm.fireCompatibility = (pokemon) => {
       // console.log(pokemon);

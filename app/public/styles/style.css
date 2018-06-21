@@ -1,101 +1,104 @@
 * {
   box-sizing: border-box; }
-  * body {
-    height: 100vh;
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #3c5aa6; }
-    * body nav {
-      display: flex;
-      justify-content: space-around; }
-    * body form {
-      display: flex;
-      justify-content: center; }
-      * body form .input {
-        width: 250px;
-        padding: 10px 15px;
-        background-color: #f0f0f0;
-        font-size: 1rem;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px; }
-      * body form button {
-        font-size: 1rem;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px; }
-    * body #pokedex {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center; }
-      * body #pokedex .pokemon {
-        width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 7px;
-        border: 10px solid #ffcb05;
-        border-radius: 10px;
-        padding: 15px 15px 10px 15px;
-        background-color: #448fd5;
-        font-family: 'VT323', sans-serif;
-        font-size: 1.5rem;
-        box-shadow: 0 0 10px #222224; }
-        * body #pokedex .pokemon .top {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          width: 100%; }
-          * body #pokedex .pokemon .top .type-icon {
-            width: 30px;
-            background-color: #c7a008;
-            border: 4px outset #ffcb05; }
-          * body #pokedex .pokemon .top h3 {
-            margin: 0;
-            font-family: 'VT323', sans-serif;
-            font-size: 30px; }
-          * body #pokedex .pokemon .top p {
-            margin: 0; }
-        * body #pokedex .pokemon img {
-          width: 100%; }
-        * body #pokedex .pokemon .bottom {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end; }
-          * body #pokedex .pokemon .bottom ul {
-            margin: 0;
-            padding: 0; }
-          * body #pokedex .pokemon .bottom li {
-            list-style-type: none;
-            font-family: 'VT323', monospace;
-            font-size: 20px; }
-          * body #pokedex .pokemon .bottom .catch {
-            width: 60px;
-            cursor: pointer; }
-    * body .quiz {
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #3c5aa6; }
+  body nav {
+    display: flex;
+    justify-content: space-around; }
+  body form {
+    display: flex;
+    justify-content: center; }
+    body form .input {
+      width: 250px;
+      padding: 10px 15px;
       background-color: #f0f0f0;
-      width: 100vw;
+      font-size: 1rem;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px; }
+    body form button {
+      font-size: 1rem;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px; }
+  body #pokedex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    body #pokedex .pokemon {
+      width: 300px;
       display: flex;
-      flex-direction: column; }
-      * body .quiz form {
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      padding: 10px 10px 5px 10px;
+      background: radial-gradient(circle at center, rgba(240, 240, 240, 0.5) 1%, #448fd5 60%);
+      font-family: 'VT323', sans-serif;
+      font-size: 1.5rem;
+      box-shadow: 4px 0px 0 #448fd5, 0 4px 0 #448fd5, -4px 0 0 #448fd5, 0 -4px 0 #448fd5, 8px 0px 0 #ffcb05, 0 8px 0 #ffcb05, 8px 8px 0 #ffcb05, -8px 0 0 #ffcb05, 0 -8px 0 #ffcb05, -8px -8px 0 #ffcb05, 8px -8px 0 #ffcb05, -8px 8px 0 #ffcb05, 12px 0px 0 #ffcb05, 0 12px 0 #ffcb05, -12px 0 0 #ffcb05, 0 -12px 0 #ffcb05, 12px 0 8px #222224, 0 12px 8px #222224, 8px 8px 8px #222224; }
+      body #pokedex .pokemon .top {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        text-align: center; }
-        * body .quiz form .answers {
-          width: 80%;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center; }
-          * body .quiz form .answers label {
-            flex-basis: 50%;
-            padding-left: 20%;
-            text-align: left; }
-            * body .quiz form .answers label input {
-              margin: 10px; }
-      * body .quiz section {
+        justify-content: space-between;
+        width: 100%; }
+        body #pokedex .pokemon .top .icon-box {
+          width: 40px;
+          height: 40px;
+          background-color: #c7a008;
+          border: 4px outset #ffcb05;
+          padding: 2px; }
+          body #pokedex .pokemon .top .icon-box .type-icon {
+            filter: drop-shadow(0px 0px 1px #222224); }
+        body #pokedex .pokemon .top h3 {
+          margin: 0;
+          font-family: 'VT323', sans-serif;
+          font-size: 38px; }
+        body #pokedex .pokemon .top p {
+          margin: 0; }
+      body #pokedex .pokemon img {
+        width: 100%; }
+      body #pokedex .pokemon .bottom {
         width: 100%;
         display: flex;
-        flex-direction: column;
-        align-items: center; }
-      * body .quiz button {
-        border-radius: 0; }
+        justify-content: space-between;
+        align-items: flex-end; }
+        body #pokedex .pokemon .bottom ul {
+          margin: 0;
+          padding: 0; }
+        body #pokedex .pokemon .bottom li {
+          list-style-type: none;
+          font-family: 'VT323', monospace;
+          font-size: 20px; }
+        body #pokedex .pokemon .bottom .catch {
+          width: 100px;
+          cursor: pointer; }
+  body .quiz {
+    background-color: #f0f0f0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column; }
+    body .quiz form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center; }
+      body .quiz form .answers {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; }
+        body .quiz form .answers label {
+          flex-basis: 50%;
+          padding-left: 20%;
+          text-align: left; }
+          body .quiz form .answers label input {
+            margin: 10px; }
+    body .quiz section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    body .quiz button {
+      border-radius: 0; }

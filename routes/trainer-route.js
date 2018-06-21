@@ -13,8 +13,6 @@ const trainerRouter = express.Router();
 trainerRouter.get("/trainer", (req, res) => {
     pool.query("SELECT * FROM users ORDER BY id").then((result) => {
         res.send(result.rows);
-        console.log("hello");
-        
     });
 });
 

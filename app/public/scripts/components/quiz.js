@@ -120,7 +120,7 @@ const quiz = {
             pokemon_1: 7 
           }
           TrainerService.addUser(vm.trainer);
-          $location.path('/pokedex');
+          $location.path('/trainer');
         } else if(vm.adv > vm.cool && vm.adv > vm.char && vm.adv > vm.orig && vm.adv > vm.kind){
           vm.trainer = {
             username: vm.newUser.username,
@@ -128,7 +128,7 @@ const quiz = {
             pokemon_1: 4  
           }
           TrainerService.addUser(vm.trainer);
-          $location.path('/pokedex');
+          $location.path('/trainer');
         } else if(vm.char > vm.adv && vm.char > vm.cool && vm.char > vm.orig && vm.char > vm.kind){
           vm.trainer = {
             username: vm.newUser.username,
@@ -136,7 +136,7 @@ const quiz = {
             pokemon_1: 25  
           }
           TrainerService.addUser(vm.trainer);
-          $location.path('/pokedex');
+          $location.path('/trainer');
         } else if(vm.orig > vm.adv && vm.orig > vm.char && vm.orig > vm.cool && vm.orig > vm.kind){
           vm.trainer = {
             username: vm.newUser.username,
@@ -144,7 +144,7 @@ const quiz = {
             pokemon_1: 151  
           }
           TrainerService.addUser(vm.trainer);
-          $location.path('/pokedex');
+          $location.path('/trainer');
         } else if(vm.kind > vm.adv && vm.kind > vm.char && vm.kind > vm.orig && vm.kind > vm.cool){
           vm.trainer = {
             username: vm.newUser.username,
@@ -152,7 +152,7 @@ const quiz = {
             pokemon_1: 1  
           }
           TrainerService.addUser(vm.trainer);
-          $location.path('/pokedex');
+          $location.path('/trainer');
         } else{
             if(vm.dob==1 || vm.dob==2 ||vm.dob==3){
               vm.kind++;
@@ -162,7 +162,7 @@ const quiz = {
                 pokemon_1: 1  
               }
               TrainerService.addUser(vm.trainer);
-              $location.path('/pokedex');
+              $location.path('/trainer');
             } else if(vm.dob==4 || vm.dob==5 ||vm.dob==6){
               vm.adv++;
               vm.trainer = {
@@ -171,7 +171,7 @@ const quiz = {
                 pokemon_1: 4  
               }
               TrainerService.addUser(vm.trainer);
-              $location.path('/pokedex');
+              $location.path('/trainer');
             } else if(vm.dob==7 || vm.dob==8 ||vm.dob==9){
               vm.char++;
               vm.trainer = {
@@ -180,7 +180,7 @@ const quiz = {
                 pokemon_1: 25  
               }
               TrainerService.addUser(vm.trainer);
-              $location.path('/pokedex');
+              $location.path('/trainer');
             } else if(vm.dob==10 || vm.dob==11 ||vm.dob==12){
               vm.cool++;
               vm.trainer = {
@@ -189,7 +189,7 @@ const quiz = {
                 pokemon_1: 7  
               }
               TrainerService.addUser(vm.trainer);
-              $location.path('/pokedex');
+              $location.path('/trainer');
             };
         };
       }
