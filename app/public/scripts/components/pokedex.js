@@ -33,10 +33,8 @@ const pokedex = {
     const vm = this;
     vm.pokearr = [];
     vm.populateArr = [];
-
     vm.pokearr = PokemonService.getPokemon();
     vm.trainer = PokemonService.getTrainer();
-
     vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
 
     vm.fireCompatibility = (pokemon) => {
@@ -52,7 +50,6 @@ const pokedex = {
     }
 
     vm.waterCompatibility = (pokemon) => {
-      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "grass" || pokemon.type === "electric") {
@@ -65,7 +62,6 @@ const pokedex = {
     }
 
     vm.grassCompatibility = (pokemon) => {
-      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "flying" || pokemon.type === "poison" || pokemon.type === "bug" || pokemon.type === "fire" || pokemon.type === "ice") {
@@ -78,7 +74,6 @@ const pokedex = {
     }
 
     vm.electricCompatibility = (pokemon) => {
-      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "ground") {
@@ -91,7 +86,6 @@ const pokedex = {
     }
 
     vm.psychicCompatibility = (pokemon) => {
-      // console.log(pokemon);
       if (pokemon.type === vm.myType) {
         return 75;
       } else if (pokemon.type === "bug" || pokemon.type === "ghost") {
@@ -104,7 +98,6 @@ const pokedex = {
     }
 
     vm.compatibility = (pokemon) => {
-      
       if (vm.myType === "fire") {
        return vm.fireCompatibility(pokemon);
       } else if (vm.myType === "water") {
@@ -142,7 +135,6 @@ const pokedex = {
     } 
 
     vm.populate = () => {
-      console.log("clicked populate");
       for (let i = 133; i <= 151; i++) {
         PokeService.getData(i).then((response) => {
           vm.pokemon = response.data;
@@ -160,8 +152,6 @@ const pokedex = {
             move_4: vm.pokemon.moves[3].move.name
           }
           vm.populateArr.push(vm.pokemonInfo);
-          console.log(vm.pokemonInfo);
-          console.log(vm.populateArr.length);
         });
       }
     };

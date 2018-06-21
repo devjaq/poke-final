@@ -10,6 +10,11 @@ $poke-black:#222224;
 * {
     box-sizing: border-box;
 }
+.invalid{
+    outline: #f00000;
+    
+}
+
     body {
         height: 100vh;
         margin: 0;
