@@ -32,7 +32,7 @@ template: `
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].name | uppercase}}</h3>
-        <p>{{$ctrl.compatibility($ctrl.trainer.pokemon_2)}}%</p>
+        <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1])}}%</p>
         <div class="icon-box">
             <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].type}}.png">
         </div>
@@ -53,7 +53,7 @@ template: `
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].name | uppercase}}</h3>
-        <p>{{$ctrl.compatibility($ctrl.trainer.pokemon_3)}}%</p>
+        <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1])}}%</p>
         <div class="icon-box">
             <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].type}}.png">
         </div>
@@ -74,7 +74,7 @@ template: `
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].name | uppercase}}</h3>
-        <p>{{$ctrl.compatibility($ctrl.trainer.pokemon_4)}}%</p>
+        <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1])}}%</p>
         <div class="icon-box">
             <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].type}}.png">
         </div>
@@ -95,7 +95,7 @@ template: `
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].name | uppercase}}</h3>
-        <p>{{$ctrl.compatibility($ctrl.trainer.pokemon_5)}}%</p>
+        <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1])}}%</p>
         <div class="icon-box">
             <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].type}}.png">
         </div>
@@ -116,7 +116,7 @@ template: `
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].name | uppercase}}</h3>
-        <p>{{$ctrl.compatibility($ctrl.trainer.pokemon_6)}}%</p>
+        <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1])}}%</p>
         <div class="icon-box">
             <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].type}}.png">
         </div>
