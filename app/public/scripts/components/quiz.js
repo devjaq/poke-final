@@ -6,7 +6,7 @@ const quiz = {
     <h1>Welcome Come take our Quiz to see what pokeman you get!!!</h1>
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
       <h3>Enter a Username..</h3>
-      <input type="text" ng-model="$ctrl.newUser.username">
+      <input type="text" placeholder="username.." ng-blur="$ctrl.checkUsername($ctrl.newUser.username);" ng-model="$ctrl.newUser.username">
       <h3>Enter your Birth Month</h3>
 
       <div>
@@ -69,9 +69,14 @@ const quiz = {
     vm.username = "";
     vm.dob = "";
     vm.trainer = {};
+    vm.allTrainers = [];
     
     quizService.getQuiz().then((response) => {
       vm.quizarr = response.data;
+    });
+
+    TrainerService.getTrainers().then((response) => {
+      vm.allTrainers = response.data;
     });
 
     vm.addUser = (newUser) => {
@@ -79,6 +84,19 @@ const quiz = {
       vm.dob = newUser.dob;
       vm.show = true;
       vm.hide = false;
+    }
+    
+    vm.checkUsername = (username) => {
+      // .$$state.value.data
+      console.log(vm.allTrainers);
+      for (let i = 0; i < vm.allTrainers.length; i++) {
+        if (vm.allTrainers[i].username === vm.newUser.username) {
+          console.log("Pick a new username..");
+          // change border of input to red & make submit button not clickable
+        } else {
+          console.log("valid username");
+        }
+      }
     }
 
     vm.submitData = () => {
