@@ -26,7 +26,7 @@ const quiz = {
           <option value='12'>December</option>
         </select> 
       </div>
-      <button>Submit</button>
+      <button ng-disabled="$ctrl.disabled">Submit</button>
     </form>
     <form ng-show="$ctrl.show" class="multichoice" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
   
@@ -70,6 +70,7 @@ const quiz = {
     vm.dob = "";
     vm.trainer = {};
     vm.allTrainers = [];
+    vm.disabled = false;
     
     quizService.getQuiz().then((response) => {
       vm.quizarr = response.data;
@@ -87,14 +88,15 @@ const quiz = {
     }
     
     vm.checkUsername = (username) => {
-      // .$$state.value.data
-      console.log(vm.allTrainers);
       for (let i = 0; i < vm.allTrainers.length; i++) {
         if (vm.allTrainers[i].username === vm.newUser.username) {
           console.log("Pick a new username..");
+          vm.disabled=true;
+          break;
           // change border of input to red & make submit button not clickable
         } else {
           console.log("valid username");
+          vm.disabled=false;
         }
       }
     }
@@ -104,28 +106,18 @@ const quiz = {
       switch(vm.answers){
         case "cool":
         vm.cool++;
-        console.log(vm.cool);
-        console.log("cool");
         break;
         case "kind":
         vm.kind++;
-        console.log(vm.kind);
-        console.log("kind");
         break;
         case "adventurous":
         vm.adv++;
-        console.log(vm.adv);
-        console.log("adv");
         break;
         case "charismatic":
         vm.char++;
-        console.log(vm.char);
-        console.log("char");
         break;
         case "original":
         vm.orig++;
-        console.log(vm.orig);
-        console.log("orig");
         break;
       }
       vm.answers = "";

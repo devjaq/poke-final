@@ -4,8 +4,9 @@ const trainer = {
 template: `
 
 <h1> {{ $ctrl.trainer.username }}'s PokeCrew </h1>
-<button type="button" ng-click="$ctrl.goToPokedex()">Find my Crew!</button>
-
+<button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
+<input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+<button type="button">Find my Crew!</button>
 
 <div id="pokedex">
     <section class="pokemon">
@@ -148,23 +149,28 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
     $location.path('/pokedex');
   }
 
+
+  vm.trainerSearch = (trainer) => {
+    for (let i = 0; i < vm.alltrainers.length; i++) {
+        if (vm.alltrainers[i].username === trainer) {
+          vm.trainer = vm.alltrainers[i]
+          break;
+          // change border of input to red & make submit button not clickable
+        };
+    };
+  }
+
+
+
   dbService.getData().then((response) => {
     vm.pokearr = response.data;
     PokemonService.addPokemon(vm.pokearr);
   }).then(() => {
-
-
-
   TrainerService.getTrainers().then((response) => {
-      console.log(vm.pokearr);
-      
     vm.alltrainers = response.data;
     vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
     PokemonService.addTrainer(vm.trainer)
-
-
   vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
-  console.log(vm.myType);
 })
 });
 
@@ -181,7 +187,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   }
 
   vm.waterCompatibility = (pokemon) => {
-    // console.log(pokemon);
     if (pokemon.type === vm.myType) {
       return 75;
     } else if (pokemon.type === "grass" || pokemon.type === "electric") {
@@ -194,7 +199,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   }
 
   vm.grassCompatibility = (pokemon) => {
-    // console.log(pokemon);
     if (pokemon.type === vm.myType) {
       return 75;
     } else if (pokemon.type === "flying" || pokemon.type === "poison" || pokemon.type === "bug" || pokemon.type === "fire" || pokemon.type === "ice") {
@@ -207,7 +211,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   }
 
   vm.electricCompatibility = (pokemon) => {
-    // console.log(pokemon);
     if (pokemon.type === vm.myType) {
       return 75;
     } else if (pokemon.type === "ground") {
@@ -220,7 +223,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   }
 
   vm.psychicCompatibility = (pokemon) => {
-    // console.log(pokemon);
     if (pokemon.type === vm.myType) {
       return 75;
     } else if (pokemon.type === "bug" || pokemon.type === "ghost") {
@@ -232,9 +234,7 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
     }
   }
 
-  vm.compatibility = (pokemon) => {
-    console.log(pokemon);
-    
+  vm.compatibility = (pokemon) => {    
     if (vm.myType === "fire") {
      return vm.fireCompatibility(pokemon);
     } else if (vm.myType === "water") {
@@ -247,10 +247,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
     return vm.psychicCompatibility(pokemon);
     } 
   }
-
-
-
-
 }]
 };
 
