@@ -16,5 +16,8 @@ angular
     .when("/battle", {
       template: `<battle></battle>`
     })
-    .otherwise({redirectTo: "/pokedex"})
+    .when("/start", {
+      template: `<start></start>`
+    })
+    .otherwise({redirectTo: "/start"})
   });

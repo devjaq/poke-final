@@ -2,19 +2,19 @@
 
 const battle = {
   template: `
-  <form ng-submit="$ctrl.startBattle($ctrl.trainer);">
+  <form class="battle-form" ng-submit="$ctrl.startBattle($ctrl.trainer);">
     <input type="text" class="input" placeholder="Enter Challenger 1.." ng-blur="$ctrl.findTrainerOne($ctrl.trainer.one)" ng-model="$ctrl.trainer.one">
     <p>VS</p>
     <input type="text" class="input" placeholder="Enter Challenger 2.." ng-blur="$ctrl.findTrainerTwo($ctrl.trainer.two)" ng-model="$ctrl.trainer.two">
     <button>Start Battle</button>
   </form>
-
-  <section ng-repeat="trainer in $ctrl.pokebattle">
+  <div>
+  <section class="pokebattle" ng-repeat="trainer in $ctrl.pokebattle">
     <h1>{{trainer.name}}</h1>
     <h3> {{$ctrl.pokearr[trainer.pokemon-1].name | uppercase}}</h3>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[trainer.pokemon-1].id}}.png" alt="">
     </section>
-    
+    </div>
     `,
     
     controller: ["TrainerService", "PokemonService", function(TrainerService, PokemonService) {
@@ -59,6 +59,7 @@ const battle = {
     }
 
     vm.startBattle = (trainer) => {
+      vm.pokebattle = [];
       vm.trainerOne={
         name: vm.trainer.one,
         pokemon: vm.pokemonOne[Math.floor(Math.random() * vm.pokemonOne.length)]

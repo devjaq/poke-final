@@ -1,7 +1,6 @@
 "use strict";
 const pokedex = {
   template: `
-  <p>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].type}}</p>
   <form ng-submit="$ctrl.search($ctrl.pokemon)">
     <input type="text" class="input" ng-model="search">
     <button>Search</button>
@@ -24,7 +23,7 @@ const pokedex = {
           <li>{{pokemon.move_3}}</li>
           <li>{{pokemon.move_4}}</li>
         </ul>
-        <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
       </div>
     </section>
     </div>
@@ -36,6 +35,8 @@ const pokedex = {
     vm.pokearr = PokemonService.getPokemon();
     vm.trainer = PokemonService.getTrainer();
     vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+    vm.caught = false;
+  
 
     vm.fireCompatibility = (pokemon) => {
       if (pokemon.type === vm.myType) {
@@ -112,6 +113,9 @@ const pokedex = {
     }
 
     vm.newCrew = (pokemon) => {
+      // add bounce, remove bounce, add tada, remove tada
+      // pop up that says "you've caught pokemon!"
+
         if (vm.trainer.pokemon_2 === null){
           vm.trainer.pokemon_2 = pokemon.id;
           TrainerService.updateTrainer(vm.trainer);
