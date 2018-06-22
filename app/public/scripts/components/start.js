@@ -3,17 +3,22 @@
 const start = {
 template: `
 <section class="start">
-<div>
-  <p>Hello there! Welcome to the world of Pokémon! My name is Grant Chirpus! People call me the Pokémon Prof! Your very own Pokémon adventure is about to unfold! A world of dreams and adventures with Pokémon awaits! Let’s go!</p>
-  <img src="../../styles/lab-ready-grant.png">
+  <div>
+    <p>Hello there! Welcome to the world of Pokémon! My name is Grant Chirpus! People call me the Pokémon Prof! Your very own Pokémon adventure is about to unfold! A world of dreams and adventures with Pokémon awaits! Let’s go!</p>
+    <img src="../../styles/lab-ready-grant.png">
   </div>
-  <button type="button">Get my First Pokemon!</button>
+  <button type="button" ng-click="$ctrl.start();">Get my First Pokemon!</button>
 </section>  
 `,
 
-controller: function() {
+controller: ["$location", function($location) {
     const vm = this;
-}
+
+    vm.start = () => {
+      $location.path("/quiz");
+    }
+
+}]
 
 }
 

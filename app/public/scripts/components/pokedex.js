@@ -4,7 +4,7 @@ const pokedex = {
   <section class="top-bar">
     <form>
       <input type="text" class="input" ng-model="search" placeholder="Search">
-
+      
 
     </form>
   </section>
