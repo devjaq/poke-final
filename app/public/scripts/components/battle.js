@@ -84,6 +84,22 @@ const battle = {
 
       vm.pokebattle.push(vm.trainerOne);
       vm.pokebattle.push(vm.trainerTwo);
+
+      // decide who wins & remove loser from array
+      console.log(vm.pokebattle);
+      vm.whoWins();
+    }
+
+    vm.whoWins = () => {
+      // add animations / battle scene
+      // decide who actually wins
+      
+      // let winner = 0;
+      // if (winner = 0) {
+      //   vm.pokebattle.splice(1, 1);
+      // } else if (winner = 1) {
+      //   vm.pokebattle.splice(0, 1);
+      // }
     }
 
     vm.randomOpponent = () => {

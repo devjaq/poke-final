@@ -2,12 +2,11 @@
 
 const trainer = {
 template: `
-
+<p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
 <h1> {{ $ctrl.trainer.username }}'s PokeCrew </h1>
 <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
 <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
-<button type="button">Find my Crew!</button>
-
+<button type="button" ng-click="$ctrl.searchCrew()">Find my Crew!</button>
 <div id="pokedex">
     <section class="pokemon">
         <div class="top">
@@ -153,7 +152,9 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   vm.trainerSearch = (trainer) => {
     for (let i = 0; i < vm.alltrainers.length; i++) {
         if (vm.alltrainers[i].username === trainer) {
-          vm.trainer = vm.alltrainers[i]
+          vm.trainer = vm.alltrainers[i];
+          vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+          vm.totalCompatibility = [];
           break;
           // change border of input to red & make submit button not clickable
         };
@@ -174,17 +175,36 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
 })
 });
 
-  vm.fireCompatibility = (pokemon) => {
-    if (pokemon.type === vm.myType) {
-      return 75;
-    } else if (pokemon.type === "ground" || pokemon.type === "rock" || pokemon.type === "water") {
-      return 50;
-    } else if (pokemon.type === "bug" || pokemon.type === "grass" || pokemon.type === "ice") {
-      return 100;
-    }  else {
-      return 75;
+    // vm.clearArray = () => {
+    //     vm.totalCompatibility = [];
+    // }
+
+    vm.totalCompatibility = [];
+    vm.total = 100;
+
+    vm.synergy = () => {
+        vm.total = 100;
+        for (let i = 0; i < vm.totalCompatibility.length; i++) {
+            vm.total += vm.totalCompatibility[i];
+        }
+        vm.total /= (vm.totalCompatibility.length + 1);
+        console.log(vm.totalCompatibility.length + 1);
+        
+        console.log(vm.total);
+        return vm.total;
     }
-  }
+
+    vm.fireCompatibility = (pokemon) => {
+        if (pokemon.type === vm.myType) {
+        return 75;
+        } else if (pokemon.type === "ground" || pokemon.type === "rock" || pokemon.type === "water") {
+        return 50;
+        } else if (pokemon.type === "bug" || pokemon.type === "grass" || pokemon.type === "ice") {
+        return 100;
+        }  else {
+        return 75;
+        }
+    }
 
   vm.waterCompatibility = (pokemon) => {
     if (pokemon.type === vm.myType) {
@@ -233,20 +253,43 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
       return 75;
     }
   }
-
-  vm.compatibility = (pokemon) => {    
-    if (vm.myType === "fire") {
-     return vm.fireCompatibility(pokemon);
-    } else if (vm.myType === "water") {
-      return vm.waterCompatibility(pokemon);
-    } else if (vm.myType === "grass") {
-    return vm.grassCompatibility(pokemon);
-    } else if (vm.myType === "electric") {
-    return vm.electricCompatibility(pokemon);
-    } else if (vm.myType === "psychic") {
-    return vm.psychicCompatibility(pokemon);
-    } 
-  }
+  let count = 0;
+    vm.compatibility = (pokemon) => { 
+        
+        // if (vm.totalCompatibility.length < 5) {
+            if (vm.myType === "fire") {
+                if (vm.totalCompatibility.length < 5) {
+                    vm.totalCompatibility.push(vm.fireCompatibility(pokemon));
+                }
+                return vm.fireCompatibility(pokemon)
+            } else if (vm.myType === "water") {
+                if (vm.totalCompatibility.length < 5) {
+                    vm.totalCompatibility.push(vm.waterCompatibility(pokemon));
+                }
+                return vm.waterCompatibility(pokemon);
+            } else if (vm.myType === "grass") {
+                if (vm.totalCompatibility.length < 5) {
+                    vm.totalCompatibility.push(vm.grassCompatibility(pokemon));
+                }
+                return vm.grassCompatibility(pokemon);
+            } else if (vm.myType === "electric") {
+                if (vm.totalCompatibility.length < 5) {
+                    vm.totalCompatibility.push(vm.electricCompatibility(pokemon));
+                }
+                return vm.electricCompatibility(pokemon);
+            } else if (vm.myType === "psychic") {
+                if (vm.totalCompatibility.length < 5) {
+                    vm.totalCompatibility.push(vm.psychicCompatibility(pokemon));
+                }
+                return vm.psychicCompatibility(pokemon);
+            }
+    
+        } 
+        // else {
+        //     console.log("over 5");
+            
+        // }
+    // }
 }]
 };
 
