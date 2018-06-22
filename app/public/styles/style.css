@@ -29,7 +29,7 @@ body {
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px; }
   body #pokedex {
-    max-width: 1020px;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -122,20 +122,20 @@ body {
     body .battle-form input {
       border-radius: 0;
       margin: 0 15px; }
-  body div {
+  body .battleContainer {
     display: flex;
     padding: 0 20px;
     justify-content: space-between;
     max-width: 700px;
     margin: 0 auto; }
-    body div .pokebattle {
+    body .battleContainer .pokebattle {
       display: flex;
       flex-direction: column;
       width: 40%; }
-      body div .pokebattle .battle-sprite {
+      body .battleContainer .pokebattle .battle-sprite {
         max-width: 300px;
         height: 300px; }
-      body div .pokebattle .trainer-info {
+      body .battleContainer .pokebattle .trainer-info {
         text-align: center; }
   body .main .grant {
     height: 400px;
@@ -144,7 +144,10 @@ body {
   body .main .start {
     display: flex;
     width: 100%;
-    flex-direction: row; }
+    flex-direction: row;
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0; }
     body .main .start p {
       width: 30%; }
     body .main .start .pokeBox {
