@@ -142,6 +142,17 @@ body {
     flex-direction: column; }
     body .start p {
       width: 30%; }
+    body .start .pokeBox {
+      font-size: 8px;
+      font-family: "Pokemon GB", Arial, sans-serif;
+      border-radius: 2px;
+      padding: 8px;
+      width: 450px;
+      line-height: 16px;
+      margin: auto;
+      background: white;
+      border: 1px solid white;
+      box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black; }
     body .start button {
       height: 50px;
       width: 150px;
