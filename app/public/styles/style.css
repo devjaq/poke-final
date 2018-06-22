@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box; }
 
+.invalid {
+  outline: #f00000; }
+
 body {
   height: 100vh;
   margin: 0;
@@ -29,6 +32,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto; }
+    body #pokedex .tada {
+      animation: tada 1200ms; }
     body #pokedex .pokemon {
       width: 300px;
       max-width: 300px;
@@ -105,3 +110,25 @@ body {
       align-items: center; }
     body .quiz button {
       border-radius: 0; }
+  body .battle-form {
+    display: flex;
+    justify-content: center; }
+    body .battle-form input {
+      border-radius: 0;
+      margin: 0 15px; }
+  body div {
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto; }
+    body div .pokebattle {
+      display: flex;
+      flex-direction: column; }
+  body .start {
+    display: flex;
+    width: 100%; }
+    body .start p {
+      width: 30%; }
+    body .start img {
+      width: 30%; }
