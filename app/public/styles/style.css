@@ -16,7 +16,8 @@ body {
   body form {
     display: flex;
     justify-content: center; }
-    body form .input, body form select {
+    body form .input,
+    body form select {
       width: 250px;
       padding: 10px 15px;
       background-color: #f0f0f0;
@@ -28,7 +29,7 @@ body {
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px; }
   body #pokedex {
-    max-width: 1020px;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -121,29 +122,36 @@ body {
     body .battle-form input {
       border-radius: 0;
       margin: 0 15px; }
-  body div {
+  body .battleContainer {
     display: flex;
     padding: 0 20px;
     justify-content: space-between;
     max-width: 700px;
     margin: 0 auto; }
-    body div .pokebattle {
+    body .battleContainer .pokebattle {
       display: flex;
       flex-direction: column;
       width: 40%; }
-      body div .pokebattle .battle-sprite {
+      body .battleContainer .pokebattle .battle-sprite {
         max-width: 300px;
         height: 300px; }
-      body div .pokebattle .trainer-info {
+      body .battleContainer .pokebattle .trainer-info {
         text-align: center; }
-  body .start {
+  body .main .grant {
+    height: 400px;
+    display: block;
+    margin: 0 auto; }
+  body .main .start {
     display: flex;
     width: 100%;
-    flex-direction: column; }
-    body .start p {
+    flex-direction: row;
+    margin-top: 30px;
+    position: fixed;
+    bottom: 0; }
+    body .main .start p {
       width: 30%; }
-    body .start .pokeBox {
-      font-size: 8px;
+    body .main .start .pokeBox {
+      font-size: 16px;
       font-family: "Pokemon GB", Arial, sans-serif;
       border-radius: 2px;
       padding: 8px;
@@ -153,10 +161,7 @@ body {
       background: white;
       border: 1px solid white;
       box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black; }
-    body .start button {
+    body .main .start button {
       height: 50px;
       width: 150px;
       margin: 0 auto; }
-    body .start img {
-      width: 200px;
-      height: 400px; }
