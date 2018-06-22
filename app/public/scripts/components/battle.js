@@ -2,11 +2,13 @@
 
 const battle = {
   template: `
-  <form class="battle-form" ng-submit="$ctrl.startBattle($ctrl.trainer);">
+  <form class="battle-form">
     <input type="text" class="input" placeholder="Enter Challenger 1.." ng-blur="$ctrl.findTrainerOne($ctrl.trainer.one)" ng-model="$ctrl.trainer.one">
     <p>VS</p>
     <input type="text" class="input" placeholder="Enter Challenger 2.." ng-blur="$ctrl.findTrainerTwo($ctrl.trainer.two)" ng-model="$ctrl.trainer.two">
-    <button>Start Battle</button>
+    <button ng-click="$ctrl.randomOpponent();">Random Opponent</button>
+    <button ng-click="$ctrl.startBattle($ctrl.trainer);">Start Battle</button>
+
   </form>
   <div>
   <section class="pokebattle" ng-repeat="trainer in $ctrl.pokebattle">
@@ -72,6 +74,12 @@ const battle = {
       vm.pokebattle.push(vm.trainerOne);
       vm.pokebattle.push(vm.trainerTwo);
     }
+
+    vm.randomOpponent = () => {
+      vm.trainer.two = vm.allTrainers[Math.floor(Math.random() * vm.allTrainers.length)].username
+      vm.findTrainerTwo();
+    }
+
   }]
 };
 
