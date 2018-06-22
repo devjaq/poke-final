@@ -1,10 +1,13 @@
 "use strict";
 const pokedex = {
   template: `
-  <form ng-submit="$ctrl.search($ctrl.pokemon)">
-    <input type="text" class="input" ng-model="search">
-    <button>Search</button>
-  </form>
+  <section class="top-bar">
+    <form>
+      <input type="text" class="input" ng-model="search" placeholder="Search">
+
+
+    </form>
+  </section>
   <div id="pokedex">
     <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
       <div class="top">

@@ -127,8 +127,10 @@ body {
       flex-direction: column; }
   body .start {
     display: flex;
-    width: 100%; }
+    width: 100%;
+    flex-direction: column; }
     body .start p {
       width: 30%; }
     body .start img {
-      width: 30%; }
+      width: 200px;
+      height: 400px; }
