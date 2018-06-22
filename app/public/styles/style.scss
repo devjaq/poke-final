@@ -43,7 +43,7 @@ body {
         }
     }
     #pokedex {
-        max-width: 1020px;
+        max-width: 1200px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -159,7 +159,7 @@ body {
             margin: 0 15px;
         }
     }
-    div {
+    .battleContainer {
         display: flex;
         padding: 0 20px;
         justify-content: space-between;
@@ -192,10 +192,15 @@ body {
             width: 100%;
             flex-direction: row;
             margin-top: 30px;
+            position: fixed;
+            bottom: 0;
 
             p {
                 width: 30%;
             }
+            // .textContainer {
+            //     width: 70%;
+            // }
             .pokeBox {
                 font-size: 16px;
                 font-family: "Pokemon GB", Arial, sans-serif;

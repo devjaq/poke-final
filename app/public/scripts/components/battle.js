@@ -10,15 +10,15 @@ const battle = {
     <button ng-click="$ctrl.startBattle($ctrl.trainer);">Start Battle</button>
 
   </form>
-  <div>
+  <div class="battleContainer">
   <section class="pokebattle" ng-repeat="trainer in $ctrl.pokebattle">
     <h1 class="trainer-info">{{trainer.name}}</h1>
     <p class="trainer-info">{{ trainer.trait }}</p>
     <h3 class="trainer-info"> {{$ctrl.pokearr[trainer.pokemon-1].name | uppercase}}</h3>
     <img class="battle-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[trainer.pokemon-1].id}}.png" alt="">
     </section>
-    </div>
-    `,
+  </div>
+  `,
     
     controller: ["TrainerService", "PokemonService", function(TrainerService, PokemonService) {
     const vm = this;
