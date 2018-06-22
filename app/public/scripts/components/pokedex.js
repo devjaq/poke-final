@@ -3,13 +3,31 @@ const pokedex = {
   template: `
   <section class="top-bar">
     <form>
-      <input type="text" class="input" ng-model="search" placeholder="Search">
-      
+      <input type="text" class="input" ng-model="$ctrl.search" placeholder="Search">
+      <select name="type-selector" ng-model="$ctrl.typeSelector" id="type-selector">
+        <option default value="">Select a Pokemon Type</option>
+        <option value="bug">Bug</option>
+        <option value="dragon">Dragon</option>
+        <option value="ice">Ice</option>
+        <option value="fighting">Fighting</option>
+        <option value="fire">Fire</option>
+        <option value="flying">Flying</option>
+        <option value="grass">Grass</option>
+        <option value="ghost">Ghost</option>
+        <option value="ground">Ground</option>
+        <option value="electric">Electric</option>
+        <option value="normal">Normal</option>
+        <option value="poison">Poison</option>
+        <option value="psychic">Psychic</option>
+        <option value="rock">Rock</option>
+        <option value="water">Water</option>
+      </select>
+      <button type="button" ng-click="$ctrl.clearSearch()">Clear Search</button>
 
     </form>
   </section>
   <div id="pokedex">
-    <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: search}|orderBy : 'id'">
+    <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: $ctrl.search, type: $ctrl.typeSelector} |orderBy : 'id' | limitTo: 150">
       <div class="top">
         <p>{{ pokemon.id }}</p>
         <h3>{{ pokemon.name | uppercase }}</h3>
@@ -39,7 +57,13 @@ const pokedex = {
     vm.trainer = PokemonService.getTrainer();
     vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
     vm.caught = false;
+    vm.search = "";
+    vm.typeSelector = "";
   
+    vm.clearSearch = () => {
+      vm.search = "";
+      vm.typeSelector = "";
+    }
 
     vm.fireCompatibility = (pokemon) => {
       if (pokemon.type === vm.myType) {
