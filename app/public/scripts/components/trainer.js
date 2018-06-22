@@ -141,7 +141,7 @@ template: `
 controller: ["TrainerService", "PokemonService", "dbService", "$location", function(TrainerService, PokemonService, dbService, $location) {
   const vm = this;
   vm.alltrainers = [];
-  vm.trainer = {};
+//   vm.trainer = {};
   vm.pokearr = [];
 
   vm.goToPokedex = () => {
@@ -151,10 +151,12 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
 
   vm.trainerSearch = (trainer) => {
     for (let i = 0; i < vm.alltrainers.length; i++) {
-        if (vm.alltrainers[i].username === trainer) {
+        if ((vm.alltrainers[i].username).toLowerCase() === trainer.toLowerCase()) {
           vm.trainer = vm.alltrainers[i];
           vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
           vm.totalCompatibility = [];
+          PokemonService.addTrainer(vm.trainer);
+          vm.newTrainer="";
           break;
           // change border of input to red & make submit button not clickable
         };
@@ -169,8 +171,14 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   }).then(() => {
   TrainerService.getTrainers().then((response) => {
     vm.alltrainers = response.data;
-    vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
-    PokemonService.addTrainer(vm.trainer)
+    vm.trainer=PokemonService.getTrainer();
+    console.log(vm.trainer);
+    if(vm.trainer=== null){
+        vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+        PokemonService.addTrainer(vm.trainer);
+    }else{
+        vm.trainer=PokemonService.getTrainer();
+    }
   vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
 })
 });

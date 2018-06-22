@@ -2,7 +2,7 @@
 
 function PokemonService() {
     let allPokemon = [];
-    let trainer = {};
+    let trainer = null;
     const addPokemon = (pokemon) => {
         allPokemon = pokemon;
     }
