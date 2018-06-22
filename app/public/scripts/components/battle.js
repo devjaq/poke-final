@@ -13,6 +13,7 @@ const battle = {
   <div>
   <section class="pokebattle" ng-repeat="trainer in $ctrl.pokebattle">
     <h1 class="trainer-info">{{trainer.name}}</h1>
+    <p class="trainer-info">{{ trainer.trait }}</p>
     <h3 class="trainer-info"> {{$ctrl.pokearr[trainer.pokemon-1].name | uppercase}}</h3>
     <img class="battle-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[trainer.pokemon-1].id}}.png" alt="">
     </section>
@@ -24,9 +25,13 @@ const battle = {
     vm.pokebattle=[];
     vm.pokearr = [];
     vm.allTrainers = [];
+    vm.trainerOneName="";
+    vm.trainerTwoName="";
     vm.trainerOne = {};
     vm.trainerTwo = {};
     vm.pokebattle=[];
+    vm.trainerOneC;
+    vm.trainerTwoC;
     vm.pokearr = PokemonService.getPokemon();
     TrainerService.getTrainers().then((response) => {
       vm.allTrainers = response.data;
@@ -34,7 +39,9 @@ const battle = {
     
     vm.findTrainerOne = () => {
       for (let i = 0; i < vm.allTrainers.length; i++) {
-        if (vm.allTrainers[i].username === vm.trainer.one) {
+        if ((vm.allTrainers[i].username).toLowerCase() === (vm.trainer.one).toLowerCase()) {
+          vm.trainerOneName=vm.allTrainers[i].username;
+          vm.trainerOneC= vm.allTrainers[i].quiz_result
           vm.pokemonOne=[vm.allTrainers[i].pokemon_1, vm.allTrainers[i].pokemon_2, vm.allTrainers[i].pokemon_3, vm.allTrainers[i].pokemon_4, vm.allTrainers[i].pokemon_5, vm.allTrainers[i].pokemon_6]
           break;
         } else {
@@ -48,7 +55,9 @@ const battle = {
 
     vm.findTrainerTwo = () => {
       for (let i = 0; i < vm.allTrainers.length; i++) {
-        if (vm.allTrainers[i].username === vm.trainer.two) {
+        if ((vm.allTrainers[i].username).toLowerCase() === (vm.trainer.two).toLowerCase()) {
+          vm.trainerTwoName=vm.allTrainers[i].username;
+          vm.trainerTwoC= vm.allTrainers[i].quiz_result;
           vm.pokemonTwo=[vm.allTrainers[i].pokemon_1, vm.allTrainers[i].pokemon_2, vm.allTrainers[i].pokemon_3, vm.allTrainers[i].pokemon_4, vm.allTrainers[i].pokemon_5, vm.allTrainers[i].pokemon_6]
           break;
         } else {
@@ -63,12 +72,14 @@ const battle = {
     vm.startBattle = (trainer) => {
       vm.pokebattle = [];
       vm.trainerOne={
-        name: vm.trainer.one,
-        pokemon: vm.pokemonOne[Math.floor(Math.random() * vm.pokemonOne.length)]
+        name: vm.trainerOneName,
+        pokemon: vm.pokemonOne[Math.floor(Math.random() * vm.pokemonOne.length)],
+        trait: vm.trainerOneC
       };
       vm.trainerTwo={
-        name: vm.trainer.two,
-        pokemon: vm.pokemonTwo[Math.floor(Math.random() * vm.pokemonTwo.length)]
+        name: vm.trainerTwoName,
+        pokemon: vm.pokemonTwo[Math.floor(Math.random() * vm.pokemonTwo.length)],
+        trait: vm.trainerTwoC
       };
 
       vm.pokebattle.push(vm.trainerOne);
