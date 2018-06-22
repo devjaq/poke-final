@@ -169,14 +169,22 @@ body {
     .start {
         display: flex;
         width: 100%;
-        
+        flex-direction: column;
+
         p {
             width: 30%;
+        }
+
+        button {
+            height: 50px;
+            width: 150px;
+            margin: 0 auto;
         }
         
         img {
             // max-height: 50%;    
-            width: 30%;
+            width: 200px;
+            height: 400px;
         
         }
     }
