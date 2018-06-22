@@ -140,28 +140,32 @@ body {
   body .main .grant {
     height: 400px;
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    animation: lightSpeedIn 1000ms; }
   body .main .start {
     display: flex;
     width: 100%;
-    flex-direction: row;
-    margin-top: 30px;
-    position: fixed;
-    bottom: 0; }
-    body .main .start p {
-      width: 30%; }
-    body .main .start .pokeBox {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px; }
+    body .main .start .pokeBox, body .main .start button {
       font-size: 16px;
       font-family: "Pokemon GB", Arial, sans-serif;
       border-radius: 2px;
       padding: 8px;
-      width: 450px;
+      width: 95%;
       line-height: 16px;
       margin: auto;
-      background: white;
-      border: 1px solid white;
-      box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black; }
-    body .main .start button {
-      height: 50px;
-      width: 150px;
+      background: #f0f0f0;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 1px 0 1px #222224, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black; }
+    body .main .start .lightSpeedIn {
+      animation: lightSpeedIn 1500ms; }
+    body .main .start .btnContainer {
       margin: 0 auto; }
+    body .main .start button {
+      cursor: pointer;
+      margin-top: 10px; }
+    body .main .start .pulse:hover {
+      animation: pulse 1000ms infinite;
+      background-color: #c7a008; }
