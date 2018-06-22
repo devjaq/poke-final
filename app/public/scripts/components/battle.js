@@ -12,9 +12,9 @@ const battle = {
   </form>
   <div>
   <section class="pokebattle" ng-repeat="trainer in $ctrl.pokebattle">
-    <h1>{{trainer.name}}</h1>
-    <h3> {{$ctrl.pokearr[trainer.pokemon-1].name | uppercase}}</h3>
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[trainer.pokemon-1].id}}.png" alt="">
+    <h1 class="trainer-info">{{trainer.name}}</h1>
+    <h3 class="trainer-info"> {{$ctrl.pokearr[trainer.pokemon-1].name | uppercase}}</h3>
+    <img class="battle-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[trainer.pokemon-1].id}}.png" alt="">
     </section>
     </div>
     `,
