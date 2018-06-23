@@ -181,42 +181,50 @@ body {
     .main {
 
         .grant {
-            // max-height: 50%;    
-            // width: 200px;
             height: 400px;
             display: block;
             margin: 0 auto;
+            animation: lightSpeedIn 1000ms;
         }
         .start {
             display: flex;
             width: 100%;
-            flex-direction: row;
-            margin-top: 30px;
-            position: fixed;
-            bottom: 0;
-
-            p {
-                width: 30%;
-            }
-            // .textContainer {
-            //     width: 70%;
-            // }
-            .pokeBox {
+            flex-direction: column;
+            //switch to row for tablet and desktop
+            justify-content: center;
+            padding: 20px;
+           
+            .pokeBox, button {
                 font-size: 16px;
                 font-family: "Pokemon GB", Arial, sans-serif;
                 border-radius: 2px;
                 padding: 8px;
-                width: 450px;
+                width: 95%;
                 line-height: 16px;
                 margin: auto;
-                background: white;
-                border: 1px solid white;
-                box-shadow: 0 1px 0 1px black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
+                background: $poke-white;
+                border: 1px solid $poke-white;
+                box-shadow: 0 1px 0 1px $poke-black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
             }
-            button {
-                height: 50px;
-                width: 150px;
+
+            .lightSpeedIn {
+                animation: lightSpeedIn 1500ms;
+            }
+
+            .btnContainer {
                 margin: 0 auto;
+            }
+
+            button {
+                // height: 69px;
+                // width: 95%;
+                // margin: 0 auto;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
+                background-color: $darkyellow;
             }
         }
     }
