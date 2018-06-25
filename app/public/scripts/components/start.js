@@ -2,7 +2,7 @@
 
 const start = {
 template: `
-<section class="main">
+<section id="slideButton" class="main slide" ng-swipe-up="$ctrl.swipeUp()" ng-swipe-down="$ctrl.swipeDown()">
 <div class="bg-gradient">
   <img src="../../styles/full-logo.png" class="start-logo">
   <img src="../../styles/lab-ready-grant.png" class="grant">
@@ -27,6 +27,30 @@ controller: ["$location", function($location) {
 
     vm.battle = () => {
       $location.path("/battle")
+    }
+    vm.swipeUp = function () {
+      var arrow = $("#slideButton");
+      console.log("swipe-up");
+      if ($("#slideButton").hasClass("slide") == true) {
+        console.log("true");
+        // arrow.css({
+        //   "transform": "rotate(180deg)",
+        //   "transition-duration": "2200ms"
+        // });
+        $location.path("/quiz");
+      }
+    }
+    vm.swipeDown = function () {
+      var arrow = $("#slideButton");
+      console.log("swipe-down");
+      if (arrow.hasClass("slide") == false) {
+        console.log("false");
+        // arrow.css({
+        //   "transform": "rotate(0deg)",
+        //   "transition-duration": "2200ms"
+        // });
+        $location.path("/quiz");
+      }
     }
 
 }]

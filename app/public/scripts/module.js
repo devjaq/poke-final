@@ -1,4 +1,4 @@
 "use strict";
 
 angular 
-  .module("App", ['ngRoute'])
+  .module("App", ['ngRoute', "swipe", "ngTouch"])
