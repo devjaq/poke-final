@@ -2,11 +2,13 @@
 
 const trainer = {
 template: `
+<section class="trainer-header">
+<h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
 <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
-<h1> {{ $ctrl.trainer.username }}'s PokeCrew </h1>
-<button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
-<input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
-<button type="button" ng-click="$ctrl.searchCrew()">Find my Crew!</button>
+    <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
+    <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+    <button type="button" ng-click="$ctrl.searchCrew()">Find my Crew!</button>
+</section>
 <div id="pokedex">
     <section class="pokemon">
         <div class="top">
