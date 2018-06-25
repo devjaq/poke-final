@@ -1,3 +1,6 @@
+@font-face {
+  font-family: "Pokemon GB";
+  src: url(Pokemon_GB.ttf); }
 * {
   box-sizing: border-box; }
 
@@ -8,7 +11,7 @@ button {
   padding: 8px;
   background: #f4f4f4;
   border-radius: 5px;
-  box-shadow: 3px 3px #222224, 3px 0 #222224, 0 3px #222224, -3px -3px #222224, -3px 0 #222224, 0 -3px #222224, 3px -3px #222224, -3px 3px #222224, 6px 6px #fff, 6px 0 #fff, 0 6px #fff, -6px -6px #fff, -6px 0 #fff, 0 -6px #fff, 6px -6px #fff, -6px 6px #fff, 7px 7px 0px 3px #222224, 7px 0 0px 3px #222224, 0 7px 0px 3px #222224, -7px -7px 0px 3px #222224, -7px 0 0px 3px #222224, 0 -7px 0px 3px #222224, 7px -7px 0px 3px #222224, -7px 7px 0px 3px #222224; }
+  box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
 
 .invalid {
   outline: #f00000; }
@@ -18,6 +21,11 @@ body {
   margin: 0;
   background-color: #66aeed;
   font-family: sans-serif; }
+  body input {
+    font-size: 1rem;
+    padding: 5px; }
+  body select {
+    text-align-last: center; }
   body nav {
     display: flex;
     justify-content: space-around;
@@ -94,15 +102,32 @@ body {
           width: 100px;
           cursor: pointer; }
   body .quiz {
-    background-color: #f0f0f0;
-    width: 100vw;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 20px; }
+    body .quiz .answers label {
+      border: 1px solid black;
+      cursor: pointer; }
+    body .quiz .start-logo {
+      max-width: 400px;
+      margin: 25px; }
+    body .quiz .trainer-name {
+      border: none;
+      border-bottom: 2px solid #222224;
+      background: none; }
+    body .quiz h1 {
+      margin: 0 auto;
+      text-align: center; }
+    body .quiz ::placeholder {
+      text-align: center; }
     body .quiz form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center; }
+      text-align: center;
+      background-color: #f0f0f0; }
       body .quiz form .answers {
         width: 80%;
         display: flex;
@@ -114,6 +139,16 @@ body {
           text-align: left; }
           body .quiz form .answers label input {
             margin: 10px; }
+    body .quiz .pokeBox {
+      max-width: 600px; }
+    body .quiz .pokeBox, body .quiz button {
+      font-size: 1rem;
+      margin: 50px;
+      font-family: "Pokemon GB", Arial, sans-serif;
+      padding: 8px;
+      background: #f4f4f4;
+      border-radius: 5px;
+      box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
     body .quiz section {
       width: 100%;
       display: flex;
@@ -146,7 +181,7 @@ body {
     background-repeat: no-repeat;
     background-position-x: center;
     max-width: 1024px;
-    height: 100%;
+    min-height: 100%;
     margin: 0 auto; }
     body .main .start-logo {
       max-width: 400px;
@@ -175,7 +210,7 @@ body {
         padding: 8px;
         background: #f4f4f4;
         border-radius: 5px;
-        box-shadow: 3px 3px #222224, 3px 0 #222224, 0 3px #222224, -3px -3px #222224, -3px 0 #222224, 0 -3px #222224, 3px -3px #222224, -3px 3px #222224, 6px 6px #fff, 6px 0 #fff, 0 6px #fff, -6px -6px #fff, -6px 0 #fff, 0 -6px #fff, 6px -6px #fff, -6px 6px #fff, 7px 7px 0px 3px #222224, 7px 0 0px 3px #222224, 0 7px 0px 3px #222224, -7px -7px 0px 3px #222224, -7px 0 0px 3px #222224, 0 -7px 0px 3px #222224, 7px -7px 0px 3px #222224, -7px 7px 0px 3px #222224; }
+        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
       body .main .start .btnContainer {
         margin: 0 auto;
         display: flex; }
