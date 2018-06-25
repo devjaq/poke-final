@@ -27,7 +27,7 @@ template: `
                 <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].move_3}}</li>
                 <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].move_4}}</li>
             </ul>
-            <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+            <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
         </div>
     </section>
     <section class="pokemon">
@@ -47,7 +47,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].move_4}}</li>
         </ul>
-        <img  class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img  class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(2)">
     </div>
     </section>
 
@@ -68,7 +68,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].move_4}}</li>
         </ul>
-        <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(3)">
     </div>
     </section>
 
@@ -89,7 +89,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].move_4}}</li>
         </ul>
-        <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(4)">
     </div>
     </section>
 
@@ -110,7 +110,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].move_4}}</li>
         </ul>
-        <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(5)">
     </div>
     </section>
 
@@ -131,7 +131,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].move_4}}</li>
         </ul>
-        <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(6)">
     </div>
     </section>
 </div>
@@ -143,7 +143,7 @@ template: `
 controller: ["TrainerService", "PokemonService", "dbService", "$location", function(TrainerService, PokemonService, dbService, $location) {
   const vm = this;
   vm.alltrainers = [];
-//   vm.trainer = {};
+  vm.trainer = {};
   vm.pokearr = [];
 
   vm.goToPokedex = () => {
@@ -163,7 +163,39 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
           // change border of input to red & make submit button not clickable
         };
     };
-  }
+  };
+
+  vm.remove = (pokemon) => {
+    console.log(vm.trainer);
+    // console.log(pokemon);
+    switch (pokemon) {
+        case 2:  
+            vm.trainer.pokemon_2 = null;
+            TrainerService.updateTrainer(vm.trainer);
+            $location.path("/pokedex");
+            break;
+        case 3:  
+            vm.trainer.pokemon_3 = null;
+            TrainerService.updateTrainer(vm.trainer);
+            $location.path("/pokedex");
+            break;
+        case 4:  
+            vm.trainer.pokemon_4 = null;
+            TrainerService.updateTrainer(vm.trainer);
+            $location.path("/pokedex");
+            break;
+        case 5:  
+            vm.trainer.pokemon_5 = null;
+            TrainerService.updateTrainer(vm.trainer);
+            $location.path("/pokedex");
+            break;
+        case 6: 
+            vm.trainer.pokemon_6 = null;
+            TrainerService.updateTrainer(vm.trainer);
+            $location.path("/pokedex");
+            break;
+    };
+  };
 
 
 
@@ -174,7 +206,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   TrainerService.getTrainers().then((response) => {
     vm.alltrainers = response.data;
     vm.trainer=PokemonService.getTrainer();
-    console.log(vm.trainer);
     if(vm.trainer=== null){
         vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
         PokemonService.addTrainer(vm.trainer);
@@ -198,9 +229,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
             vm.total += vm.totalCompatibility[i];
         }
         vm.total /= (vm.totalCompatibility.length + 1);
-        console.log(vm.totalCompatibility.length + 1);
-        
-        console.log(vm.total);
         return vm.total;
     }
 
