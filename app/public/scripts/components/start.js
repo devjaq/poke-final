@@ -16,12 +16,11 @@ template: `
     </div>
   </div>
   </div>
-</section>  
+</section>
 `,
 
 controller: ["$location", function($location) {
     const vm = this;
-
     vm.start = () => {
       $location.path("/quiz");
     }
