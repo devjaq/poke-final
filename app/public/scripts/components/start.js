@@ -16,7 +16,7 @@ template: `
     </div>
   </div>
   </div>
-</section>  
+</section>
 `,
 
 controller: ["$location", function($location) {
