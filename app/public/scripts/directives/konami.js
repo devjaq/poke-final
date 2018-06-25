@@ -1,10 +1,10 @@
 "use strict";
 
-function konami() {
+function konami($document) {
   return {
     restrict: "A",
 
-    link: function ($scope, $element, $attrs, $document) {
+    link: function ($scope, $element, $attrs) {
       var keys = '',
         code = '38384040373937396665',
         timer = null,
@@ -13,6 +13,7 @@ function konami() {
           // element.css({
           //   backgroundColor: 'red'
           // });
+          // make component add this code, inside ng-if will script tag work?
           console.log("konami activated");
         },
 
@@ -34,7 +35,7 @@ function konami() {
           }
         };
 
-      $element.off('keyup', keyup).on('keyup', keyup);
+      $document.off('keyup', keyup).on('keyup', keyup);
     }
 
   }

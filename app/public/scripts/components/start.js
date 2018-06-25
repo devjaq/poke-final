@@ -21,7 +21,6 @@ template: `
 
 controller: ["$location", function($location) {
     const vm = this;
-
     vm.start = () => {
       $location.path("/quiz");
     }
