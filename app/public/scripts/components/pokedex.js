@@ -49,12 +49,15 @@ const pokedex = {
     </section>
     </div>
     <section class="myPokemon">
+    <div>
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].id}}.png" alt="">
       <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
       <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
       <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
       <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
       <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
       <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
     </section>
     `,
   controller: ["PokeService", "dbService", "PokemonService", "TrainerService", "$location", function (PokeService, dbService, PokemonService, TrainerService, $location) {

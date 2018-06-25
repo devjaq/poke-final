@@ -35,12 +35,21 @@ body {
     justify-content: center; }
     body form .input,
     body form select {
+      margin: 20px 0;
       width: 250px;
-      padding: 10px 15px;
+      padding: 8px 12px;
       background-color: #f0f0f0;
-      font-size: 1rem;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px; }
+      font-size: 1rem; }
+  body .myPokemon {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    background-color: #f0f0f0; }
+    body .myPokemon div {
+      display: flex;
+      flex-direction: column; }
+    body .myPokemon .caughtPokemon {
+      max-width: 100px; }
   body #pokedex {
     max-width: 1200px;
     display: flex;
