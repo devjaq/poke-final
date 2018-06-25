@@ -48,6 +48,14 @@ const pokedex = {
       </div>
     </section>
     </div>
+    <section class="myPokemon">
+      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+    </section>
     `,
   controller: ["PokeService", "dbService", "PokemonService", "TrainerService", "$location", function (PokeService, dbService, PokemonService, TrainerService, $location) {
     const vm = this;
