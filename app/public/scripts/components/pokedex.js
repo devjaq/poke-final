@@ -154,15 +154,27 @@ const pokedex = {
         if (vm.trainer.pokemon_2 === null){
           vm.trainer.pokemon_2 = pokemon.id;
           TrainerService.updateTrainer(vm.trainer);
+          if(vm.trainer.pokemon_6 !== null){
+            $location.path('/trainer');
+          }
         } else if (vm.trainer.pokemon_3 === null) {
           vm.trainer.pokemon_3 = pokemon.id;
           TrainerService.updateTrainer(vm.trainer);
+          if(vm.trainer.pokemon_6 !== null){
+            $location.path('/trainer');
+          }
         } else if (vm.trainer.pokemon_4 === null) {
           vm.trainer.pokemon_4 = pokemon.id;
           TrainerService.updateTrainer(vm.trainer);
+          if(vm.trainer.pokemon_6 !== null){
+            $location.path('/trainer');
+          }
         } else if (vm.trainer.pokemon_5 === null) {
           vm.trainer.pokemon_5 = pokemon.id;
           TrainerService.updateTrainer(vm.trainer);
+          if(vm.trainer.pokemon_6 !== null){
+            $location.path('/trainer');
+          }
         } else if (vm.trainer.pokemon_6 === null) {
           vm.trainer.pokemon_6 = pokemon.id;
           TrainerService.updateTrainer(vm.trainer);

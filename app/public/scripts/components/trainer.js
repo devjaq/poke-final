@@ -27,7 +27,7 @@ template: `
                 <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].move_3}}</li>
                 <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].move_4}}</li>
             </ul>
-            <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+            <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
         </div>
     </section>
     <section class="pokemon">
@@ -47,7 +47,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].move_4}}</li>
         </ul>
-        <img  class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(2)">
+        <img  class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(2)">
     </div>
     </section>
 
@@ -68,7 +68,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].move_4}}</li>
         </ul>
-        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(3)">
+        <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(3)">
     </div>
     </section>
 
@@ -89,7 +89,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].move_4}}</li>
         </ul>
-        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(4)">
+        <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(4)">
     </div>
     </section>
 
@@ -110,7 +110,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].move_4}}</li>
         </ul>
-        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(5)">
+        <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(5)">
     </div>
     </section>
 
@@ -131,7 +131,7 @@ template: `
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].move_3}}</li>
             <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].move_4}}</li>
         </ul>
-        <img class="remove" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(6)">
+        <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.remove(6)">
     </div>
     </section>
 </div>
