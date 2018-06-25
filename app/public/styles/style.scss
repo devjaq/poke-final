@@ -10,6 +10,42 @@ $poke-black:#222224;
     box-sizing: border-box;
 }
 
+button {
+    font-size: 1rem;
+    margin: 25px;
+    font-family: "Pokemon GB", Arial, sans-serif;
+    padding: 8px;
+    background: rgb(244, 244, 244);
+    border-radius: 5px;
+    box-shadow: 
+    3px 3px $poke-black
+    , 3px 0 $poke-black
+    , 0 3px $poke-black
+    , -3px -3px $poke-black
+    , -3px 0 $poke-black
+    , 0 -3px $poke-black
+    , 3px -3px $poke-black
+    , -3px 3px $poke-black
+
+    ,6px 6px #fff
+    , 6px 0 #fff
+    , 0 6px #fff
+    , -6px -6px #fff
+    , -6px 0 #fff
+    , 0 -6px #fff
+    , 6px -6px #fff
+    , -6px 6px #fff
+
+    , 7px 7px 0px 3px $poke-black
+    ,  7px 0 0px 3px $poke-black
+    , 0  7px 0px 3px $poke-black
+    , -7px -7px 0px 3px $poke-black
+    , -7px 0 0px 3px $poke-black
+    , 0 -7px 0px 3px $poke-black
+    , 7px -7px 0px 3px $poke-black
+    , -7px 7px 0px 3px $poke-black;
+}
+
 .invalid {
     outline: #f00000;
 }
@@ -17,8 +53,12 @@ $poke-black:#222224;
 body {
     height: 100vh;
     margin: 0;
+    background-color: #66aeed;
     font-family: sans-serif;
-    background-color: $darkblue;
+
+
+
+    
     nav {
         display: flex;
         justify-content: space-around;
@@ -37,11 +77,15 @@ body {
             border-bottom-left-radius: 10px;
         }
         button {
-            font-size: 1rem;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
+            // font-size: 1rem;
+            // border-top-right-radius: 10px;
+            // border-bottom-right-radius: 10px;
         }
     }
+    .trainer-header {
+
+    }
+
     #pokedex {
         max-width: 1200px;
         display: flex;
@@ -61,10 +105,10 @@ body {
             margin: 20px; // border: 10px solid $lightyellow;
             // border-radius: 10px;
             padding: 10px 10px 5px 10px; // background-color: $lightblue;
-            background: radial-gradient(circle at center, rgba(240, 240, 240, .5) 1%, $lightblue 60%);
+            background: radial-gradient(circle at center, rgba(240, 240, 240, .5) 1%, white 60%);
             font-family: 'VT323', sans-serif;
             font-size: 1.5rem;
-            box-shadow: 4px 0px 0 $lightblue, 0 4px 0 $lightblue, -4px 0 0 $lightblue, 0 -4px 0 $lightblue, 8px 0px 0 $lightyellow, 0 8px 0 $lightyellow, 8px 8px 0 $lightyellow, -8px 0 0 $lightyellow, 0 -8px 0 $lightyellow, -8px -8px 0 $lightyellow, 8px -8px 0 $lightyellow, -8px 8px 0 $lightyellow, 12px 0px 0 $lightyellow, 0 12px 0 $lightyellow, -12px 0 0 $lightyellow, 0 -12px 0 $lightyellow, 12px 0 8px $poke-black, 0 12px 8px $poke-black, 8px 8px 8px $poke-black;
+            box-shadow: 4px 0px 0 white, 0 4px 0 white, -4px 0 0 white, 0 -4px 0 white, 8px 0px 0 $lightyellow, 0 8px 0 $lightyellow, 8px 8px 0 $lightyellow, -8px 0 0 $lightyellow, 0 -8px 0 $lightyellow, -8px -8px 0 $lightyellow, 8px -8px 0 $lightyellow, -8px 8px 0 $lightyellow, 12px 0px 0 $lightyellow, 0 12px 0 $lightyellow, -12px 0 0 $lightyellow, 0 -12px 0 $lightyellow, 12px 0 8px $poke-black, 0 12px 8px $poke-black, 8px 8px 8px $poke-black;
             .top {
                 display: flex;
                 align-items: center;
@@ -148,7 +192,7 @@ body {
             align-items: center
         }
         button {
-            border-radius: 0;
+            // border-radius: 0;
         }
     }
     .battle-form {
@@ -179,12 +223,32 @@ body {
         }
     }
     .main {
+        background-image: url("water_background2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        max-width: 1024px;
+        height: 100%;
+        margin: 0 auto;
+
+        .start-logo {
+            max-width: 400px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .bg-gradient {
+            background: linear-gradient( rgb(245, 250, 255) 50%, rgba(68, 143, 213, 0.5) );
+            background-repeat: no-repeat;
+            // width: 100%;
+
+            height: 100%;
+        }
 
         .grant {
-            height: 400px;
+            height: 350px;
             display: block;
             margin: 0 auto;
-            animation: lightSpeedIn 1000ms;
         }
         .start {
             display: flex;
@@ -192,39 +256,62 @@ body {
             flex-direction: column;
             //switch to row for tablet and desktop
             justify-content: center;
-            padding: 20px;
-           
-            .pokeBox, button {
-                font-size: 16px;
-                font-family: "Pokemon GB", Arial, sans-serif;
-                border-radius: 2px;
-                padding: 8px;
-                width: 95%;
-                line-height: 16px;
-                margin: auto;
-                background: $poke-white;
-                border: 1px solid $poke-white;
-                box-shadow: 0 1px 0 1px $poke-black, inset 0 1px 0 1px black, 0 0 0 1px black, inset 0 0 0 1px black;
+            align-items: center;
+
+            .pokeBox {
+                max-width: 600px;
             }
 
-            .lightSpeedIn {
-                animation: lightSpeedIn 1500ms;
+           
+            .pokeBox, button {
+                font-size: 1rem;
+                margin: 25px;
+                font-family: "Pokemon GB", Arial, sans-serif;
+                padding: 8px;
+                background: rgb(244, 244, 244);
+                border-radius: 5px;
+                box-shadow: 
+                3px 3px $poke-black
+                , 3px 0 $poke-black
+                , 0 3px $poke-black
+                , -3px -3px $poke-black
+                , -3px 0 $poke-black
+                , 0 -3px $poke-black
+                , 3px -3px $poke-black
+                , -3px 3px $poke-black
+
+                ,6px 6px #fff
+                , 6px 0 #fff
+                , 0 6px #fff
+                , -6px -6px #fff
+                , -6px 0 #fff
+                , 0 -6px #fff
+                , 6px -6px #fff
+                , -6px 6px #fff
+
+                , 7px 7px 0px 3px $poke-black
+                ,  7px 0 0px 3px $poke-black
+                , 0  7px 0px 3px $poke-black
+                , -7px -7px 0px 3px $poke-black
+                , -7px 0 0px 3px $poke-black
+                , 0 -7px 0px 3px $poke-black
+                , 7px -7px 0px 3px $poke-black
+                , -7px 7px 0px 3px $poke-black;
             }
+
 
             .btnContainer {
                 margin: 0 auto;
+                display: flex;
+                
             }
 
             button {
-                // height: 69px;
-                // width: 95%;
-                // margin: 0 auto;
                 cursor: pointer;
                 margin-top: 10px;
             }
             .pulse:hover {
                 animation: pulse 1000ms infinite;
-                background-color: $darkyellow;
             }
         }
     }
