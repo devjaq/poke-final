@@ -4,17 +4,17 @@ const trainer = {
 template: `
 <topbar></topbar>
 <section class="trainer-header">
-<div class="trainer-info">
-  <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
-  <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
-</div> 
-<div>
-    <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
+
+<h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
+<p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
     <div>
-      <input type="text" placeholder="Enter a Trainer name" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+        <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Squad!</button>
+        <div>
+            <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+            <button type="button">Find my Squad!</button>
+        </div>
     </div>
-    <button type="button" ng-click="$ctrl.searchCrew()">Find my Crew!</button>
-</div>    
+
 </section>
 <div id="pokedex">
     <section class="pokemon">
@@ -212,6 +212,7 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
   }).then(() => {
   TrainerService.getTrainers().then((response) => {
     vm.alltrainers = response.data;
+    vm.trainer=null;
     vm.trainer=PokemonService.getTrainer();
     if(vm.trainer=== null){
         vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
