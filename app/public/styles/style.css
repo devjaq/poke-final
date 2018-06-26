@@ -100,12 +100,45 @@ body {
     flex-direction: column;
     margin: 0 auto;
     max-width: 1024px;
-    padding: 20px; }
-    body .quiz .answers label {
-      border: 1px solid black;
-      cursor: pointer; }
+    padding: 20px;
+    background-color: #f5faff; }
+    body .quiz h3 {
+      font-family: "Jura", sans-serif;
+      font-size: 26px; }
+    body .quiz input {
+      font-family: "Jura", sans-serif; }
+    body .quiz select {
+      font-family: "Jura", sans-serif; }
+      body .quiz select option {
+        font-family: "Jura", sans-serif; }
+    body .quiz .answers {
+      display: flex;
+      flex-direction: column;
+      padding-left: 50px; }
+      body .quiz .answers label {
+        position: relative;
+        margin: 10px 0;
+        font-family: "jura", sans-serif;
+        font-size: 24px; }
+        body .quiz .answers label .radio {
+          background-color: #eee;
+          height: 25px;
+          width: 25px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          border: 3px solid #222224; }
+        body .quiz .answers label input {
+          opacity: 0;
+          cursor: pointer;
+          position: absolute; }
+        body .quiz .answers label input:checked ~ .radio {
+          background-color: #66aeed; }
+    body .quiz label:hover input ~ .radio {
+      background-color: #ccc; }
     body .quiz .start-logo {
-      max-width: 400px;
+      max-width: 320px;
       margin: 25px; }
     body .quiz .trainer-name {
       border: none;
@@ -120,8 +153,7 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      background-color: #f0f0f0; }
+      text-align: center; }
       body .quiz form .answers {
         width: 80%;
         display: flex;
