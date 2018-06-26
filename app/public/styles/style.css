@@ -230,7 +230,7 @@ body {
           padding: 2px;
           margin: 0; }
           body #pokedex .pokemon .top .icon-box .type-icon {
-            filter: drop-shadow(0px 0px 1px #222224);
+            background: #f0f0f0;
             z-index: 5; }
         body #pokedex .pokemon .top h3 {
           margin: 0;
