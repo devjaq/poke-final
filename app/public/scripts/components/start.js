@@ -1,7 +1,7 @@
 "use strict";
 
 const start = {
-template: `
+  template: `
 <section id="slideItem" class="main slide" ng-swipe-up="$ctrl.swipeUp()" ng-swipe-down="$ctrl.swipeDown()">
 <div class="bg-gradient">
   <img src="../../styles/full-logo.png" class="start-logo">
@@ -19,7 +19,7 @@ template: `
 </section>
 `,
 
-controller: ["$location", "dbService", "PokemonService", "TrainerService", function($location, dbService, PokemonService, TrainerService) {
+  controller: ["$location", "dbService", "PokemonService", "TrainerService", function ($location, dbService, PokemonService, TrainerService) {
     const vm = this;
     vm.start = () => {
       $location.path("/quiz");
@@ -29,24 +29,30 @@ controller: ["$location", "dbService", "PokemonService", "TrainerService", funct
       vm.pokearr = response.data;
       PokemonService.addPokemon(vm.pokearr);
     }).then(() => {
-    TrainerService.getTrainers().then((response) => {
-      vm.alltrainers = response.data;
-      vm.trainer=null;
-      vm.trainer=PokemonService.getTrainer();
-      console.log(vm.trainer);
-      if(vm.trainer=== null){
-          vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+      TrainerService.getTrainers().then((response) => {
+        vm.alltrainers = response.data;
+        vm.trainer = null;
+        vm.trainer = PokemonService.getTrainer();
+        if (vm.trainer === null) {
+          vm.trainer = vm.alltrainers[vm.alltrainers.length - 1];
           PokemonService.addTrainer(vm.trainer);
-      }else{
-          vm.trainer=PokemonService.getTrainer();
-      }
-    vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
-  })
-  });
+        } else {
+          vm.trainer = PokemonService.getTrainer();
+        }
+        vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+      })
+    });
 
     vm.battle = () => {
       $location.path("/battle")
     }
+
+    if (window.innerWidth >= 400) {
+      console.log("work damnit");
+      $("#slideItem").removeClass("slide");
+
+    }
+
     vm.swipeUp = function () {
       let swipe = $("#slideItem");
       console.log("swipe-up");
@@ -55,16 +61,16 @@ controller: ["$location", "dbService", "PokemonService", "TrainerService", funct
         $location.path("/quiz");
       }
     }
+
     vm.swipeDown = function () {
       let swipe = $("#slideItem");
       console.log("swipe-down");
-      if (swipe.hasClass("slide") == true) {
+      if ($("#slideItem").hasClass("slide") == true) {
         console.log("true");
         $location.path("/quiz");
       }
     }
-
-}]
+  }]
 
 }
 
