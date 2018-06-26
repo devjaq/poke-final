@@ -1,3 +1,5 @@
+
+// custom poke colors 
 $lightyellow:#ffcb05;
 $darkyellow: #c7a008;
 $lightblue:#448fd5;
@@ -7,11 +9,14 @@ $poke-red:#f00000;
 $poke-white:#f0f0f0;
 $poke-black:#222224;
 
+// Pokemon GameBoy font
 @font-face {
     font-family: "Pokemon GB";
     src: url(Pokemon_GB.ttf);
 }
 
+
+// GENERAL STYLING
 * {
     box-sizing: border-box;
 }
@@ -61,6 +66,7 @@ body {
     form {
         display: flex;
         justify-content: center;
+
         .input,
         select {
             margin: 20px 0;
@@ -68,20 +74,34 @@ body {
             padding: 8px 12px;
             background-color: $poke-white;
             font-size: 1rem;
-            // border-top-left-radius: 10px;
-            // border-bottom-left-radius: 10px;
         }
+    }
+
+    // TOP NAVBAR
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        img {
+            max-width: 320px;
+        }
+
         button {
-            // font-size: 1rem;
-            // border-top-right-radius: 10px;
-            // border-bottom-right-radius: 10px;
+            height: 35px;
+            display: flex;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
         }
     }
-    .trainer-header {
-
-    }
 
 
+    // POKESQUAD COMPONENT 
     .myPokemon {
     
         position: fixed;
@@ -101,7 +121,49 @@ body {
       }
 
     }
+
+    //TRAINER
+
+    .trainer-header {
+
+        font-family: 'Jura', sans-serif;
+        font-weight: bolder;
+        font-size: 32px;
+
+        .trainer-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 15px;
+            font-size: 24px;
+        }
+
+        input {
+            border: none;
+            border-bottom: 2px solid $poke-black;
+            background: none;
+        }
+        
+
+        p {
+            margin: 0;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+           flex-direction: column;
+        }
+
+        input {
+            margin: 20px 20px;
+        }
+    }
+
     
+
+    // POKEDEX COMPONENT 
 
     #pokedex {
        
@@ -180,6 +242,9 @@ body {
             }
         }
     }
+
+
+    // QUIZ COMPONENT
     .quiz {
         display: flex;
         flex-direction: column;
@@ -239,6 +304,9 @@ body {
             }
         }
 
+
+
+
         .pokeBox {
             max-width: 600px;
         }
@@ -295,6 +363,8 @@ body {
             }
         }
     }
+
+    // START PAGE 
     .main {
         background-image: url("water_background2.jpg");
         background-size: cover;
@@ -367,4 +437,20 @@ body {
     }
 }
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+
+    nav {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        button {
+            height: 35px;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

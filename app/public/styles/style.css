@@ -40,6 +40,19 @@ body {
       padding: 8px 12px;
       background-color: #f0f0f0;
       font-size: 1rem; }
+  body nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; }
+    body nav img {
+      max-width: 320px; }
+    body nav button {
+      height: 35px;
+      display: flex; }
+    body nav div {
+      display: flex;
+      flex-direction: column; }
   body .myPokemon {
     position: fixed;
     right: 0;
@@ -50,6 +63,29 @@ body {
       flex-direction: column; }
     body .myPokemon .caughtPokemon {
       max-width: 100px; }
+  body .trainer-header {
+    font-family: 'Jura', sans-serif;
+    font-weight: bolder;
+    font-size: 32px; }
+    body .trainer-header .trainer-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 15px;
+      font-size: 24px; }
+    body .trainer-header input {
+      border: none;
+      border-bottom: 2px solid #222224;
+      background: none; }
+    body .trainer-header p {
+      margin: 0; }
+    body .trainer-header div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column; }
+    body .trainer-header input {
+      margin: 20px 20px; }
   body #pokedex {
     max-width: 1200px;
     display: flex;
@@ -228,3 +264,14 @@ body {
         margin-top: 10px; }
       body .main .start .pulse:hover {
         animation: pulse 1000ms infinite; }
+
+@media screen and (min-width: 768px) {
+  nav {
+    display: flex;
+    align-items: center;
+    flex-direction: row; }
+    nav button {
+      height: 35px; }
+    nav div {
+      display: flex;
+      flex-direction: row; } }

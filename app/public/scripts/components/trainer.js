@@ -4,6 +4,7 @@ const trainer = {
 template: `
 <topbar></topbar>
 <section class="trainer-header">
+
 <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
 <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
     <div>
@@ -13,6 +14,7 @@ template: `
             <button type="button">Find my Squad!</button>
         </div>
     </div>
+
 </section>
 <div id="pokedex">
     <section class="pokemon">
