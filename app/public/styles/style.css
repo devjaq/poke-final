@@ -311,11 +311,11 @@ body {
         text-align: center; }
 
 @media screen and (min-width: 768px) {
-  nav {
+  .nav {
     justify-content: space-between;
     flex-direction: row; }
-    nav button {
+    .nav button {
       height: 35px; }
-    nav div {
+    .nav div {
       display: flex;
       flex-direction: row; } }
