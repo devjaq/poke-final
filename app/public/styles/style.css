@@ -175,7 +175,8 @@ body {
     position: fixed;
     right: 0;
     top: 100px;
-    background-color: #f0f0f0; }
+    background-color: #f0f0f0;
+    z-index: 10; }
     body .myPokemon div {
       display: flex;
       flex-direction: column; }
@@ -187,7 +188,7 @@ body {
           position: absolute; }
         body .myPokemon div div .caughtSprite {
           width: 121px;
-          z-index: 5;
+          z-index: 10;
           top: -7px;
           left: -7px;
           filter: drop-shadow(3px 2px 5px #222224); }
@@ -229,7 +230,8 @@ body {
           padding: 2px;
           margin: 0; }
           body #pokedex .pokemon .top .icon-box .type-icon {
-            filter: drop-shadow(0px 0px 1px #222224); }
+            filter: drop-shadow(0px 0px 1px #222224);
+            z-index: 5; }
         body #pokedex .pokemon .top h3 {
           margin: 0;
           font-family: 'VT323', sans-serif;
@@ -278,9 +280,7 @@ body {
 
 @media screen and (min-width: 768px) {
   nav {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-direction: row; }
     nav button {
       height: 35px; }
