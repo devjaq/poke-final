@@ -4,12 +4,14 @@ const trainer = {
 template: `
 <topbar></topbar>
 <section class="trainer-header">
-<h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
-<p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
+<div class="trainer-info">
+  <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
+  <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
+</div> 
 <div>
     <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
     <div>
-      <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+      <input type="text" placeholder="Enter a Trainer name" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
     </div>
     <button type="button" ng-click="$ctrl.searchCrew()">Find my Crew!</button>
 </div>    
