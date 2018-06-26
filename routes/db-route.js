@@ -23,11 +23,5 @@ dbRouter.post("/pokemon", (req, res) => {
   })
 
 });
-  
-dbRouter.get("/pokemon/:id", (req, res) => {
-  pool.query("SELECT * FROM pokemon WHERE id=id ORDER BY id").then((result) => {
-    res.send(result.rows);
-  });
-});
 
 module.exports = dbRouter;

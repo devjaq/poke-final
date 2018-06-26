@@ -2,7 +2,7 @@
 
 const topbar = {
 template: `
-  <nav>
+  <nav class="nav">
 
   <img class="start-logo" src="styles/logo-400.png" alt="PokeSquad logo">
   <div>

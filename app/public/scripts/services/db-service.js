@@ -7,21 +7,22 @@ function dbService($http) {
       url:"/portal/pokemon"
     })
   }
-  const postData = (pokemon) => {
-    return $http({
-      method: "POST",
-      url:"/portal/pokemon",
-      data: pokemon
-    })
-  }
+
+  // const postData = (pokemon) => {
+  //   return $http({
+  //     method: "POST",
+  //     url:"/portal/pokemon",
+  //     data: pokemon
+  //   })
+  // }
 
 
  
 
 
  return {
-  getData,
-  postData
+  getData
+  // postData
 }
 
  }
