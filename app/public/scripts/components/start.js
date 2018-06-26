@@ -19,11 +19,30 @@ template: `
 </section>
 `,
 
-controller: ["$location", function($location) {
+controller: ["$location", "dbService", "PokemonService", "TrainerService", function($location, dbService, PokemonService, TrainerService) {
     const vm = this;
     vm.start = () => {
       $location.path("/quiz");
     }
+
+    dbService.getData().then((response) => {
+      vm.pokearr = response.data;
+      PokemonService.addPokemon(vm.pokearr);
+    }).then(() => {
+    TrainerService.getTrainers().then((response) => {
+      vm.alltrainers = response.data;
+      vm.trainer=null;
+      vm.trainer=PokemonService.getTrainer();
+      console.log(vm.trainer);
+      if(vm.trainer=== null){
+          vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+          PokemonService.addTrainer(vm.trainer);
+      }else{
+          vm.trainer=PokemonService.getTrainer();
+      }
+    vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+  })
+  });
 
     vm.battle = () => {
       $location.path("/battle")
