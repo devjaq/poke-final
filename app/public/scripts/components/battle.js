@@ -2,6 +2,7 @@
 
 const battle = {
   template: `
+  <topbar></topbar>
   <form class="battle-form">
     <input type="text" class="input" placeholder="Enter Challenger 1.." ng-blur="$ctrl.findTrainerOne($ctrl.trainer.one)" ng-model="$ctrl.trainer.one">
     <p>VS</p>

@@ -1,6 +1,7 @@
 "use strict";
 const pokedex = {
   template: `
+  <topbar></topbar>
   <section class="top-bar">
     <form>
       <input type="text" class="input" ng-model="$ctrl.search" placeholder="Search">
