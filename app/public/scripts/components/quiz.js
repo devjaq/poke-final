@@ -3,7 +3,7 @@
 const quiz = {
   template: `
   <topbar></topbar>
-  <div class="quiz">
+  <div class="quiz slide" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
     <img src="../../styles/full-logo.png" class="start-logo">
     <p class="pokeBox textContainer">We're about to find the first member of your squad, but I'll need to ask you some questions to find your perfect match!</p>
@@ -81,6 +81,25 @@ const quiz = {
     TrainerService.getTrainers().then((response) => {
       vm.allTrainers = response.data;
     });
+
+    vm.swipeRight = () => {
+      if($("#slideItem").hasClass("slide") == true){
+        if(vm.username == ""){
+          vm.addUser(vm.newUser);
+          console.log("add user");
+        }
+        if(vm.username !== ""){
+          vm.submitData();
+          console.log("submitData");
+        };
+      } 
+    };
+    vm.swipeLeft = () => {
+      if($("#slideItem").hasClass("slide") == true){
+        vm.submitData();
+        console.log("left");
+      }
+    }
 
     vm.addUser = (newUser) => {
       vm.username = newUser.username;
