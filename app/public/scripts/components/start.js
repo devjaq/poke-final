@@ -2,7 +2,7 @@
 
 const start = {
 template: `
-<section class="main">
+<section id="slideItem" class="main slide" ng-swipe-up="$ctrl.swipeUp()" ng-swipe-down="$ctrl.swipeDown()">
 <div class="bg-gradient">
   <img src="../../styles/full-logo.png" class="start-logo">
   <img src="../../styles/lab-ready-grant.png" class="grant">
@@ -16,18 +16,33 @@ template: `
     </div>
   </div>
   </div>
-</section>  
+</section>
 `,
 
 controller: ["$location", function($location) {
     const vm = this;
-
     vm.start = () => {
       $location.path("/quiz");
     }
 
     vm.battle = () => {
       $location.path("/battle")
+    }
+    vm.swipeUp = function () {
+      let swipe = $("#slideItem");
+      console.log("swipe-up");
+      if ($("#slideItem").hasClass("slide") == true) {
+        console.log("true");
+        $location.path("/quiz");
+      }
+    }
+    vm.swipeDown = function () {
+      let swipe = $("#slideItem");
+      console.log("swipe-down");
+      if (swipe.hasClass("slide") == true) {
+        console.log("true");
+        $location.path("/quiz");
+      }
     }
 
 }]

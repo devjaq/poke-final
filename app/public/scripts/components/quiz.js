@@ -2,6 +2,7 @@
 
 const quiz = {
   template: `
+  <topbar></topbar>
   <div class="quiz">
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
     <img src="../../styles/full-logo.png" class="start-logo">

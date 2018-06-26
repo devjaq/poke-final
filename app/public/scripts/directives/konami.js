@@ -1,18 +1,16 @@
 "use strict";
 
-function konami() {
+function konami($document, $window) {
   return {
     restrict: "A",
 
-    link: function ($scope, $element, $attrs, $document) {
+    link: function ($scope, $element, $attrs) {
       var keys = '',
         code = '38384040373937396665',
         timer = null,
 
         success = function () {
-          // element.css({
-          //   backgroundColor: 'red'
-          // });
+          $window.open("https://basicallydan.github.io/skifree.js/");
           console.log("konami activated");
         },
 
@@ -34,7 +32,7 @@ function konami() {
           }
         };
 
-      $element.off('keyup', keyup).on('keyup', keyup);
+      $document.off('keyup', keyup).on('keyup', keyup);
     }
 
   }

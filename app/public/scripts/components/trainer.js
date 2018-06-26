@@ -2,6 +2,7 @@
 
 const trainer = {
 template: `
+<topbar></topbar>
 <section class="trainer-header">
 <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
 <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
