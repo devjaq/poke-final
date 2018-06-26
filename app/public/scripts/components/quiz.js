@@ -55,7 +55,7 @@ const quiz = {
   </div>
   `,
 
-  controller: ["quizService", "TrainerService", "$location", function(quizService, TrainerService, $location) {
+  controller: ["quizService", "TrainerService", "PokemonService", "$location", function(quizService, TrainerService, PokemonService, $location) {
     const vm = this;
     vm.quizarr = [];
     vm.counter = 0;
@@ -73,6 +73,8 @@ const quiz = {
     vm.trainer = {};
     vm.allTrainers = [];
     vm.disabled = false;
+
+    PokemonService.addTrainer(null);
     
     quizService.getQuiz().then((response) => {
       vm.quizarr = response.data;

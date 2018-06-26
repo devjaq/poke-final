@@ -5,13 +5,15 @@
   box-sizing: border-box; }
 
 button {
-  font-size: 1rem;
-  margin: 25px;
-  font-family: "Pokemon GB", Arial, sans-serif;
-  padding: 8px;
-  background: #f4f4f4;
   border-radius: 5px;
-  box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
+  padding: 8px;
+  font-family: "Pokemon GB", Arial, sans-serif;
+  background: #f4f4f4;
+  box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
+  max-width: 300px;
+  margin: 25px auto;
+  font-size: 1rem;
+  text-align: center; }
 
 .invalid {
   outline: #f00000; }
@@ -26,10 +28,6 @@ body {
     padding: 5px; }
   body select {
     text-align-last: center; }
-  body nav {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 15px; }
   body form {
     display: flex;
     justify-content: center; }
@@ -53,16 +51,103 @@ body {
     body nav div {
       display: flex;
       flex-direction: column; }
-  body .myPokemon {
-    position: fixed;
-    right: 0;
-    top: 100px;
-    background-color: #f0f0f0; }
-    body .myPokemon div {
+  body .main {
+    max-width: 1024px;
+    min-height: 100%;
+    margin: 0 auto;
+    background-image: url("water_background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center; }
+    body .main .start-logo {
+      max-width: 400px;
+      display: block;
+      margin: 0 auto; }
+    body .main .bg-gradient {
+      background: linear-gradient(#f5faff 50%, rgba(68, 143, 213, 0.5));
+      background-repeat: no-repeat;
+      height: 100%; }
+    body .main .grant {
+      height: 350px;
+      display: block;
+      margin: 0 auto; }
+    body .main .start {
       display: flex;
-      flex-direction: column; }
-    body .myPokemon .caughtPokemon {
-      max-width: 100px; }
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      body .main .start .pokeBox {
+        max-width: 600px; }
+      body .main .start .pokeBox, body .main .start button {
+        font-size: 1rem;
+        margin: 25px;
+        font-family: "Pokemon GB", Arial, sans-serif;
+        padding: 8px;
+        background: #f4f4f4;
+        border-radius: 5px;
+        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
+      body .main .start .btnContainer {
+        margin: 0 auto;
+        display: flex; }
+      body .main .start button {
+        cursor: pointer;
+        margin-top: 10px; }
+      body .main .start .pulse:hover {
+        animation: pulse 1000ms infinite; }
+  body .quiz {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 20px; }
+    body .quiz .answers label {
+      border: 1px solid black;
+      cursor: pointer; }
+    body .quiz .start-logo {
+      max-width: 400px;
+      margin: 25px; }
+    body .quiz .trainer-name {
+      border: none;
+      border-bottom: 2px solid #222224;
+      background: none; }
+    body .quiz h1 {
+      margin: 0 auto;
+      text-align: center; }
+    body .quiz ::placeholder {
+      text-align: center; }
+    body .quiz form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background-color: #f0f0f0; }
+      body .quiz form .answers {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; }
+        body .quiz form .answers label {
+          flex-basis: 50%;
+          padding-left: 20%;
+          text-align: left; }
+          body .quiz form .answers label input {
+            margin: 10px; }
+    body .quiz .pokeBox {
+      max-width: 600px; }
+    body .quiz .pokeBox, body .quiz button {
+      font-size: 1rem;
+      margin: 50px;
+      font-family: "Pokemon GB", Arial, sans-serif;
+      padding: 8px;
+      background: #f4f4f4;
+      border-radius: 5px;
+      box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
+    body .quiz section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
   body .trainer-header {
     font-family: 'Jura', sans-serif;
     font-weight: bolder;
@@ -86,6 +171,24 @@ body {
       flex-direction: column; }
     body .trainer-header input {
       margin: 20px 20px; }
+  body .myPokemon {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    background-color: #f0f0f0; }
+    body .myPokemon div {
+      display: flex;
+      flex-direction: column; }
+      body .myPokemon div div {
+        width: 110px;
+        height: 110px;
+        position: relative; }
+        body .myPokemon div div img {
+          position: absolute; }
+        body .myPokemon div div .caughtSprite {
+          z-index: 5; }
+      body .myPokemon div .caughtPokemon {
+        max-width: 100px; }
   body #pokedex {
     max-width: 1200px;
     display: flex;
@@ -146,59 +249,6 @@ body {
         body #pokedex .pokemon .bottom .catch {
           width: 100px;
           cursor: pointer; }
-  body .quiz {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    max-width: 1024px;
-    padding: 20px; }
-    body .quiz .answers label {
-      border: 1px solid black;
-      cursor: pointer; }
-    body .quiz .start-logo {
-      max-width: 400px;
-      margin: 25px; }
-    body .quiz .trainer-name {
-      border: none;
-      border-bottom: 2px solid #222224;
-      background: none; }
-    body .quiz h1 {
-      margin: 0 auto;
-      text-align: center; }
-    body .quiz ::placeholder {
-      text-align: center; }
-    body .quiz form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background-color: #f0f0f0; }
-      body .quiz form .answers {
-        width: 80%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; }
-        body .quiz form .answers label {
-          flex-basis: 50%;
-          padding-left: 20%;
-          text-align: left; }
-          body .quiz form .answers label input {
-            margin: 10px; }
-    body .quiz .pokeBox {
-      max-width: 600px; }
-    body .quiz .pokeBox, body .quiz button {
-      font-size: 1rem;
-      margin: 50px;
-      font-family: "Pokemon GB", Arial, sans-serif;
-      padding: 8px;
-      background: #f4f4f4;
-      border-radius: 5px;
-      box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
-    body .quiz section {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center; }
   body .battle-form {
     display: flex;
     justify-content: center; }
@@ -220,54 +270,11 @@ body {
         height: 300px; }
       body .battleContainer .pokebattle .trainer-info {
         text-align: center; }
-  body .main {
-    background-image: url("water_background2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    max-width: 1024px;
-    min-height: 100%;
-    margin: 0 auto; }
-    body .main .start-logo {
-      max-width: 400px;
-      margin: 0 auto;
-      display: block; }
-    body .main .bg-gradient {
-      background: linear-gradient(#f5faff 50%, rgba(68, 143, 213, 0.5));
-      background-repeat: no-repeat;
-      height: 100%; }
-    body .main .grant {
-      height: 350px;
-      display: block;
-      margin: 0 auto; }
-    body .main .start {
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; }
-      body .main .start .pokeBox {
-        max-width: 600px; }
-      body .main .start .pokeBox, body .main .start button {
-        font-size: 1rem;
-        margin: 25px;
-        font-family: "Pokemon GB", Arial, sans-serif;
-        padding: 8px;
-        background: #f4f4f4;
-        border-radius: 5px;
-        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
-      body .main .start .btnContainer {
-        margin: 0 auto;
-        display: flex; }
-      body .main .start button {
-        cursor: pointer;
-        margin-top: 10px; }
-      body .main .start .pulse:hover {
-        animation: pulse 1000ms infinite; }
 
 @media screen and (min-width: 768px) {
   nav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row; }
     nav button {

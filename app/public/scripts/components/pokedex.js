@@ -26,6 +26,35 @@ const pokedex = {
       <button type="button" ng-click="$ctrl.clearSearch()">Clear Search</button>
 
     </form>
+
+    <section class="myPokemon">
+    <div>
+      <div>
+        <img class="caughtSprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1-1].id}}.png" alt="">
+        <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
+      <div>
+        <img class="caughtSprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2-1].id}}.png" alt="">
+        <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
+      <div>
+        <img class="caughtSprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_3-1].id}}.png" alt="">
+        <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
+      <div>
+        <img class="caughtSprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_4-1].id}}.png" alt="">
+        <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
+      <div>
+        <img class="caughtSprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_5-1].id}}.png" alt="">
+        <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
+      <div>
+        <img class="caughtSprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_6-1].id}}.png" alt="">
+        <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      </div>
+    </div>
+  </section>
   </section>
   <div id="pokedex">
     <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: $ctrl.search, type: $ctrl.typeSelector} |orderBy : 'id' | limitTo: 150">
@@ -49,34 +78,7 @@ const pokedex = {
       </div>
     </section>
     </div>
-    <section class="myPokemon">
-      <div>
-        <div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1-1].id}}.png" alt="">
-          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2-1].id}}.png" alt="">
-          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_3-1].id}}.png" alt="">
-          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_4-1].id}}.png" alt="">
-          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_5-1].id}}.png" alt="">
-          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_6-1].id}}.png" alt="">
-          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-        </div>
-      </div>
-    </section>
+
     `,
   controller: ["PokeService", "dbService", "PokemonService", "TrainerService", "$location", function (PokeService, dbService, PokemonService, TrainerService, $location) {
     const vm = this;
