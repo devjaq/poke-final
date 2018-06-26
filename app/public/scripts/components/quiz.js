@@ -83,6 +83,14 @@ const quiz = {
       vm.allTrainers = response.data;
     });
 
+    // checks window width on load to possibly remove class slide
+    if (window.innerWidth >= 400) {
+      console.log("work damnit");
+      $("#slideItem").removeClass("slide");
+
+    }
+
+    // swipe right and left directive function
     vm.swipeRight = () => {
       if($("#slideItem").hasClass("slide") == true){
         if(vm.username == ""){
@@ -101,6 +109,7 @@ const quiz = {
         console.log("left");
       }
     }
+    // end swipe directive functions
 
     vm.addUser = (newUser) => {
       vm.username = newUser.username;
