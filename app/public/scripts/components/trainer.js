@@ -8,14 +8,11 @@ template: `
 <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
 <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
     <div>
-        <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Squad!</button>
-        <div>
-            <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
-            <button type="button">Find my Squad!</button>
-        </div>
+        <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+        <button type="button">Find my Squad!</button>
     </div>
-
 </section>
+
 <div id="pokedex">
     <section class="pokemon">
         <div class="top">
@@ -157,6 +154,23 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
     $location.path('/pokedex');
   }
 
+  dbService.getData().then((response) => {
+    vm.pokearr = response.data;
+    PokemonService.addPokemon(vm.pokearr);
+  }).then(() => {
+  TrainerService.getTrainers().then((response) => {
+    vm.alltrainers = response.data;
+    vm.trainer=null;
+    vm.trainer=PokemonService.getTrainer();
+    if(vm.trainer=== null){
+        vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+        PokemonService.addTrainer(vm.trainer);
+    }else{
+        vm.trainer=PokemonService.getTrainer();
+    }
+  vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+})
+});
 
   vm.trainerSearch = (trainer) => {
     for (let i = 0; i < vm.alltrainers.length; i++) {
@@ -204,25 +218,6 @@ controller: ["TrainerService", "PokemonService", "dbService", "$location", funct
     };
   };
 
-
-
-  dbService.getData().then((response) => {
-    vm.pokearr = response.data;
-    PokemonService.addPokemon(vm.pokearr);
-  }).then(() => {
-  TrainerService.getTrainers().then((response) => {
-    vm.alltrainers = response.data;
-    vm.trainer=null;
-    vm.trainer=PokemonService.getTrainer();
-    if(vm.trainer=== null){
-        vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
-        PokemonService.addTrainer(vm.trainer);
-    }else{
-        vm.trainer=PokemonService.getTrainer();
-    }
-  vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
-})
-});
 
     // vm.clearArray = () => {
     //     vm.totalCompatibility = [];
