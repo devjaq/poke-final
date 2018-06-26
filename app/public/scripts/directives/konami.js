@@ -1,6 +1,6 @@
 "use strict";
 
-function konami($document) {
+function konami($document, $window) {
   return {
     restrict: "A",
 
@@ -14,6 +14,7 @@ function konami($document) {
           //   backgroundColor: 'red'
           // });
           // make component add this code, inside ng-if will script tag work?
+          $window.open("https://basicallydan.github.io/skifree.js/");
           console.log("konami activated");
         },
 
