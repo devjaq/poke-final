@@ -3,10 +3,11 @@
 const quiz = {
   template: `
   <div class="quiz">
-    <h1>Welcome Come take our Quiz to see what pokeman you get!!!</h1>
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
-      <h3>Enter a Username..</h3>
-      <input type="text" placeholder="username.." ng-blur="$ctrl.checkUsername($ctrl.newUser.username);" ng-model="$ctrl.newUser.username">
+    <img src="../../styles/full-logo.png" class="start-logo">
+    <p class="pokeBox textContainer">We're about to find the first member of your squad, but I'll need to ask you some questions to find your perfect match!</p>
+      <h3>Enter a Trainer name..</h3>
+      <input class="invalid trainer-name" type="text" placeholder="Ash Ketchum" ng-blur="$ctrl.checkUsername($ctrl.newUser.username);" ng-model="$ctrl.newUser.username">
       <h3>Enter your Birth Month</h3>
 
       <div>

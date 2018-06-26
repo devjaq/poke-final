@@ -6,9 +6,16 @@ $darkblue:#3c5aa6;
 $poke-red:#f00000;
 $poke-white:#f0f0f0;
 $poke-black:#222224;
+
+@font-face {
+    font-family: "Pokemon GB";
+    src: url(Pokemon_GB.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
+
 
 button {
     font-size: 1rem;
@@ -18,32 +25,10 @@ button {
     background: rgb(244, 244, 244);
     border-radius: 5px;
     box-shadow: 
-    3px 3px $poke-black
-    , 3px 0 $poke-black
-    , 0 3px $poke-black
-    , -3px -3px $poke-black
-    , -3px 0 $poke-black
-    , 0 -3px $poke-black
-    , 3px -3px $poke-black
-    , -3px 3px $poke-black
-
-    ,6px 6px #fff
-    , 6px 0 #fff
-    , 0 6px #fff
-    , -6px -6px #fff
-    , -6px 0 #fff
-    , 0 -6px #fff
-    , 6px -6px #fff
-    , -6px 6px #fff
-
-    , 7px 7px 0px 3px $poke-black
-    ,  7px 0 0px 3px $poke-black
-    , 0  7px 0px 3px $poke-black
-    , -7px -7px 0px 3px $poke-black
-    , -7px 0 0px 3px $poke-black
-    , 0 -7px 0px 3px $poke-black
-    , 7px -7px 0px 3px $poke-black
-    , -7px 7px 0px 3px $poke-black;
+    0 0 0 3px $poke-black
+    ,0 0 0 6px #fff
+    , 0 0 0 10px $poke-black
+  
 }
 
 .invalid {
@@ -56,6 +41,15 @@ body {
     background-color: #66aeed;
     font-family: sans-serif;
 
+    input {
+        font-size: 1rem;
+        padding: 5px;
+
+    }
+
+    select {
+        text-align-last: center;
+    }
 
 
     
@@ -69,12 +63,13 @@ body {
         justify-content: center;
         .input,
         select {
+            margin: 20px 0;
             width: 250px;
-            padding: 10px 15px;
+            padding: 8px 12px;
             background-color: $poke-white;
             font-size: 1rem;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
+            // border-top-left-radius: 10px;
+            // border-bottom-left-radius: 10px;
         }
         button {
             // font-size: 1rem;
@@ -86,12 +81,37 @@ body {
 
     }
 
+
+    .myPokemon {
+    
+        position: fixed;
+        right: 0;
+        top: 100px;
+        background-color: $poke-white;
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+    .caughtPokemon {
+        max-width: 100px;
+      }
+
+    }
+    
+
     #pokedex {
+       
+
         max-width: 1200px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin: 0 auto;
+
         .tada:hover {
             animation: tada 2000ms infinite;
         }
@@ -161,15 +181,48 @@ body {
         }
     }
     .quiz {
-        background-color: $poke-white;
-        width: 100vw;
         display: flex;
         flex-direction: column;
+        margin: 0 auto;
+        max-width: 1024px;
+        padding: 20px;
+
+        .answers {
+
+            label {
+                border: 1px solid black;
+                cursor: pointer;
+            }
+        }
+
+        .start-logo {
+            max-width: 400px;
+            margin: 25px;
+        }
+        
+        .trainer-name {
+            border: none;
+            border-bottom: 2px solid $poke-black;
+            background: none;
+        }
+
+        h1 {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        ::placeholder {
+          text-align: center;
+        }
+
         form {
+
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            background-color: $poke-white;
+
             .answers {
                 width: 80%;
                 display: flex;
@@ -185,6 +238,26 @@ body {
                 }
             }
         }
+
+        .pokeBox {
+            max-width: 600px;
+        }
+
+       
+        .pokeBox, button {
+            font-size: 1rem;
+            margin: 50px;
+            font-family: "Pokemon GB", Arial, sans-serif;
+            padding: 8px;
+            background: rgb(244, 244, 244);
+            border-radius: 5px;
+            box-shadow: 
+            0 0 0 3px $poke-black
+            ,0 0 0 6px #fff
+            , 0 0 0 10px $poke-black;
+        }
+
+
         section {
             width: 100%;
             display: flex;
@@ -228,7 +301,7 @@ body {
         background-repeat: no-repeat;
         background-position-x: center;
         max-width: 1024px;
-        height: 100%;
+        min-height: 100%;
         margin: 0 auto;
 
         .start-logo {
@@ -271,32 +344,9 @@ body {
                 background: rgb(244, 244, 244);
                 border-radius: 5px;
                 box-shadow: 
-                3px 3px $poke-black
-                , 3px 0 $poke-black
-                , 0 3px $poke-black
-                , -3px -3px $poke-black
-                , -3px 0 $poke-black
-                , 0 -3px $poke-black
-                , 3px -3px $poke-black
-                , -3px 3px $poke-black
-
-                ,6px 6px #fff
-                , 6px 0 #fff
-                , 0 6px #fff
-                , -6px -6px #fff
-                , -6px 0 #fff
-                , 0 -6px #fff
-                , 6px -6px #fff
-                , -6px 6px #fff
-
-                , 7px 7px 0px 3px $poke-black
-                ,  7px 0 0px 3px $poke-black
-                , 0  7px 0px 3px $poke-black
-                , -7px -7px 0px 3px $poke-black
-                , -7px 0 0px 3px $poke-black
-                , 0 -7px 0px 3px $poke-black
-                , 7px -7px 0px 3px $poke-black
-                , -7px 7px 0px 3px $poke-black;
+                0 0 0 3px $poke-black
+                ,0 0 0 6px #fff
+                , 0 0 0 10px $poke-black
             }
 
 
