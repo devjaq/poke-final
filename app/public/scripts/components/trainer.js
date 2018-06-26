@@ -5,9 +5,13 @@ template: `
 <section class="trainer-header">
 <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
 <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
+<div>
     <button type="button" ng-click="$ctrl.goToPokedex()">Pick my Crew!</button>
-    <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+    <div>
+      <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+    </div>
     <button type="button" ng-click="$ctrl.searchCrew()">Find my Crew!</button>
+</div>    
 </section>
 <div id="pokedex">
     <section class="pokemon">

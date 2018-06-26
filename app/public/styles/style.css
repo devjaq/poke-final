@@ -50,6 +50,17 @@ body {
       flex-direction: column; }
     body .myPokemon .caughtPokemon {
       max-width: 100px; }
+  body .trainer-header {
+    font-family: 'Jura', sans-serif;
+    font-weight: bolder;
+    font-size: 32px; }
+    body .trainer-header p {
+      margin: 0; }
+    body .trainer-header div {
+      display: flex;
+      justify-content: space-around; }
+    body .trainer-header input {
+      margin: 20px 20px; }
   body #pokedex {
     max-width: 1200px;
     display: flex;
