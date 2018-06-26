@@ -50,14 +50,31 @@ const pokedex = {
     </section>
     </div>
     <section class="myPokemon">
-    <div>
-    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].id}}.png" alt="">
-      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
-      <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+      <div>
+        <div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1-1].id}}.png" alt="">
+          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+        </div>
+        <div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2-1].id}}.png" alt="">
+          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+        </div>
+        <div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_3-1].id}}.png" alt="">
+          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+        </div>
+        <div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_4-1].id}}.png" alt="">
+          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+        </div>
+        <div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_5-1].id}}.png" alt="">
+          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+        </div>
+        <div>
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_6-1].id}}.png" alt="">
+          <img class="caughtPokemon" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+        </div>
       </div>
     </section>
     `,
