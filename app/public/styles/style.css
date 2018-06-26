@@ -191,7 +191,8 @@ body {
           z-index: 10;
           top: -7px;
           left: -7px;
-          filter: drop-shadow(3px 2px 5px #222224); }
+          filter: drop-shadow(3px 2px 5px #222224);
+          background: #f0f0f0; }
         body .myPokemon div div .caughtPokemon {
           max-width: 100px;
           opacity: 0.7; }
@@ -230,7 +231,6 @@ body {
           padding: 2px;
           margin: 0; }
           body #pokedex .pokemon .top .icon-box .type-icon {
-            background: #f0f0f0;
             z-index: 5; }
         body #pokedex .pokemon .top h3 {
           margin: 0;

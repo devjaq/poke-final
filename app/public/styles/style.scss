@@ -324,6 +324,7 @@ body {
                     top: -7px;
                     left: -7px;
                     filter: drop-shadow(3px 2px 5px $poke-black);
+                    background: $poke-white;
                 }
                 .caughtPokemon {
                     max-width: 100px;
@@ -376,7 +377,7 @@ body {
                     margin: 0;
                     .type-icon {
                         // filter: drop-shadow( 0px 0px 1px $poke-black);
-                        background:$poke-white;
+                        
                         z-index: 5;
                     }
                 }
