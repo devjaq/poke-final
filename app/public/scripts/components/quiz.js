@@ -30,20 +30,24 @@ const quiz = {
       <button ng-disabled="$ctrl.disabled">Submit</button>
     </form>
     <form ng-show="$ctrl.show" class="multichoice" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
-  
+      <img class="start-logo" src="styles/logo-400.png" alt="PokeSquad logo">
       <h3> {{ $ctrl.quizarr[$ctrl.counter].question }}</h3>
       <div class="answers">
         <label>
         <input type="radio" ng-model="$ctrl.answers" ng-value="$ctrl.quizarr[$ctrl.counter].answer_1_value" name="{{$ctrl.quizarr[$ctrl.counter].id}}" clicked> {{$ctrl.quizarr[$ctrl.counter].answer_1}}
+        <span class="radio"></span>
         </label>
         <label>
         <input type="radio" ng-model="$ctrl.answers" ng-value="$ctrl.quizarr[$ctrl.counter].answer_2_value" name="{{$ctrl.quizarr[$ctrl.counter].id}}"> {{$ctrl.quizarr[$ctrl.counter].answer_2}}
+        <span class="radio"></span>
         </label>
         <label>
         <input type="radio" ng-model="$ctrl.answers" ng-value="$ctrl.quizarr[$ctrl.counter].answer_3_value" name="{{$ctrl.quizarr[$ctrl.counter].id}}"> {{$ctrl.quizarr[$ctrl.counter].answer_3}}
+        <span class="radio"></span>
         </label>
         <label>
         <input type="radio" ng-model="$ctrl.answers" ng-value="$ctrl.quizarr[$ctrl.counter].answer_4_value" name="{{$ctrl.quizarr[$ctrl.counter].id}}"> {{$ctrl.quizarr[$ctrl.counter].answer_4}}
+        <span class="radio"></span>
         </label>
       </div>
 
