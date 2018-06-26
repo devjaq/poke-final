@@ -10,10 +10,6 @@ function konami($document, $window) {
         timer = null,
 
         success = function () {
-          // element.css({
-          //   backgroundColor: 'red'
-          // });
-          // make component add this code, inside ng-if will script tag work?
           $window.open("https://basicallydan.github.io/skifree.js/");
           console.log("konami activated");
         },
