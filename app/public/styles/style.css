@@ -27,7 +27,11 @@ body {
   font-family: sans-serif; }
   body input {
     font-size: 1rem;
-    padding: 5px; }
+    padding: 5px;
+    font-family: "Jura", sans-serif;
+    color: #222224; }
+  body ::placeholder {
+    color: #222224; }
   body select {
     text-align-last: center; }
   body form {
@@ -186,7 +190,11 @@ body {
     font-family: 'Jura', sans-serif;
     font-weight: bolder;
     font-size: 32px;
-    text-align: center; }
+    text-align: center;
+    margin-bottom: 20px; }
+    body .trainer-header h1 {
+      color: #ffcb05;
+      text-shadow: 0 0 40px #3c5aa6; }
     body .trainer-header .trainer-info {
       display: flex;
       justify-content: center;

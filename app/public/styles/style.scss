@@ -57,6 +57,12 @@ body {
     input {
         font-size: 1rem;
         padding: 5px;
+        font-family: "Jura", sans-serif;
+        color: $poke-black;
+    }
+
+    ::placeholder {
+        color: $poke-black;
     }
 
     select {
@@ -251,6 +257,7 @@ body {
                 border: none;
                 border-bottom: 2px solid $poke-black;
                 background: none;
+                // color: $lightyellow;
             }
     
             h1 {
@@ -325,6 +332,12 @@ body {
         font-weight: bolder;
         font-size: 32px;
         text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            color: $lightyellow;
+            text-shadow: 0 0 40px $darkblue;
+        }
 
         .trainer-info {
             display: flex;
