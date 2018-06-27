@@ -40,8 +40,10 @@ button {
     @include pokebox();
     max-width: 300px;
     margin: 25px auto;
+    padding: 15px;
     font-size: 1rem;
-    text-align: center;
+    text-align: center !important;
+    cursor: pointer;
 }
 
 .invalid {
@@ -54,9 +56,16 @@ body {
     background-color: #66aeed;
     font-family: sans-serif;
 
-    input {
+    input, select {
+        // height: 40px;
         font-size: 1rem;
         padding: 5px;
+        font-family: "Jura", sans-serif;
+        color: $poke-black;
+    }
+
+    ::placeholder {
+        color: $poke-black;
     }
 
     select {
@@ -80,14 +89,19 @@ body {
 
     ////// TOP NAVBAR /////////////////////////
     .nav {
-        .btns {
+            display: flex;
+            margin: 30px 0 50px 0;
             .pulse:hover {
                 animation: pulse 1000ms infinite;
             }
-        }
+
     }
+    .nav :nth-child(1) { order: 2}
+    .nav :nth-child(2) { order: 1}
+    .nav :nth-child(3) { order: 3}
 
     nav {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -98,8 +112,11 @@ body {
         }
 
         button {
-            height: 35px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+            // height: 35px;
         }
 
         div {
@@ -112,24 +129,26 @@ body {
 
         ////// START PAGE /////////////////////////
         .main {
-            max-width: 1024px;
-            min-height: 100%;
+            // max-width: 1024px;
+            // min-height: 100%;
             margin: 0 auto;
             background-image: url("water_background2.jpg");
-            background-size: cover;
+            // background-size: 
             background-repeat: no-repeat;
             background-position-x: center;
     
             .start-logo {
-                max-width: 400px;
+                max-width: 320px;
                 display: block;
-                margin: 0 auto;
+                margin: 20px auto;
             }
     
             .bg-gradient {
                 background: linear-gradient( rgb(245, 250, 255) 50%, rgba(68, 143, 213, 0.5) );
                 background-repeat: no-repeat;
                 height: 100%;
+                padding-top: 20px;
+
             }
     
             .grant {
@@ -184,18 +203,27 @@ body {
         .quiz {
             display: flex;
             flex-direction: column;
+            position: relative;
             margin: 0 auto;
             max-width: 1024px;
             padding: 20px;
             background-color: rgb(245, 250, 255);
 
+            .grant {
+                // display: none;
+                position: absolute;
+                height: 350px;
+            }
+
             h3 {
+                margin-top: 20px;
                 font-family: "Jura", sans-serif;
                 font-size: 26px;
             }
 
-            input {
+            input, select {
                 font-family: "Jura", sans-serif;
+                font-size: 1.5rem;
 
             }
 
@@ -211,12 +239,19 @@ body {
             .pulse:hover {
                 animation: pulse 1000ms infinite;
             }
+
+            .multichoice {
+                animation: bounceInRight 1000ms;
+            }
     
             .answers {
 
                 display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
                 flex-direction: column;
-                padding-left: 50px;
+                // padding-left: 50px;
+                // min-width: 20%;
 
     
                 label {
@@ -225,6 +260,9 @@ body {
                     margin: 10px 0;
                     font-family: "jura", sans-serif;
                     font-size: 24px;
+                    flex-basis: 50%;
+                    padding-left: 40px;
+                    text-align: left;
 
                     .radio {
                         background-color: #eee;
@@ -241,12 +279,21 @@ body {
                         opacity: 0;
                         cursor: pointer;
                         position: absolute;
+                        margin: 10px;
                     }
                     
                     input:checked ~ .radio {
                         background-color: $bg-blue;
                     }
                 }
+            }
+
+            form {
+    
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
 
 
@@ -264,6 +311,7 @@ body {
                 border: none;
                 border-bottom: 2px solid $poke-black;
                 background: none;
+                // color: $lightyellow;
             }
     
             h1 {
@@ -274,51 +322,21 @@ body {
             ::placeholder {
               text-align: center;
             }
-    
-            form {
-    
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-    
-                .answers {
-                    width: 80%;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    label {
-                        flex-basis: 50%;
-                        padding-left: 20%;
-                        text-align: left;
-                        input {
-                            margin: 10px;
-                        }
-                    }
-                }
-            }
-    
-    
-    
-    
+
             .pokeBox {
-                max-width: 600px;
-            }
-    
-           
-            .pokeBox, button {
                 font-size: 1rem;
                 margin: 50px;
                 font-family: "Pokemon GB", Arial, sans-serif;
-                padding: 8px;
+                padding: 15px;
                 background: rgb(244, 244, 244);
                 border-radius: 5px;
                 box-shadow: 
                 0 0 0 3px $poke-black
                 ,0 0 0 6px #fff
                 , 0 0 0 10px $poke-black;
+                max-width: 600px;
             }
-    
+
             section {
                 width: 100%;
                 display: flex;
@@ -335,11 +353,28 @@ body {
     ////// TRAINER COMPONENT  /////////////////////////
 
     .trainer-header {
-
         font-family: 'Jura', sans-serif;
         font-weight: bolder;
         font-size: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
+        margin: 20px 0;
+
+
+        h1 {
+            color: $lightyellow;
+            text-shadow: 0 0 40px $darkblue;
+        }
+
+        .searchdiv {
+            margin-top: 20px;
+            // width: 280px;
+            input {
+                font-size: 2rem;
+            }
+        }
 
         .trainer-info {
             display: flex;
@@ -354,6 +389,7 @@ body {
             border: none;
             border-bottom: 2px solid $poke-black;
             background: none;
+            margin: 20px 20px;
         }
         
         p {
@@ -366,8 +402,8 @@ body {
             flex-direction: column;
         }
 
-        input {
-            margin: 20px 20px;
+        .finder {
+            width: 275px;
         }
     }
 
@@ -379,6 +415,11 @@ body {
         top: 100px;
         background-color: $poke-white;
         z-index: 10;
+        @include pokebox();
+
+        border-right: none;
+        border-top-right-radius: none;
+        border-bottom-right-radius: none;
 
         div {
             display: flex;
@@ -439,9 +480,17 @@ body {
         justify-content: center;
         margin: 0 auto;
 
+        .catch:active {
+            // animation: bounce 2000ms;
+        }
+
+        .bounce {
+            animation: bounce 1000ms;
+        }
+
 
         .tada:hover {
-            animation: tada 2000ms infinite;
+            // animation: bounce 2000ms infinite;
         }
         .pokemon {
             min-height: 435px;
@@ -453,7 +502,7 @@ body {
             margin: 20px; // border: 10px solid $lightyellow;
             // border-radius: 10px;
             padding: 10px 10px 5px 10px; // background-color: $lightblue;
-            background: radial-gradient(circle at center, rgba(240, 240, 240, .5) 1%, white 60%);
+            // background: radial-gradient(circle at center, rgba(240, 240, 240, .5) 1%, white 60%);
             font-family: 'VT323', sans-serif;
             font-size: 1.5rem;
             box-shadow: 4px 0px 0 white, 0 4px 0 white, -4px 0 0 white, 0 -4px 0 white, 8px 0px 0 $lightyellow, 0 8px 0 $lightyellow, 8px 8px 0 $lightyellow, -8px 0 0 $lightyellow, 0 -8px 0 $lightyellow, -8px -8px 0 $lightyellow, 8px -8px 0 $lightyellow, -8px 8px 0 $lightyellow, 12px 0px 0 $lightyellow, 0 12px 0 $lightyellow, -12px 0 0 $lightyellow, 0 -12px 0 $lightyellow, 12px 0 8px $poke-black, 0 12px 8px $poke-black, 8px 8px 8px $poke-black;
@@ -539,44 +588,154 @@ body {
         }
     }
 
+// CARD STYLES ///////////////////////
+
+.fire {
+    background: radial-gradient(circle at center, white 1%, rgb(191, 72, 72) 60%);
+}
+
+.grass {
+    background: radial-gradient(circle at center, white 1%, rgb(72, 191, 100) 60%);
+}
+
+.water {
+    background: radial-gradient(circle at center, white 1%, rgb(72, 139, 191) 60%);
+}
+
+.electric {
+    background: radial-gradient(circle at center, white 1%, rgb(191, 167, 72) 60%);
+}
+
+.psychic {
+    background: radial-gradient(circle at center, white 1%, rgb(191, 72, 124) 60%);
+}
+
+.flying {
+    background: radial-gradient(circle at center, white 1%, rgb(198, 181, 249) 60%);
+}
+
+.poison {
+    background: radial-gradient(circle at center, white 1%, rgb(181, 72, 191) 60%);
+}
+
+.ghost {
+    background: radial-gradient(circle at center, white 1%, rgb(155, 72, 191) 60%);
+}
+
+.rock {
+    background: radial-gradient(circle at center, white 1%, rgb(155, 126, 95) 60%);
+}
+
+.ground {
+    background: radial-gradient(circle at center, white 1%, rgb(191, 128, 72) 60%);
+}
+
+.normal {
+    background: radial-gradient(circle at center, white 1%, rgb(160, 160, 160) 60%);
+}
+
+.dragon {
+    background: radial-gradient(circle at center, white 1%, rgb(72, 191, 189) 60%);
+}
+
+.fighting {
+    background: radial-gradient(circle at center, white 1%, rgb(189, 117, 28) 60%);
+}
+
+.bug {
+    background: radial-gradient(circle at center, white 1%, rgb(72, 191, 116) 60%);
+}
+
+.ice {
+    background: radial-gradient(circle at center, white 1%, rgb(134, 227, 233) 60%);
+}
+
 }
 
 @media screen and (min-width: 768px) {
+
+    start {
+        .main {
+            max-width: 1024px;
+            border-radius: 30px;
+            box-shadow: 0 0 40px $poke-black;
+            
+            // background-size: 100vw 100vh;
+        }
+        
+        .bg-gradient {
+            border-radius: 30px;
+        }
+        .start-logo {
+            min-width: 400px;
+            max-width: 500px;
+        }
+    }
 
     .nav {
         justify-content: space-between;
         flex-direction: row;
         padding: 20px;
-        margin-right: 20px;
+        // margin-right: 20px;
 
         .start-logo{
             max-width: 500px;
-        }
-
-        button {
-            height: 35px;
         }
 
         div {
             display: flex;
             flex-direction: column;
         }
-        .btns {
-            .pulse:hover {
-                animation: pulse 1000ms infinite;
-            }
+        .pulse:hover {
+            animation: pulse 1000ms infinite;
         }
-        
+    }
+    .nav :nth-child(1) { order: 1;}
+    .nav :nth-child(2) { order: 2 !important;}
+    .nav :nth-child(3) { order: 3;}
+
+
+    .quiz {
+        border-radius: 30px;
+        box-shadow: 0 0 40px $poke-black;
+        img.grant {
+            display: inline-block;
+            top: 260px;
+            left: 30px;
+        }
+
+        .poke-guy {
+            width: 200px;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+        }
+    }
+    .quiz img.start-logo {
+        max-width: 550px;
     }
 
-    .trainer-header{
-        
-        .searchdiv{
-            display: inline-block;
 
-            input{
+   section.trainer-header{
+        max-width: 1024px;
+        flex-direction: row;
+        margin: 0 auto 20px auto;
+        justify-content: space-evenly;
+
+        div {
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        
+        .searchdiv {
+            // display: inline-block;
+
+            input {
                 margin: 20px;
-                width: 200px;
+                // width: 200px;
                 padding: 10px;
                 padding-bottom: 5px;
 
@@ -590,6 +749,14 @@ body {
             }
         }
     }
+    .top-bar {
+        margin: 20px 0;
 
+        form {
+            flex-direction: row;
+            justify-content: center;
+            align-items:center;
+        }
+    }
 
 }

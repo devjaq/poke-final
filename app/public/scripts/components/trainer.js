@@ -5,23 +5,22 @@ template: `
 <topbar></topbar>
 <section class="trainer-header">
 
-<h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
-<p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
+    <div class="namediv">
+        <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
+        <p>Synergy Score:{{ $ctrl.synergy() | number:2 }} </p>
+    </div>
     <div class="searchdiv">
-        <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
-        <button class="animated pulse" type="button">Find my Squad!</button>
+        <input type="text" placeholder="Find another Trainer" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
+        <button class="finder animated pulse" type="button">Find my Squad!</button>
     </div>
 </section>
 
 <div id="pokedex">
-    <section class="pokemon">
+    <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].type}}">
         <div class="top">
         <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].id}} </p>
             <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].name | uppercase}}</h3>
             <p>{{100}}%</p>
-            <div class="icon-box">
-                <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].type}}.png">
-            </div>
         </div>
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].id}}.png" alt="">
         <div class="bottom">
@@ -34,14 +33,11 @@ template: `
             <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
         </div>
     </section>
-    <section class="pokemon">
+    <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].type}}">
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].name | uppercase}}</h3>
         <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1])}}%</p>
-        <div class="icon-box">
-            <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].type}}.png">
-        </div>
     </div>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].id}}.png" alt="">
     <div class="bottom" ng-hide="$ctrl.trainer.pokemon_2 === null">
@@ -55,14 +51,11 @@ template: `
     </div>
     </section>
 
-    <section class="pokemon">
+    <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].type}}">
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].name | uppercase}}</h3>
         <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1])}}%</p>
-        <div class="icon-box">
-            <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].type}}.png">
-        </div>
     </div>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_3 - 1].id}}.png" alt="">
     <div class="bottom" ng-hide="$ctrl.trainer.pokemon_2 === null">
@@ -76,14 +69,11 @@ template: `
     </div>
     </section>
 
-    <section class="pokemon">
+    <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].type}}">
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].name | uppercase}}</h3>
         <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1])}}%</p>
-        <div class="icon-box">
-            <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].type}}.png">
-        </div>
     </div>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_4 - 1].id}}.png" alt="">
     <div class="bottom" ng-hide="$ctrl.trainer.pokemon_2 === null">
@@ -97,14 +87,11 @@ template: `
     </div>
     </section>
 
-    <section class="pokemon">
+    <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].type}}">
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].name | uppercase}}</h3>
         <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1])}}%</p>
-        <div class="icon-box">
-            <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].type}}.png">
-        </div>
     </div>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_5 - 1].id}}.png" alt="">
     <div class="bottom" ng-hide="$ctrl.trainer.pokemon_2 === null">
@@ -118,14 +105,11 @@ template: `
     </div>
     </section>
 
-    <section class="pokemon">
+    <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].type}}">
     <div class="top" ng-hide="$ctrl.trainer.pokemon_2 === null">
     <p> {{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].id}} </p>
         <h3> {{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].name | uppercase}}</h3>
         <p>{{$ctrl.compatibility($ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1])}}%</p>
-        <div class="icon-box">
-            <img class="type-icon" src="styles/icons/{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].type}}.png">
-        </div>
     </div>
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[$ctrl.trainer.pokemon_6 - 1].id}}.png" alt="">
     <div class="bottom" ng-hide="$ctrl.trainer.pokemon_2 === null">
