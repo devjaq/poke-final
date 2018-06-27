@@ -2,7 +2,7 @@
 
 const start = {
   template: `
-<section id="slideItem" class="main slide" ng-swipe-up="$ctrl.swipeUp()" ng-swipe-down="$ctrl.swipeDown()">
+<section id="slideItem" class="main slide" ng-swipe-left="$ctrl.swipeLeft()" ng-swipe-right="$ctrl.swipeRight()">
 <div class="bg-gradient">
   <img src="../../styles/full-logo.png" class="start-logo">
   <img src="../../styles/lab-ready-grant.png" class="grant">
@@ -12,7 +12,7 @@ const start = {
     </div>
     <div class="btnContainer">
       <button class="animated pulse" type="button" ng-click="$ctrl.start();">Get my First Pokemon!</button>
-      <button ng-click="$ctrl.battle();" class="" type="button">Battle!</button>
+      <button ng-click="$ctrl.battle();" class="animated pulse" type="button">Battle!</button>
     </div>
   </div>
   </div>
@@ -47,24 +47,24 @@ const start = {
       $location.path("/battle")
     }
 
-    if (window.innerWidth >= 400) {
+    if (window.innerWidth >= 450) {
       console.log("work damnit");
       $("#slideItem").removeClass("slide");
 
     }
 
-    vm.swipeUp = function () {
+    vm.swipeLeft = function () {
       let swipe = $("#slideItem");
-      console.log("swipe-up");
+      console.log("swipe-left");
       if ($("#slideItem").hasClass("slide") == true) {
         console.log("true");
         $location.path("/quiz");
       }
     }
 
-    vm.swipeDown = function () {
+    vm.swipeRight = function () {
       let swipe = $("#slideItem");
-      console.log("swipe-down");
+      console.log("swipe-right");
       if ($("#slideItem").hasClass("slide") == true) {
         console.log("true");
         $location.path("/quiz");

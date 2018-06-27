@@ -9,7 +9,7 @@ template: `
 <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
     <div class="searchdiv">
         <input type="text" placeholder="Enter a Username" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
-        <button type="button">Find my Squad!</button>
+        <button class="animated pulse" type="button">Find my Squad!</button>
     </div>
 </section>
 
