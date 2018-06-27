@@ -23,7 +23,7 @@ const pokedex = {
         <option value="rock">Rock</option>
         <option value="water">Water</option>
       </select>
-      <button type="button" ng-click="$ctrl.clearSearch()">Clear Search</button>
+      <button class="animated pulse" type="button" ng-click="$ctrl.clearSearch()">Clear Search</button>
 
     </form>
 
