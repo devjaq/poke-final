@@ -14,8 +14,10 @@ button {
   box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
   max-width: 300px;
   margin: 25px auto;
+  padding: 15px;
   font-size: 1rem;
-  text-align: center; }
+  text-align: center !important;
+  cursor: pointer; }
 
 .invalid {
   outline: #f00000; }
@@ -25,7 +27,7 @@ body {
   margin: 0;
   background-color: #66aeed;
   font-family: sans-serif; }
-  body input {
+  body input, body select {
     font-size: 1rem;
     padding: 5px;
     font-family: "Jura", sans-serif;
@@ -44,9 +46,19 @@ body {
       padding: 8px 12px;
       background-color: #f0f0f0;
       font-size: 1rem; }
-  body .nav .btns .pulse:hover {
-    animation: pulse 1000ms infinite; }
+  body .nav {
+    display: flex;
+    margin: 30px 0 50px 0; }
+    body .nav .pulse:hover {
+      animation: pulse 1000ms infinite; }
+  body .nav :nth-child(1) {
+    order: 2; }
+  body .nav :nth-child(2) {
+    order: 1; }
+  body .nav :nth-child(3) {
+    order: 3; }
   body nav {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,27 +66,27 @@ body {
     body nav img {
       max-width: 320px; }
     body nav button {
-      height: 35px;
-      display: flex; }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px; }
     body nav div {
       display: flex;
       flex-direction: column; }
   body .main {
-    max-width: 1024px;
-    min-height: 100%;
     margin: 0 auto;
     background-image: url("water_background2.jpg");
-    background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center; }
     body .main .start-logo {
-      max-width: 400px;
+      max-width: 320px;
       display: block;
-      margin: 0 auto; }
+      margin: 20px auto; }
     body .main .bg-gradient {
       background: linear-gradient(#f5faff 50%, rgba(68, 143, 213, 0.5));
       background-repeat: no-repeat;
-      height: 100%; }
+      height: 100%;
+      padding-top: 20px; }
     body .main .grant {
       height: 350px;
       display: block;
@@ -106,30 +118,42 @@ body {
   body .quiz {
     display: flex;
     flex-direction: column;
+    position: relative;
     margin: 0 auto;
     max-width: 1024px;
     padding: 20px;
     background-color: #f5faff; }
+    body .quiz .grant {
+      position: absolute;
+      height: 350px; }
     body .quiz h3 {
+      margin-top: 20px;
       font-family: "Jura", sans-serif;
       font-size: 26px; }
-    body .quiz input {
-      font-family: "Jura", sans-serif; }
+    body .quiz input, body .quiz select {
+      font-family: "Jura", sans-serif;
+      font-size: 1.5rem; }
     body .quiz select {
       font-family: "Jura", sans-serif; }
       body .quiz select option {
         font-family: "Jura", sans-serif; }
     body .quiz .pulse:hover {
       animation: pulse 1000ms infinite; }
+    body .quiz .multichoice {
+      animation: bounceInRight 1000ms; }
     body .quiz .answers {
       display: flex;
-      flex-direction: column;
-      padding-left: 50px; }
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column; }
       body .quiz .answers label {
         position: relative;
         margin: 10px 0;
         font-family: "jura", sans-serif;
-        font-size: 24px; }
+        font-size: 24px;
+        flex-basis: 50%;
+        padding-left: 40px;
+        text-align: left; }
         body .quiz .answers label .radio {
           background-color: #eee;
           height: 25px;
@@ -142,9 +166,15 @@ body {
         body .quiz .answers label input {
           opacity: 0;
           cursor: pointer;
-          position: absolute; }
+          position: absolute;
+          margin: 10px; }
         body .quiz .answers label input:checked ~ .radio {
           background-color: #66aeed; }
+    body .quiz form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center; }
     body .quiz label:hover input ~ .radio {
       background-color: #ccc; }
     body .quiz .start-logo {
@@ -159,32 +189,15 @@ body {
       text-align: center; }
     body .quiz ::placeholder {
       text-align: center; }
-    body .quiz form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center; }
-      body .quiz form .answers {
-        width: 80%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; }
-        body .quiz form .answers label {
-          flex-basis: 50%;
-          padding-left: 20%;
-          text-align: left; }
-          body .quiz form .answers label input {
-            margin: 10px; }
     body .quiz .pokeBox {
-      max-width: 600px; }
-    body .quiz .pokeBox, body .quiz button {
       font-size: 1rem;
       margin: 50px;
       font-family: "Pokemon GB", Arial, sans-serif;
-      padding: 8px;
+      padding: 15px;
       background: #f4f4f4;
       border-radius: 5px;
-      box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
+      box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
+      max-width: 600px; }
     body .quiz section {
       width: 100%;
       display: flex;
@@ -196,11 +209,18 @@ body {
     font-family: 'Jura', sans-serif;
     font-weight: bolder;
     font-size: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 20px; }
+    margin: 20px 0; }
     body .trainer-header h1 {
       color: #ffcb05;
       text-shadow: 0 0 40px #3c5aa6; }
+    body .trainer-header .searchdiv {
+      margin-top: 20px; }
+      body .trainer-header .searchdiv input {
+        font-size: 2rem; }
     body .trainer-header .trainer-info {
       display: flex;
       justify-content: center;
@@ -211,21 +231,30 @@ body {
     body .trainer-header input {
       border: none;
       border-bottom: 2px solid #222224;
-      background: none; }
+      background: none;
+      margin: 20px 20px; }
     body .trainer-header p {
       margin: 0; }
     body .trainer-header div {
       display: flex;
       justify-content: center;
       flex-direction: column; }
-    body .trainer-header input {
-      margin: 20px 20px; }
+    body .trainer-header .finder {
+      width: 275px; }
   body .myPokemon {
     position: fixed;
     right: 0;
     top: 100px;
     background-color: #f0f0f0;
-    z-index: 10; }
+    z-index: 10;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: "Pokemon GB", Arial, sans-serif;
+    background: #f4f4f4;
+    box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
+    border-right: none;
+    border-top-right-radius: none;
+    border-bottom-right-radius: none; }
     body .myPokemon div {
       display: flex;
       flex-direction: column; }
@@ -261,8 +290,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto; }
-    body #pokedex .tada:hover {
-      animation: tada 2000ms infinite; }
+    body #pokedex .bounce {
+      animation: bounce 1000ms; }
     body #pokedex .pokemon {
       min-height: 435px;
       width: 300px;
@@ -272,7 +301,6 @@ body {
       align-items: space-around;
       margin: 20px;
       padding: 10px 10px 5px 10px;
-      background: radial-gradient(circle at center, rgba(240, 240, 240, 0.5) 1%, white 60%);
       font-family: 'VT323', sans-serif;
       font-size: 1.5rem;
       box-shadow: 4px 0px 0 white, 0 4px 0 white, -4px 0 0 white, 0 -4px 0 white, 8px 0px 0 #ffcb05, 0 8px 0 #ffcb05, 8px 8px 0 #ffcb05, -8px 0 0 #ffcb05, 0 -8px 0 #ffcb05, -8px -8px 0 #ffcb05, 8px -8px 0 #ffcb05, -8px 8px 0 #ffcb05, 12px 0px 0 #ffcb05, 0 12px 0 #ffcb05, -12px 0 0 #ffcb05, 0 -12px 0 #ffcb05, 12px 0 8px #222224, 0 12px 8px #222224, 8px 8px 8px #222224; }
@@ -337,31 +365,107 @@ body {
         height: 300px; }
       body .battleContainer .pokebattle .trainer-info {
         text-align: center; }
+  body .fire {
+    background: radial-gradient(circle at center, white 1%, #bf4848 60%); }
+  body .grass {
+    background: radial-gradient(circle at center, white 1%, #48bf64 60%); }
+  body .water {
+    background: radial-gradient(circle at center, white 1%, #488bbf 60%); }
+  body .electric {
+    background: radial-gradient(circle at center, white 1%, #bfa748 60%); }
+  body .psychic {
+    background: radial-gradient(circle at center, white 1%, #bf487c 60%); }
+  body .flying {
+    background: radial-gradient(circle at center, white 1%, #c6b5f9 60%); }
+  body .poison {
+    background: radial-gradient(circle at center, white 1%, #b548bf 60%); }
+  body .ghost {
+    background: radial-gradient(circle at center, white 1%, #9b48bf 60%); }
+  body .rock {
+    background: radial-gradient(circle at center, white 1%, #9b7e5f 60%); }
+  body .ground {
+    background: radial-gradient(circle at center, white 1%, #bf8048 60%); }
+  body .normal {
+    background: radial-gradient(circle at center, white 1%, #a0a0a0 60%); }
+  body .dragon {
+    background: radial-gradient(circle at center, white 1%, #48bfbd 60%); }
+  body .fighting {
+    background: radial-gradient(circle at center, white 1%, #bd751c 60%); }
+  body .bug {
+    background: radial-gradient(circle at center, white 1%, #48bf74 60%); }
+  body .ice {
+    background: radial-gradient(circle at center, white 1%, #86e3e9 60%); }
 
 @media screen and (min-width: 768px) {
+  start .main {
+    max-width: 1024px;
+    border-radius: 30px;
+    box-shadow: 0 0 40px #222224; }
+  start .bg-gradient {
+    border-radius: 30px; }
+  start .start-logo {
+    min-width: 400px;
+    max-width: 500px; }
+
   .nav {
     justify-content: space-between;
     flex-direction: row;
-    padding: 20px;
-    margin-right: 20px; }
+    padding: 20px; }
     .nav .start-logo {
       max-width: 500px; }
-    .nav button {
-      height: 35px; }
     .nav div {
       display: flex;
       flex-direction: column; }
-    .nav .btns .pulse:hover {
+    .nav .pulse:hover {
       animation: pulse 1000ms infinite; }
 
-  .trainer-header .searchdiv {
-    display: inline-block; }
-    .trainer-header .searchdiv input {
-      margin: 20px;
+  .nav :nth-child(1) {
+    order: 1; }
+
+  .nav :nth-child(2) {
+    order: 2 !important; }
+
+  .nav :nth-child(3) {
+    order: 3; }
+
+  .quiz {
+    border-radius: 30px;
+    box-shadow: 0 0 40px #222224; }
+    .quiz img.grant {
+      display: inline-block;
+      top: 260px;
+      left: 30px; }
+    .quiz .poke-guy {
       width: 200px;
+      position: absolute;
+      bottom: 10px;
+      left: 10px; }
+
+  .quiz img.start-logo {
+    max-width: 550px; }
+
+  section.trainer-header {
+    max-width: 1024px;
+    flex-direction: row;
+    margin: 0 auto 20px auto;
+    justify-content: space-evenly; }
+    section.trainer-header div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; }
+    section.trainer-header .searchdiv input {
+      margin: 20px;
       padding: 10px;
       padding-bottom: 5px; }
-    .trainer-header .searchdiv button {
+    section.trainer-header .searchdiv button {
       margin: 20px; }
-    .trainer-header .searchdiv .pulse:hover {
-      animation: pulse 1000ms infinite; } }
+    section.trainer-header .searchdiv .pulse:hover {
+      animation: pulse 1000ms infinite; }
+
+  .top-bar {
+    margin: 20px 0; }
+    .top-bar form {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; } }

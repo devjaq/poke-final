@@ -57,14 +57,11 @@ const pokedex = {
   </section>
   </section>
   <div id="pokedex">
-    <section class="pokemon" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: $ctrl.search, type: $ctrl.typeSelector} |orderBy : 'id' | limitTo: 150">
+    <section class="pokemon {{pokemon.type}}" ng-repeat="pokemon in $ctrl.pokearr | filter: {name: $ctrl.search, type: $ctrl.typeSelector} |orderBy : 'id' | limitTo: 150">
       <div class="top">
         <p>{{ pokemon.id }}</p>
         <h3>{{ pokemon.name | uppercase }}</h3>
         <p>{{$ctrl.compatibility(pokemon)}}%</p>
-        <div class="icon-box">
-          <img class="type-icon" src="styles/icons/{{pokemon.type}}.png">
-        </div>
       </div>
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="">
       <div class="bottom">
@@ -74,7 +71,7 @@ const pokedex = {
           <li>{{pokemon.move_3}}</li>
           <li>{{pokemon.move_4}}</li>
         </ul>
-        <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball" ng-click="$ctrl.newCrew(pokemon)">
+        <img class="catch animate tada" ng-class="$ctrl.bounce" src="/styles/icons/pokeball-pixel2.png" alt="pokeball"  ng-click="$ctrl.newCrew(pokemon)">
       </div>
     </section>
     </div>
@@ -95,6 +92,24 @@ const pokedex = {
       vm.search = "";
       vm.typeSelector = "";
     }
+
+    dbService.getData().then((response) => {
+      vm.pokearr = response.data;
+      PokemonService.addPokemon(vm.pokearr);
+    }).then(() => {
+    TrainerService.getTrainers().then((response) => {
+      vm.alltrainers = response.data;
+      vm.trainer=null;
+      vm.trainer=PokemonService.getTrainer();
+      if(vm.trainer=== null){
+          vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+          PokemonService.addTrainer(vm.trainer);
+      }else{
+          vm.trainer=PokemonService.getTrainer();
+      }
+    vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+  })
+  });
 
     vm.fireCompatibility = (pokemon) => {
       if (pokemon.type === vm.myType) {
@@ -172,7 +187,11 @@ const pokedex = {
 
     vm.newCrew = (pokemon) => {
       // add bounce, remove bounce, add tada, remove tada
+      vm.bounce = "bounce";
+  
       // pop up that says "you've caught pokemon!"
+
+
 
         if (vm.trainer.pokemon_2 === null){
           vm.trainer.pokemon_2 = pokemon.id;

@@ -3,6 +3,7 @@
 const quiz = {
   template: `
   <div class="quiz slide" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
+    <img src="../../styles/lab-ready-grant.png" ng-show="$ctrl.hide" class="grant">
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
     <img src="../../styles/full-logo.png" class="start-logo">
     <p class="pokeBox textContainer">We're about to find the first member of your squad, but I'll need to ask you some questions to find your perfect match!</p>
@@ -29,7 +30,7 @@ const quiz = {
       </div>
       <button class="animated pulse" ng-disabled="$ctrl.disabled">Submit</button>
     </form>
-    <form ng-show="$ctrl.show" class="multichoice" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
+    <form ng-show="$ctrl.show" class="multichoice animated bounceInRight" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
       <img class="start-logo" src="styles/logo-400.png" alt="PokeSquad logo">
       <h3> {{ $ctrl.quizarr[$ctrl.counter].question }}</h3>
       <div class="answers">
@@ -54,11 +55,12 @@ const quiz = {
       
      </section>
       <button class="animated pulse">Submit</button>
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.randomPkmn}}.png" ng-show="$ctrl.show" class="poke-guy">
     </form>
   </div>
   `,
 
-  controller: ["quizService", "TrainerService", "PokemonService", "$location", function(quizService, TrainerService, PokemonService, $location) {
+  controller: ["quizService", "TrainerService", "PokemonService", "$location", "$element", function(quizService, TrainerService, PokemonService, $location, $element) {
     const vm = this;
     vm.quizarr = [];
     vm.counter = 0;
@@ -76,6 +78,8 @@ const quiz = {
     vm.trainer = {};
     vm.allTrainers = [];
     vm.disabled = false;
+    vm.pokearr = [];
+    vm.randomPkmn = 0;
 
     PokemonService.addTrainer(null);
     
@@ -86,6 +90,8 @@ const quiz = {
     TrainerService.getTrainers().then((response) => {
       vm.allTrainers = response.data;
     });
+
+    vm.pokearr = PokemonService.getPokemon();
 
     // checks window width on load to possibly remove class slide
     if (window.innerWidth >= 400) {
@@ -120,6 +126,12 @@ const quiz = {
       vm.dob = newUser.dob;
       vm.show = true;
       vm.hide = false;
+      vm.randomPkmn = vm.pokearr[Math.floor(Math.random() * vm.pokearr.length)].id;
+      console.log(vm.pokearr);
+      
+      console.log(vm.randomPkmn);
+      
+
     }
     
     vm.checkUsername = (username) => {
@@ -137,6 +149,14 @@ const quiz = {
     }
 
     vm.submitData = () => {
+      vm.randomPkmn = vm.pokearr[Math.floor(Math.random() * vm.pokearr.length)].id;
+
+      // $element.removeClass("bounceInRight").addClass("bounceInRight");
+      // $animate.on('click', button,() => {
+
+      // })
+      // $(this).css({"animation": "bounceInRight 1000ms"});
+
       vm.counter++
       switch(vm.answers){
         case "cool":
