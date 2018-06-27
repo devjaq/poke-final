@@ -85,6 +85,13 @@ body {
     }
 
     ////// TOP NAVBAR /////////////////////////
+    .nav {
+        .btns {
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
+            }
+        }
+    }
 
     nav {
         display: flex;
@@ -105,7 +112,9 @@ body {
             display: flex;
             flex-direction: column;
         }
+        
     }
+
 
         ////// START PAGE /////////////////////////
         .main {
@@ -203,6 +212,10 @@ body {
                     font-family: "Jura", sans-serif;
                 }
 
+            }
+            
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
             }
     
             .answers {
@@ -320,7 +333,9 @@ body {
                 align-items: center
             }
             button {
-                // border-radius: 0;
+                .pulse:hover {
+                    animation: pulse 1000ms infinite;
+                }
             }
         }
 
@@ -421,8 +436,12 @@ body {
             button{
                 margin: 10px 25px;
             }
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
+            }
 
         }
+        
     }
 
     #pokedex {
@@ -532,6 +551,7 @@ body {
             }
         }
     }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -554,6 +574,12 @@ body {
             display: flex;
             flex-direction: column;
         }
+        .btns {
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
+            }
+        }
+        
     }
 
     .trainer-header{
@@ -570,6 +596,10 @@ body {
             }
             button{
                 margin: 20px;
+
+            }
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
             }
         }
     }

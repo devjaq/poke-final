@@ -27,7 +27,7 @@ const quiz = {
           <option value='12'>December</option>
         </select> 
       </div>
-      <button ng-disabled="$ctrl.disabled">Submit</button>
+      <button class="animated pulse" ng-disabled="$ctrl.disabled">Submit</button>
     </form>
     <form ng-show="$ctrl.show" class="multichoice" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
       <img class="start-logo" src="styles/logo-400.png" alt="PokeSquad logo">
@@ -53,7 +53,7 @@ const quiz = {
 
       
      </section>
-      <button>Submit</button>
+      <button class="animated pulse">Submit</button>
     </form>
   </div>
   `,

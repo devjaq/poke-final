@@ -44,6 +44,8 @@ body {
       padding: 8px 12px;
       background-color: #f0f0f0;
       font-size: 1rem; }
+  body .nav .btns .pulse:hover {
+    animation: pulse 1000ms infinite; }
   body nav {
     display: flex;
     align-items: center;
@@ -117,6 +119,8 @@ body {
       font-family: "Jura", sans-serif; }
       body .quiz select option {
         font-family: "Jura", sans-serif; }
+    body .quiz .pulse:hover {
+      animation: pulse 1000ms infinite; }
     body .quiz .answers {
       display: flex;
       flex-direction: column;
@@ -186,6 +190,8 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center; }
+    body .quiz button .pulse:hover {
+      animation: pulse 1000ms infinite; }
   body .trainer-header {
     font-family: 'Jura', sans-serif;
     font-weight: bolder;
@@ -247,6 +253,8 @@ body {
       margin: 10px 25px; }
     body .top-bar form button {
       margin: 10px 25px; }
+    body .top-bar form .pulse:hover {
+      animation: pulse 1000ms infinite; }
   body #pokedex {
     max-width: 1200px;
     display: flex;
@@ -343,6 +351,8 @@ body {
     .nav div {
       display: flex;
       flex-direction: column; }
+    .nav .btns .pulse:hover {
+      animation: pulse 1000ms infinite; }
 
   .trainer-header .searchdiv {
     display: inline-block; }
@@ -352,4 +362,6 @@ body {
       padding: 10px;
       padding-bottom: 5px; }
     .trainer-header .searchdiv button {
-      margin: 20px; } }
+      margin: 20px; }
+    .trainer-header .searchdiv .pulse:hover {
+      animation: pulse 1000ms infinite; } }
