@@ -210,9 +210,16 @@ body {
             background-color: rgb(245, 250, 255);
 
             .grant {
-                // display: none;
+                display: none;
                 position: absolute;
                 height: 350px;
+            }
+
+            .poke-guy {
+                width: 100px;
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
             }
 
             h3 {
@@ -409,40 +416,45 @@ body {
 
     ////// POKESQUAD INDICATOR /////////////////////////
     .myPokemon {
-
         position: fixed;
-        right: 0;
-        top: 100px;
-        background-color: $poke-white;
+        width: 90%;
+        right: 5%;
+        bottom: 0;
+        background-color: #f0f0f0;
         z-index: 10;
-        @include pokebox();
-
+        border-radius: 5px;
+        padding: 8px;
+        font-family: "Pokemon GB", Arial, sans-serif;
+        background: #f4f4f4;
+        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
         border-right: none;
         border-top-right-radius: none;
-        border-bottom-right-radius: none;
+        border-top-left-radius: none;
 
         div {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             div {
-                width: 110px;
-                height: 110px;
+                width: 70px;
+                height: 45px;
                 position: relative;
+                margin: 0 15px;
 
                 img {
                     position: absolute;
                 }
                 .caughtSprite {
-                    width: 121px;
+                    width: 65px;
                     z-index: 10;
                     top: -7px;
-                    left: -7px;
                     // filter: drop-shadow(3px 2px 5px $poke-black);
                     background: $poke-white;
                 }
                 .caughtPokemon {
-                    max-width: 100px;
+                    max-width: 50px;
                     opacity: 0.7;
+                    right: -13px;
+                    bottom: 3px;
                 }
             }
         }
@@ -455,6 +467,7 @@ body {
         form{
             display: flex;
             flex-direction: column;
+            align-items:center;
             input{
                 margin: 10px 25px;
             }
@@ -480,8 +493,8 @@ body {
         justify-content: center;
         margin: 0 auto;
 
-        .catch:active {
-            // animation: bounce 2000ms;
+        .catch:hover {
+            filter: drop-shadow(0 0 20px white);
         }
 
         .bounce {
@@ -679,6 +692,7 @@ body {
         // margin-right: 20px;
 
         .start-logo{
+            min-width: 499px;
             max-width: 500px;
         }
 
@@ -705,7 +719,7 @@ body {
         }
 
         .poke-guy {
-            width: 200px;
+            width: 200px !important;
             position: absolute;
             bottom: 10px;
             left: 10px;
@@ -753,10 +767,55 @@ body {
         margin: 20px 0;
 
         form {
-            flex-direction: row;
+            flex-direction: row !important;
             justify-content: center;
             align-items:center;
         }
+    }
+
+    ////// POKESQUAD INDICATOR /////////////////////////
+    section.myPokemon {
+
+        position: fixed;
+        width: 115px;
+        right: 0;
+        bottom: initial;
+        top: 100px;
+        background-color: $poke-white;
+        z-index: 10;
+        @include pokebox();
+
+        border-right: none;
+        border-top-right-radius: none;
+        border-bottom-right-radius: none;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            div {
+                width: 110px !important;
+                height: 110px !important;
+                position: relative;
+
+                img {
+                    position: absolute;
+                }
+                .caughtSprite {
+                    width: 121px !important;
+                    z-index: 10;
+                    top: -7px;
+                    right: 8px;
+                    // filter: drop-shadow(3px 2px 5px $poke-black);
+                    background: $poke-white;
+                }
+                .caughtPokemon {
+                    max-width: 100px;
+                    opacity: 0.7;
+                    right: 20px
+                }
+            }
+        }
+
     }
 
 }

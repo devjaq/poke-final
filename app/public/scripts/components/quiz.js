@@ -2,7 +2,7 @@
 
 const quiz = {
   template: `
-  <div class="quiz slide" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
+  <div class="quiz slide animated" ng-class="$ctrl.bounce" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
     <img src="../../styles/lab-ready-grant.png" ng-show="$ctrl.hide" class="grant">
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
     <img src="../../styles/full-logo.png" class="start-logo">
@@ -30,7 +30,7 @@ const quiz = {
       </div>
       <button class="animated pulse" ng-disabled="$ctrl.disabled">Submit</button>
     </form>
-    <form ng-show="$ctrl.show" class="multichoice animated bounceInRight" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
+    <form ng-show="$ctrl.show" class="multichoice animated"  name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
       <img class="start-logo" src="styles/logo-400.png" alt="PokeSquad logo">
       <h3> {{ $ctrl.quizarr[$ctrl.counter].question }}</h3>
       <div class="answers">
@@ -60,7 +60,7 @@ const quiz = {
   </div>
   `,
 
-  controller: ["quizService", "TrainerService", "PokemonService", "$location", "$element", function(quizService, TrainerService, PokemonService, $location, $element) {
+  controller: ["dbService", "quizService", "TrainerService", "PokemonService", "$location", "$element", "$timeout", function(dbService, quizService, TrainerService, PokemonService, $location, $element, $timeout) {
     const vm = this;
     vm.quizarr = [];
     vm.counter = 0;
@@ -80,6 +80,25 @@ const quiz = {
     vm.disabled = false;
     vm.pokearr = [];
     vm.randomPkmn = 0;
+    vm.bounce = "";
+
+    dbService.getData().then((response) => {
+      vm.pokearr = response.data;
+      PokemonService.addPokemon(vm.pokearr);
+    }).then(() => {
+    TrainerService.getTrainers().then((response) => {
+      vm.alltrainers = response.data;
+      vm.trainer=null;
+      vm.trainer=PokemonService.getTrainer();
+      if(vm.trainer=== null){
+          vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+          PokemonService.addTrainer(vm.trainer);
+      }else{
+          vm.trainer=PokemonService.getTrainer();
+      }
+    vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+  })
+  });
 
     PokemonService.addTrainer(null);
     
@@ -121,18 +140,28 @@ const quiz = {
     }
     // end swipe directive functions
 
+    vm.reset = () => {
+      console.log("reset");
+      
+      vm.bounce = "";
+    }
+
     vm.addUser = (newUser) => {
       vm.username = newUser.username;
       vm.dob = newUser.dob;
       vm.show = true;
       vm.hide = false;
       vm.randomPkmn = vm.pokearr[Math.floor(Math.random() * vm.pokearr.length)].id;
-      console.log(vm.pokearr);
-      
-      console.log(vm.randomPkmn);
-      
+      console.log(vm.bounce);
+      vm.bounce = "bounceInRight";
+      console.log(vm.bounce);
 
+      $timeout(vm.reset, 1000);
     }
+
+   
+
+ 
     
     vm.checkUsername = (username) => {
       for (let i = 0; i < vm.allTrainers.length; i++) {
@@ -150,7 +179,11 @@ const quiz = {
 
     vm.submitData = () => {
       vm.randomPkmn = vm.pokearr[Math.floor(Math.random() * vm.pokearr.length)].id;
+      console.log(vm.bounce);
+      vm.bounce = "bounceInRight";
+      console.log(vm.bounce);
 
+      $timeout(vm.reset, 1000);
       // $element.removeClass("bounceInRight").addClass("bounceInRight");
       // $animate.on('click', button,() => {
 
