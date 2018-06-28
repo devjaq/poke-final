@@ -440,14 +440,15 @@ body {
   .nav :nth-child(3) {
     order: 3; }
 
-  .quiz {
+  quiz div.quiz {
+    margin: 50px auto;
     border-radius: 30px;
     box-shadow: 0 0 40px #222224; }
-    .quiz img.grant {
+    quiz div.quiz img.grant {
       display: inline-block;
       top: 260px;
       left: 30px; }
-    .quiz .poke-guy {
+    quiz div.quiz .poke-guy {
       width: 200px !important;
       position: absolute;
       bottom: 10px;
