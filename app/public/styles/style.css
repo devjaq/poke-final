@@ -209,7 +209,9 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 20px 0; }
+    margin: 20px auto;
+    max-width: 90%;
+    font-size: 20px; }
     body .trainer-header h1 {
       color: #ffcb05;
       text-shadow: 0 0 40px #3c5aa6; }
