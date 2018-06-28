@@ -121,7 +121,7 @@ const quiz = {
     // swipe right and left directive function
     
     vm.swipeRight = () => {
-      if($("#slideItem").hasClass("slide") === true){
+      if($("#slideItem").hasClass("slide") == true){
         if(vm.username == ""){
           vm.addUser(vm.newUser);
         }
@@ -131,7 +131,7 @@ const quiz = {
       } 
     };
     vm.swipeLeft = () => {
-      if($("#slideItem").hasClass("slide") === true){
+      if($("#slideItem").hasClass("slide") == true){
         vm.submitData();
       }
       if(vm.username !== ""){
