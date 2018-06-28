@@ -8,11 +8,15 @@ const battle = {
     <p>VS</p>
     <input type="text" class="input" placeholder="Enter Challenger 2.." ng-blur="$ctrl.findTrainerTwo($ctrl.trainer.two)" ng-model="$ctrl.trainer.two">
     <button ng-click="$ctrl.randomOpponent();">Random Opponent</button>
-    <button ng-click="$ctrl.startBattle($ctrl.trainer);">Start Battle</button>
-
-  </form>
+    
+    </form>
+    <button ng-click="$ctrl.startBattle($ctrl.trainer);" class="battle-button">Start Battle</button>
+  <!--
   <p>Synergy Score: {{ $ctrl.synergyOne(); }} </p>
+  <p>Battle Score: {{ $ctrl.synergyOne() + ($ctrl.totalCompatibilityOne[0] / 2)  }} </p>
   <p>Synergy Score: {{ $ctrl.synergyTwo(); }} </p>
+  <p>Battle Score: {{ $ctrl.synergyTwo() + ($ctrl.totalCompatibilityTwo[0] / 2)  }} </p>
+  -->
   <div class="battleContainer">
   <section class="pokebattle" ng-repeat="trainer in $ctrl.pokebattle">
     <h1 class="trainer-info">{{trainer.name}}</h1>
@@ -23,7 +27,7 @@ const battle = {
   </div>
   `,
 
-  controller: ["TrainerService", "PokemonService", function (TrainerService, PokemonService) {
+  controller: ["TrainerService", "PokemonService", "$timeout", function (TrainerService, PokemonService, $timeout) {
     const vm = this;
     vm.pokebattle = [];
     vm.pokearr = [];
@@ -80,12 +84,12 @@ const battle = {
     }
 
     vm.trainerTwoSynergy = () => {
-      console.log(vm.trainerTwo);
+      // console.log(vm.trainerTwo);
       for (let j = 0; j < vm.pokemonTwo.length; j++) {
-        console.log(vm.pokearr[vm.pokemonTwo[j] -1]);
-        console.log(vm.pokearr[vm.pokemonTwo[j] -1].type);
+        // console.log(vm.pokearr[vm.pokemonTwo[j] -1]);
+        // console.log(vm.pokearr[vm.pokemonTwo[j] -1].type);
         // console.log(vm.pokearr[vm.pokemonTwo[0] -1].type);
-        console.log(vm.trainerTwo.type);
+        // console.log(vm.trainerTwo.type);
         vm.compatibilityTwo(vm.pokearr[vm.pokemonTwo[j] -1], vm.trainerTwo.type);
         vm.synergyTwo();
       }  
@@ -112,14 +116,16 @@ const battle = {
       vm.trainerTwoSynergy();
       // decide who wins & remove loser from array
       console.log(vm.pokebattle);
-      vm.whoWins();
+      $timeout(vm.whoWins, 5000);
     }
 
     vm.whoWins = () => {
+      console.log("test");
+      
       let one = vm.synergyOne();
       let two = vm.synergyTwo();
-      console.log(one);
-      console.log(two);
+      // console.log(one);
+      // console.log(two);
       if (vm.synergyOne() > vm.synergyTwo()) {
         console.log(vm.synergyOne());
         console.log(vm.pokebattle);
@@ -129,6 +135,8 @@ const battle = {
         console.log(vm.synergyTwo());
         console.log(vm.pokebattle);
         vm.pokebattle.splice(0, 1);
+      } else { 
+        vm.pokebattle.splice(Math.floor(Math.random() * 1), 1);
       }
 
       // add animations / battle scene

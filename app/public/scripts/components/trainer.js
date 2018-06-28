@@ -7,7 +7,7 @@ template: `
 
     <div class="namediv">
         <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
-        <p>Synergy Score:{{ $ctrl.synergy() | number:2 }} </p>
+        <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
     </div>
     <div class="searchdiv">
         <input type="text" placeholder="Find another Trainer" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
@@ -30,7 +30,7 @@ template: `
                 <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].move_3}}</li>
                 <li>{{$ctrl.pokearr[$ctrl.trainer.pokemon_1 - 1].move_4}}</li>
             </ul>
-            <img class="catch animate tada" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
+            <img class="catch" src="/styles/icons/pokeball-pixel2.png" alt="pokeball">
         </div>
     </section>
     <section class="pokemon {{$ctrl.pokearr[$ctrl.trainer.pokemon_2 - 1].type}}">
