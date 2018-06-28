@@ -7,7 +7,7 @@
   padding: 0; }
 
 .invalid {
-  outline: #f00000; }
+  border: #f00000; }
 
 body {
   height: 100vh;
