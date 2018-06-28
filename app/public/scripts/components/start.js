@@ -17,6 +17,7 @@ const start = {
   </div>
   </div>
 </section>
+<embed src="/styles/pokemon-opening.mp3" width="180" height="90" loop="false" autostart="true" hidden="true" />
 `,
 
   controller: ["$location", "dbService", "PokemonService", "TrainerService", function ($location, dbService, PokemonService, TrainerService) {
