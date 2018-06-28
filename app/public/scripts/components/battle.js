@@ -2,7 +2,11 @@
 
 const battle = {
   template: `
-  <topbar></topbar>
+  <nav class="nav">
+    <button class="animated pulse btns" ng-click="$ctrl.start();">Start Over!</button>
+    <img class="logo" src="styles/logo-400.png" alt="PokeSquad logo">
+    <button class="animated pulse btns" ng-click="$ctrl.toTrainer();">Trainers</button>
+  </nav>
   <form class="battle-form">
     <input type="text" class="input" placeholder="Enter Challenger 1.." ng-blur="$ctrl.findTrainerOne($ctrl.trainer.one)" ng-model="$ctrl.trainer.one">
     <p>VS</p>
@@ -28,7 +32,7 @@ const battle = {
   <embed src="/styles/pokemon-battle.mp3" width="180" height="90" loop="false" autostart="true" hidden="true" />
   `,
 
-  controller: ["TrainerService", "PokemonService", "$timeout", function (TrainerService, PokemonService, $timeout) {
+  controller: ["TrainerService", "PokemonService", "$timeout", "$location", function (TrainerService, PokemonService, $timeout, $location) {
     const vm = this;
     vm.pokebattle = [];
     vm.pokearr = [];
@@ -44,6 +48,15 @@ const battle = {
     TrainerService.getTrainers().then((response) => {
       vm.allTrainers = response.data;
     });
+
+    vm.start = () => {
+      $location.path("/start");
+      window.location.reload();
+    }
+
+    vm.toTrainer = () => {
+      $location.path("/trainer");
+    };
 
     vm.findTrainerOne = () => {
       for (let i = 0; i < vm.allTrainers.length; i++) {
