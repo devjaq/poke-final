@@ -25,6 +25,7 @@ const battle = {
     <img class="battle-sprite" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{$ctrl.pokearr[trainer.pokemon-1].id}}.png" alt="">
     </section>
   </div>
+  <embed src="/styles/pokemon-battle.mp3" width="180" height="90" loop="false" autostart="true" hidden="true" />
   `,
 
   controller: ["TrainerService", "PokemonService", "$timeout", function (TrainerService, PokemonService, $timeout) {

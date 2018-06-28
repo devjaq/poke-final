@@ -47,7 +47,7 @@ const start = {
       $location.path("/battle")
     }
 
-    if (window.innerWidth >= 450) {
+    if (window.innerWidth >= 500) {
       $("#slideItem").removeClass("slide");
 
     }

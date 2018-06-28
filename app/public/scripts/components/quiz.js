@@ -2,7 +2,7 @@
 
 const quiz = {
   template: `
-  <div class="quiz slide animated" ng-class="$ctrl.bounce" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
+  <div class="slide quiz animated" ng-class="$ctrl.bounce" id="slideItem" ng-swipe-left="$ctrl.swipeLeft()" ng-swipe-right="$ctrl.swipeRight()">
     <img src="../../styles/lab-ready-grant.png" ng-show="$ctrl.hide" class="grant">
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
     <img src="../../styles/full-logo.png" class="logo">
@@ -114,11 +114,12 @@ const quiz = {
     vm.pokearr = PokemonService.getPokemon();
 
     // checks window width on load to possibly remove class slide
-    if (window.innerWidth >= 400) {
-      $("#slideItem").removeClass("slide");
-    }
+    // if (window.innerWidth >= 768) {
+    //   $("#slideItem").removeClass("slide");
+    // }
 
     // swipe right and left directive function
+    
     vm.swipeRight = () => {
       if($("#slideItem").hasClass("slide") == true){
         if(vm.username == ""){
@@ -133,6 +134,9 @@ const quiz = {
       if($("#slideItem").hasClass("slide") == true){
         vm.submitData();
       }
+      if(vm.username !== ""){
+        vm.submitData();
+      };
     }
     // end swipe directive functions
 
