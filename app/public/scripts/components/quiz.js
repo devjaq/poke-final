@@ -2,10 +2,10 @@
 
 const quiz = {
   template: `
-  <div class="quiz slide" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
+  <div class="quiz slide animated" ng-class="$ctrl.bounce" id="slideItem" ng-swipe-left="$ctrl.swipeLeft();" ng-swipe-right="$ctrl.swipeRight();">
     <img src="../../styles/lab-ready-grant.png" ng-show="$ctrl.hide" class="grant">
     <form ng-show="$ctrl.hide" ng-submit="$ctrl.addUser($ctrl.newUser)">
-    <img src="../../styles/full-logo.png" class="start-logo">
+    <img src="../../styles/full-logo.png" class="logo">
     <p class="pokeBox textContainer">We're about to find the first member of your squad, but I'll need to ask you some questions to find your perfect match!</p>
       <h3>Enter a Trainer name..</h3>
       <input class="invalid trainer-name" type="text" placeholder="Ash Ketchum" ng-blur="$ctrl.checkUsername($ctrl.newUser.username);" ng-model="$ctrl.newUser.username">
@@ -30,7 +30,7 @@ const quiz = {
       </div>
       <button class="animated pulse" ng-disabled="$ctrl.disabled">Submit</button>
     </form>
-    <form ng-show="$ctrl.show" class="multichoice animated bounceInRight" name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
+    <form ng-show="$ctrl.show" class="multichoice animated"  name="questionForm" ng-submit="$ctrl.submitData($ctrl.answers)"> <!-- submit the checked answers -->
       <img class="start-logo" src="styles/logo-400.png" alt="PokeSquad logo">
       <h3> {{ $ctrl.quizarr[$ctrl.counter].question }}</h3>
       <div class="answers">
@@ -60,7 +60,7 @@ const quiz = {
   </div>
   `,
 
-  controller: ["quizService", "TrainerService", "PokemonService", "$location", "$element", function(quizService, TrainerService, PokemonService, $location, $element) {
+  controller: ["dbService", "quizService", "TrainerService", "PokemonService", "$location", "$element", "$timeout", function(dbService, quizService, TrainerService, PokemonService, $location, $element, $timeout) {
     const vm = this;
     vm.quizarr = [];
     vm.counter = 0;
@@ -80,6 +80,26 @@ const quiz = {
     vm.disabled = false;
     vm.pokearr = [];
     vm.randomPkmn = 0;
+    vm.bounce = "";
+    vm.trainer = {}
+
+    dbService.getData().then((response) => {
+      vm.pokearr = response.data;
+      PokemonService.addPokemon(vm.pokearr);
+    }).then(() => {
+    TrainerService.getTrainers().then((response) => {
+      vm.alltrainers = response.data;
+      vm.trainer=null;
+      vm.trainer=PokemonService.getTrainer();
+      // if(vm.trainer=== null){
+      //     vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
+      //     PokemonService.addTrainer(vm.trainer);
+      // }else{
+      //     vm.trainer=PokemonService.getTrainer();
+      // }
+    // vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
+  })
+  });
 
     PokemonService.addTrainer(null);
     
@@ -95,9 +115,7 @@ const quiz = {
 
     // checks window width on load to possibly remove class slide
     if (window.innerWidth >= 400) {
-      console.log("work damnit");
       $("#slideItem").removeClass("slide");
-
     }
 
     // swipe right and left directive function
@@ -105,21 +123,23 @@ const quiz = {
       if($("#slideItem").hasClass("slide") == true){
         if(vm.username == ""){
           vm.addUser(vm.newUser);
-          console.log("add user");
         }
         if(vm.username !== ""){
           vm.submitData();
-          console.log("submitData");
         };
       } 
     };
     vm.swipeLeft = () => {
       if($("#slideItem").hasClass("slide") == true){
         vm.submitData();
-        console.log("left");
       }
     }
     // end swipe directive functions
+
+    vm.reset = () => {
+      
+      vm.bounce = "";
+    }
 
     vm.addUser = (newUser) => {
       vm.username = newUser.username;
@@ -127,13 +147,10 @@ const quiz = {
       vm.show = true;
       vm.hide = false;
       vm.randomPkmn = vm.pokearr[Math.floor(Math.random() * vm.pokearr.length)].id;
-      console.log(vm.pokearr);
-      
-      console.log(vm.randomPkmn);
-      
-
+      vm.bounce = "bounceInRight";
+      $timeout(vm.reset, 1000);
     }
-    
+
     vm.checkUsername = (username) => {
       for (let i = 0; i < vm.allTrainers.length; i++) {
         if (vm.allTrainers[i].username === vm.newUser.username) {
@@ -150,12 +167,8 @@ const quiz = {
 
     vm.submitData = () => {
       vm.randomPkmn = vm.pokearr[Math.floor(Math.random() * vm.pokearr.length)].id;
-
-      // $element.removeClass("bounceInRight").addClass("bounceInRight");
-      // $animate.on('click', button,() => {
-
-      // })
-      // $(this).css({"animation": "bounceInRight 1000ms"});
+      vm.bounce = "bounceInRight";
+      $timeout(vm.reset, 1000);
 
       vm.counter++
       switch(vm.answers){
@@ -184,6 +197,7 @@ const quiz = {
             quiz_result: "cool",
             pokemon_1: 7 
           }
+          PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
           $location.path('/pokedex');
         } else if(vm.adv > vm.cool && vm.adv > vm.char && vm.adv > vm.orig && vm.adv > vm.kind){
@@ -192,6 +206,7 @@ const quiz = {
             quiz_result: "adventurous",
             pokemon_1: 4  
           }
+          PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
           $location.path('/pokedex');
         } else if(vm.char > vm.adv && vm.char > vm.cool && vm.char > vm.orig && vm.char > vm.kind){
@@ -200,6 +215,7 @@ const quiz = {
             quiz_result: "charismatic",
             pokemon_1: 25  
           }
+          PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
           $location.path('/pokedex');
         } else if(vm.orig > vm.adv && vm.orig > vm.char && vm.orig > vm.cool && vm.orig > vm.kind){
@@ -208,6 +224,7 @@ const quiz = {
             quiz_result: "original",
             pokemon_1: 151  
           }
+          PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
           $location.path('/pokedex');
         } else if(vm.kind > vm.adv && vm.kind > vm.char && vm.kind > vm.orig && vm.kind > vm.cool){
@@ -216,6 +233,7 @@ const quiz = {
             quiz_result: "kind",
             pokemon_1: 1  
           }
+          PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
           $location.path('/pokedex');
         } else{
@@ -226,6 +244,7 @@ const quiz = {
                 quiz_result: "kind",
                 pokemon_1: 1  
               }
+              PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
               $location.path('/pokedex');
             } else if(vm.dob==4 || vm.dob==5 ||vm.dob==6){
@@ -235,6 +254,7 @@ const quiz = {
                 quiz_result: "adventurous",
                 pokemon_1: 4  
               }
+              PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
               $location.path('/pokedex');
             } else if(vm.dob==7 || vm.dob==8 ||vm.dob==9){
@@ -244,6 +264,7 @@ const quiz = {
                 quiz_result: "charismatic",
                 pokemon_1: 25  
               }
+              PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
               $location.path('/pokedex');
             } else if(vm.dob==10 || vm.dob==11 ||vm.dob==12){
@@ -253,6 +274,7 @@ const quiz = {
                 quiz_result: "cool",
                 pokemon_1: 7  
               }
+              PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
               $location.path('/pokedex');
             };

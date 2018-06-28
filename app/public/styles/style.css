@@ -2,22 +2,9 @@
   font-family: "Pokemon GB";
   src: url(Pokemon_GB.ttf); }
 * {
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
-button {
-  border-radius: 5px;
-  padding: 8px;
-  font-family: "Pokemon GB", Arial, sans-serif;
-  background: #f4f4f4;
-  box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
-  max-width: 300px;
-  margin: 25px auto;
-  padding: 15px;
-  font-size: 1rem;
-  text-align: center !important;
-  cursor: pointer; }
+  padding: 0; }
 
 .invalid {
   outline: #f00000; }
@@ -27,61 +14,71 @@ body {
   margin: 0;
   background-color: #66aeed;
   font-family: sans-serif; }
-  body input, body select {
+  body .logo {
+    max-width: 320px;
+    display: block;
+    margin: 20px auto; }
+  body button {
+    border-radius: 5px;
+    padding: 15px;
+    background: #f4f4f4;
+    font-family: "Pokemon GB", Arial, sans-serif;
     font-size: 1rem;
-    padding: 5px;
+    line-height: 20px;
+    box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
+    max-width: 300px;
+    margin: 25px;
+    text-align: center !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px; }
+  body input, body select {
+    min-width: 250px;
+    min-height: 50px;
+    margin: 15px;
+    padding: 15px;
     font-family: "Jura", sans-serif;
-    color: #222224; }
+    font-size: 1.5rem;
+    color: #222224;
+    text-align: center; }
+  body input {
+    border: none;
+    border-bottom: 2px solid #222224;
+    background: none; }
   body ::placeholder {
     color: #222224; }
   body select {
+    height: 60px;
     text-align-last: center; }
   body form {
     display: flex;
     justify-content: center; }
-    body form .input,
-    body form select {
-      margin: 20px 0;
-      width: 250px;
-      padding: 8px 12px;
-      background-color: #f0f0f0;
-      font-size: 1rem; }
-  body .nav {
+  body nav.nav {
+    width: 100%;
     display: flex;
-    margin: 30px 0 50px 0; }
-    body .nav .pulse:hover {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px 0 0 0; }
+    body nav.nav .pulse:hover {
       animation: pulse 1000ms infinite; }
+    body nav.nav div {
+      display: flex;
+      flex-direction: column; }
   body .nav :nth-child(1) {
     order: 2; }
   body .nav :nth-child(2) {
     order: 1; }
   body .nav :nth-child(3) {
     order: 3; }
-  body nav {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; }
-    body nav img {
-      max-width: 320px; }
-    body nav button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 200px; }
-    body nav div {
-      display: flex;
-      flex-direction: column; }
   body .main {
     margin: 0 auto;
     background-image: url("water_background2.jpg");
     background-repeat: no-repeat;
     background-position-x: center; }
-    body .main .start-logo {
-      max-width: 320px;
-      display: block;
-      margin: 20px auto; }
     body .main .bg-gradient {
       background: linear-gradient(#f5faff 50%, rgba(68, 143, 213, 0.5));
       background-repeat: no-repeat;
@@ -92,26 +89,26 @@ body {
       display: block;
       margin: 0 auto; }
     body .main .start {
-      display: flex;
       width: 100%;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center; }
       body .main .start .pokeBox {
-        max-width: 600px; }
-      body .main .start .pokeBox, body .main .start button {
-        font-size: 1rem;
-        margin: 25px;
-        font-family: "Pokemon GB", Arial, sans-serif;
-        padding: 8px;
-        background: #f4f4f4;
         border-radius: 5px;
-        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224; }
+        padding: 15px;
+        background: #f4f4f4;
+        font-family: "Pokemon GB", Arial, sans-serif;
+        font-size: 1rem;
+        line-height: 20px;
+        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
+        max-width: 600px;
+        margin: 25px; }
       body .main .start .btnContainer {
         margin: 0 auto;
-        display: flex; }
+        display: flex;
+        flex-direction: column; }
       body .main .start button {
-        cursor: pointer;
         margin-top: 10px; }
       body .main .start .pulse:hover {
         animation: pulse 1000ms infinite; }
@@ -124,19 +121,20 @@ body {
     padding: 20px;
     background-color: #f5faff; }
     body .quiz .grant {
+      display: none;
       position: absolute;
       height: 350px; }
+    body .quiz .poke-guy {
+      width: 100px;
+      position: absolute;
+      bottom: 10px;
+      left: 10px; }
     body .quiz h3 {
       margin-top: 20px;
       font-family: "Jura", sans-serif;
-      font-size: 26px; }
-    body .quiz input, body .quiz select {
-      font-family: "Jura", sans-serif;
-      font-size: 1.5rem; }
-    body .quiz select {
+      font-size: 28px; }
+    body .quiz option {
       font-family: "Jura", sans-serif; }
-      body .quiz select option {
-        font-family: "Jura", sans-serif; }
     body .quiz .pulse:hover {
       animation: pulse 1000ms infinite; }
     body .quiz .multichoice {
@@ -148,11 +146,11 @@ body {
       flex-direction: column; }
       body .quiz .answers label {
         position: relative;
+        flex-basis: 50%;
         margin: 10px 0;
+        padding-left: 40px;
         font-family: "jura", sans-serif;
         font-size: 24px;
-        flex-basis: 50%;
-        padding-left: 40px;
         text-align: left; }
         body .quiz .answers label .radio {
           background-color: #eee;
@@ -165,9 +163,9 @@ body {
           border: 3px solid #222224; }
         body .quiz .answers label input {
           opacity: 0;
-          cursor: pointer;
           position: absolute;
-          margin: 10px; }
+          margin: 10px;
+          cursor: pointer; }
         body .quiz .answers label input:checked ~ .radio {
           background-color: #66aeed; }
     body .quiz form {
@@ -177,9 +175,6 @@ body {
       text-align: center; }
     body .quiz label:hover input ~ .radio {
       background-color: #ccc; }
-    body .quiz .start-logo {
-      max-width: 320px;
-      margin: 25px; }
     body .quiz .trainer-name {
       border: none;
       border-bottom: 2px solid #222224;
@@ -190,14 +185,15 @@ body {
     body .quiz ::placeholder {
       text-align: center; }
     body .quiz .pokeBox {
-      font-size: 1rem;
-      margin: 50px;
-      font-family: "Pokemon GB", Arial, sans-serif;
+      border-radius: 5px;
       padding: 15px;
       background: #f4f4f4;
-      border-radius: 5px;
+      font-family: "Pokemon GB", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 20px;
       box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
-      max-width: 600px; }
+      max-width: 600px;
+      margin: 25px; }
     body .quiz section {
       width: 100%;
       display: flex;
@@ -238,13 +234,15 @@ body {
     body .trainer-header div {
       display: flex;
       justify-content: center;
-      flex-direction: column; }
+      flex-direction: column;
+      align-items: center; }
     body .trainer-header .finder {
       width: 275px; }
   body .myPokemon {
     position: fixed;
-    right: 0;
-    top: 100px;
+    width: 90%;
+    right: 5%;
+    bottom: 0;
     background-color: #f0f0f0;
     z-index: 10;
     border-radius: 5px;
@@ -254,34 +252,31 @@ body {
     box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
     border-right: none;
     border-top-right-radius: none;
-    border-bottom-right-radius: none; }
+    border-top-left-radius: none; }
     body .myPokemon div {
       display: flex;
-      flex-direction: column; }
+      justify-content: center; }
       body .myPokemon div div {
-        width: 110px;
-        height: 110px;
-        position: relative; }
+        width: 70px;
+        height: 45px;
+        position: relative;
+        margin: 0 15px; }
         body .myPokemon div div img {
           position: absolute; }
         body .myPokemon div div .caughtSprite {
-          width: 121px;
+          width: 65px;
           z-index: 10;
           top: -7px;
-          left: -7px;
           background: #f0f0f0; }
         body .myPokemon div div .caughtPokemon {
-          max-width: 100px;
-          opacity: 0.7; }
+          max-width: 50px;
+          opacity: 0.7;
+          right: -13px;
+          bottom: 3px; }
   body .top-bar form {
     display: flex;
-    flex-direction: column; }
-    body .top-bar form input {
-      margin: 10px 25px; }
-    body .top-bar form select {
-      margin: 10px 25px; }
-    body .top-bar form button {
-      margin: 10px 25px; }
+    flex-direction: column;
+    align-items: center; }
     body .top-bar form .pulse:hover {
       animation: pulse 1000ms infinite; }
   body #pokedex {
@@ -290,19 +285,21 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto; }
+    body #pokedex .catch:hover {
+      filter: drop-shadow(0 0 20px white); }
     body #pokedex .bounce {
       animation: bounce 1000ms; }
     body #pokedex .pokemon {
-      min-height: 435px;
       width: 300px;
       max-width: 300px;
+      min-height: 400px;
+      position: relative;
       display: flex;
       flex-direction: column;
-      align-items: space-around;
       margin: 20px;
       padding: 10px 10px 5px 10px;
       font-family: 'VT323', sans-serif;
-      font-size: 1.5rem;
+      font-size: 2rem;
       box-shadow: 4px 0px 0 white, 0 4px 0 white, -4px 0 0 white, 0 -4px 0 white, 8px 0px 0 #ffcb05, 0 8px 0 #ffcb05, 8px 8px 0 #ffcb05, -8px 0 0 #ffcb05, 0 -8px 0 #ffcb05, -8px -8px 0 #ffcb05, 8px -8px 0 #ffcb05, -8px 8px 0 #ffcb05, 12px 0px 0 #ffcb05, 0 12px 0 #ffcb05, -12px 0 0 #ffcb05, 0 -12px 0 #ffcb05, 12px 0 8px #222224, 0 12px 8px #222224, 8px 8px 8px #222224; }
       body #pokedex .pokemon .top {
         display: flex;
@@ -310,16 +307,6 @@ body {
         justify-content: space-between;
         width: 100%;
         padding: 0; }
-        body #pokedex .pokemon .top .icon-box {
-          width: 40px;
-          height: 40px;
-          background-color: #c7a008;
-          border: 4px outset #ffcb05;
-          padding: 2px;
-          margin: 0; }
-          body #pokedex .pokemon .top .icon-box .type-icon {
-            filter: drop-shadow(0px 0px 1px #222224);
-            z-index: 5; }
         body #pokedex .pokemon .top h3 {
           margin: 0;
           font-family: 'VT323', sans-serif;
@@ -327,13 +314,18 @@ body {
         body #pokedex .pokemon .top p {
           margin: 0; }
       body #pokedex .pokemon img {
-        width: 100%; }
+        width: 100%;
+        position: relative;
+        bottom: 10px; }
       body #pokedex .pokemon .bottom {
         width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
-        padding: 0; }
+        padding: 0 10px 5px 10px; }
         body #pokedex .pokemon .bottom ul {
           margin: 0;
           padding: 0; }
@@ -346,10 +338,13 @@ body {
           cursor: pointer; }
   body .battle-form {
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    align-items: baseline; }
     body .battle-form input {
       border-radius: 0;
       margin: 0 15px; }
+  body .battle-button {
+    margin: 20px auto 0 auto; }
   body .battleContainer {
     display: flex;
     padding: 0 20px;
@@ -397,26 +392,33 @@ body {
     background: radial-gradient(circle at center, white 1%, #86e3e9 60%); }
 
 @media screen and (min-width: 768px) {
+  img.logo {
+    width: 500px;
+    max-width: 550px; }
+
   start .main {
     max-width: 1024px;
     border-radius: 30px;
     box-shadow: 0 0 40px #222224; }
   start .bg-gradient {
     border-radius: 30px; }
-  start .start-logo {
-    min-width: 400px;
-    max-width: 500px; }
+  start .btnContainer {
+    width: 620px;
+    flex-direction: row !important;
+    justify-content: space-between; }
+    start .btnContainer button {
+      margin: 10px;
+      max-width: none; }
 
-  .nav {
+  topbar nav.nav {
     justify-content: space-between;
     flex-direction: row;
-    padding: 20px; }
-    .nav .start-logo {
-      max-width: 500px; }
-    .nav div {
+    padding: 20px;
+    margin-bottom: 50px; }
+    topbar nav.nav div {
       display: flex;
       flex-direction: column; }
-    .nav .pulse:hover {
+    topbar nav.nav .pulse:hover {
       animation: pulse 1000ms infinite; }
 
   .nav :nth-child(1) {
@@ -436,13 +438,10 @@ body {
       top: 260px;
       left: 30px; }
     .quiz .poke-guy {
-      width: 200px;
+      width: 200px !important;
       position: absolute;
       bottom: 10px;
       left: 10px; }
-
-  .quiz img.start-logo {
-    max-width: 550px; }
 
   section.trainer-header {
     max-width: 1024px;
@@ -455,17 +454,51 @@ body {
       align-items: center;
       flex-direction: column; }
     section.trainer-header .searchdiv input {
-      margin: 20px;
-      padding: 10px;
-      padding-bottom: 5px; }
-    section.trainer-header .searchdiv button {
-      margin: 20px; }
+      padding: 10px; }
     section.trainer-header .searchdiv .pulse:hover {
       animation: pulse 1000ms infinite; }
 
   .top-bar {
     margin: 20px 0; }
     .top-bar form {
-      flex-direction: row;
+      flex-direction: row !important;
       justify-content: center;
-      align-items: center; } }
+      align-items: center; }
+
+  section.myPokemon {
+    position: fixed;
+    width: 115px;
+    right: 0;
+    bottom: initial;
+    top: 100px;
+    background-color: #f0f0f0;
+    z-index: 10;
+    border-radius: 5px;
+    padding: 15px;
+    background: #f4f4f4;
+    font-family: "Pokemon GB", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 20px;
+    box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
+    border-right: none;
+    border-top-right-radius: none;
+    border-bottom-right-radius: none; }
+    section.myPokemon div {
+      display: flex;
+      flex-direction: column; }
+      section.myPokemon div div {
+        width: 110px !important;
+        height: 110px !important;
+        position: relative; }
+        section.myPokemon div div img {
+          position: absolute; }
+        section.myPokemon div div .caughtSprite {
+          width: 121px !important;
+          z-index: 10;
+          top: -7px;
+          right: 8px;
+          background: #f0f0f0; }
+        section.myPokemon div div .caughtPokemon {
+          max-width: 100px;
+          opacity: 0.7;
+          right: 20px; } }

@@ -71,13 +71,13 @@ const pokedex = {
           <li>{{pokemon.move_3}}</li>
           <li>{{pokemon.move_4}}</li>
         </ul>
-        <img class="catch animate tada" ng-class="$ctrl.bounce" src="/styles/icons/pokeball-pixel2.png" alt="pokeball"  ng-click="$ctrl.newCrew(pokemon)">
+        <img class="catch animate tada"  src="/styles/icons/pokeball-pixel2.png" alt="pokeball"  ng-click="$ctrl.newCrew(pokemon, $event)">
       </div>
     </section>
     </div>
 
     `,
-  controller: ["PokeService", "dbService", "PokemonService", "TrainerService", "$location", function (PokeService, dbService, PokemonService, TrainerService, $location) {
+  controller: ["PokeService", "dbService", "PokemonService", "TrainerService", "$location", "$element", "$timeout", function (PokeService, dbService, PokemonService, TrainerService, $location, $element, $timeout) {
     const vm = this;
     vm.pokearr = [];
     vm.populateArr = [];
@@ -92,24 +92,6 @@ const pokedex = {
       vm.search = "";
       vm.typeSelector = "";
     }
-
-    dbService.getData().then((response) => {
-      vm.pokearr = response.data;
-      PokemonService.addPokemon(vm.pokearr);
-    }).then(() => {
-    TrainerService.getTrainers().then((response) => {
-      vm.alltrainers = response.data;
-      vm.trainer=null;
-      vm.trainer=PokemonService.getTrainer();
-      if(vm.trainer=== null){
-          vm.trainer = vm.alltrainers[vm.alltrainers.length-1];
-          PokemonService.addTrainer(vm.trainer);
-      }else{
-          vm.trainer=PokemonService.getTrainer();
-      }
-    vm.myType = vm.pokearr[vm.trainer.pokemon_1 - 1].type;
-  })
-  });
 
     vm.fireCompatibility = (pokemon) => {
       if (pokemon.type === vm.myType) {
@@ -185,9 +167,19 @@ const pokedex = {
       } 
     }
 
-    vm.newCrew = (pokemon) => {
+    vm.reset = () => {
+      console.log("reset");
+      vm.bounce = "";
+    }
+
+    vm.newCrew = (pokemon, event) => {
       // add bounce, remove bounce, add tada, remove tada
       vm.bounce = "bounce";
+      console.log(event);
+      event.target.className = "catch animate tada bounce";
+      
+      $timeout(vm.reset, 1000);
+      
   
       // pop up that says "you've caught pokemon!"
 

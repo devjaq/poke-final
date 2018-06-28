@@ -18,9 +18,11 @@ $bg-blue:#66aeed;
 // PokeBox Mixin
 @mixin pokebox {
     border-radius: 5px;
-    padding: 8px;
-    font-family: "Pokemon GB", Arial, sans-serif;
+    padding: 15px;
     background: rgb(244, 244, 244);
+    font-family: "Pokemon GB", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 20px;
     box-shadow: 
     0 0 0 3px $poke-black
     ,0 0 0 6px #fff
@@ -30,20 +32,9 @@ $bg-blue:#66aeed;
 
 ////// GENERAL STYLING /////////////////////////
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-
-button {
-    @include pokebox();
-    max-width: 300px;
-    margin: 25px auto;
-    padding: 15px;
-    font-size: 1rem;
-    text-align: center !important;
-    cursor: pointer;
 }
 
 .invalid {
@@ -53,15 +44,44 @@ button {
 body {
     height: 100vh;
     margin: 0;
-    background-color: #66aeed;
+    background-color: $bg-blue;
     font-family: sans-serif;
 
+    .logo {
+        max-width: 320px;
+        display: block;
+        margin: 20px auto;
+    }
+    
+    button {
+        @include pokebox();
+        max-width: 300px;
+        margin: 25px;
+        text-align: center !important;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+
+    }
+
     input, select {
-        // height: 40px;
-        font-size: 1rem;
-        padding: 5px;
+        min-width: 250px;
+        min-height: 50px;
+        margin: 15px;
+        padding: 15px;
         font-family: "Jura", sans-serif;
+        font-size: 1.5rem;
         color: $poke-black;
+        text-align: center;
+    }
+
+    input {
+        border: none;
+        border-bottom: 2px solid $poke-black;
+        background: none;
     }
 
     ::placeholder {
@@ -69,6 +89,7 @@ body {
     }
 
     select {
+        height: 60px;
         text-align-last: center;
     }
 
@@ -79,125 +100,93 @@ body {
 
         .input,
         select {
-            margin: 20px 0;
-            width: 250px;
-            padding: 8px 12px;
-            background-color: $poke-white;
-            font-size: 1rem;
+            // margin: 20px 0;
+            // padding: 8px 12px;
         }
     }
 
-    ////// TOP NAVBAR /////////////////////////
-    .nav {
-            display: flex;
-            margin: 30px 0 50px 0;
-            .pulse:hover {
-                animation: pulse 1000ms infinite;
-            }
-
-    }
-    .nav :nth-child(1) { order: 2}
-    .nav :nth-child(2) { order: 1}
-    .nav :nth-child(3) { order: 3}
-
-    nav {
+////// TOP NAVBAR /////////////////////////
+    nav.nav {
         width: 100%;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
+        margin: 30px 0 0 0;
 
-        img {
-            max-width: 320px;
+        .pulse:hover {
+            animation: pulse 1000ms infinite;
         }
 
         button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 200px;
-            // height: 35px;
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            // min-width: 200px;
         }
 
         div {
             display: flex;
             flex-direction: column;
         }
-        
     }
+    .nav :nth-child(1) { order: 2}
+    .nav :nth-child(2) { order: 1}
+    .nav :nth-child(3) { order: 3}
+
+    ////// START PAGE /////////////////////////
 
 
-        ////// START PAGE /////////////////////////
-        .main {
-            // max-width: 1024px;
-            // min-height: 100%;
-            margin: 0 auto;
-            background-image: url("water_background2.jpg");
-            // background-size: 
+    .main {
+        // max-width: 1024px;
+        // min-height: 100%;
+        margin: 0 auto;
+        background-image: url("water_background2.jpg");
+        background-repeat: no-repeat;
+        background-position-x: center;
+
+        .bg-gradient {
+            background: linear-gradient( rgb(245, 250, 255) 50%, rgba(68, 143, 213, 0.5) );
             background-repeat: no-repeat;
-            background-position-x: center;
-    
-            .start-logo {
-                max-width: 320px;
-                display: block;
-                margin: 20px auto;
-            }
-    
-            .bg-gradient {
-                background: linear-gradient( rgb(245, 250, 255) 50%, rgba(68, 143, 213, 0.5) );
-                background-repeat: no-repeat;
-                height: 100%;
-                padding-top: 20px;
+            height: 100%;
+            padding-top: 20px;
 
+        }
+
+        .grant {
+            height: 350px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .start {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .pokeBox {
+                @include pokebox();
+                max-width: 600px;
+                margin: 25px;
             }
-    
-            .grant {
-                height: 350px;
-                display: block;
+
+            .btnContainer {
                 margin: 0 auto;
-            }
-            .start {
                 display: flex;
-                width: 100%;
                 flex-direction: column;
-                //switch to row for tablet and desktop
-                justify-content: center;
-                align-items: center;
-    
-                .pokeBox {
-                    max-width: 600px;
-                }
-    
-               
-                .pokeBox, button {
-                    font-size: 1rem;
-                    margin: 25px;
-                    font-family: "Pokemon GB", Arial, sans-serif;
-                    padding: 8px;
-                    background: rgb(244, 244, 244);
-                    border-radius: 5px;
-                    box-shadow: 
-                    0 0 0 3px $poke-black
-                    ,0 0 0 6px #fff
-                    , 0 0 0 10px $poke-black
-                }
-    
-    
-                .btnContainer {
-                    margin: 0 auto;
-                    display: flex;
-                    
-                }
-    
-                button {
-                    cursor: pointer;
-                    margin-top: 10px;
-                }
-                .pulse:hover {
-                    animation: pulse 1000ms infinite;
-                }
+            }
+
+            button {
+                margin-top: 10px;
+            }
+            .pulse:hover {
+                animation: pulse 1000ms infinite;
             }
         }
+    }
 
         ////// QUIZ COMPONENT /////////////////////////
         .quiz {
@@ -210,30 +199,26 @@ body {
             background-color: rgb(245, 250, 255);
 
             .grant {
-                // display: none;
+                display: none;
                 position: absolute;
                 height: 350px;
+            }
+
+            .poke-guy {
+                width: 100px;
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
             }
 
             h3 {
                 margin-top: 20px;
                 font-family: "Jura", sans-serif;
-                font-size: 26px;
+                font-size: 28px;
             }
 
-            input, select {
+            option{
                 font-family: "Jura", sans-serif;
-                font-size: 1.5rem;
-
-            }
-
-            select {
-                font-family: "Jura", sans-serif;
-
-                option{
-                    font-family: "Jura", sans-serif;
-                }
-
             }
             
             .pulse:hover {
@@ -245,23 +230,18 @@ body {
             }
     
             .answers {
-
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 flex-direction: column;
-                // padding-left: 50px;
-                // min-width: 20%;
-
-    
+   
                 label {
-
                     position: relative;
+                    flex-basis: 50%;
                     margin: 10px 0;
+                    padding-left: 40px;
                     font-family: "jura", sans-serif;
                     font-size: 24px;
-                    flex-basis: 50%;
-                    padding-left: 40px;
                     text-align: left;
 
                     .radio {
@@ -277,9 +257,9 @@ body {
 
                     input {
                         opacity: 0;
-                        cursor: pointer;
                         position: absolute;
                         margin: 10px;
+                        cursor: pointer;
                     }
                     
                     input:checked ~ .radio {
@@ -296,22 +276,14 @@ body {
                 text-align: center;
             }
 
-
             label:hover input ~ .radio {
                 background-color: #ccc;
-            }
-
-    
-            .start-logo {
-                max-width: 320px;
-                margin: 25px;
             }
             
             .trainer-name {
                 border: none;
                 border-bottom: 2px solid $poke-black;
                 background: none;
-                // color: $lightyellow;
             }
     
             h1 {
@@ -324,17 +296,9 @@ body {
             }
 
             .pokeBox {
-                font-size: 1rem;
-                margin: 50px;
-                font-family: "Pokemon GB", Arial, sans-serif;
-                padding: 15px;
-                background: rgb(244, 244, 244);
-                border-radius: 5px;
-                box-shadow: 
-                0 0 0 3px $poke-black
-                ,0 0 0 6px #fff
-                , 0 0 0 10px $poke-black;
+                @include pokebox();
                 max-width: 600px;
+                margin: 25px;
             }
 
             section {
@@ -362,7 +326,6 @@ body {
         text-align: center;
         margin: 20px 0;
 
-
         h1 {
             color: $lightyellow;
             text-shadow: 0 0 40px $darkblue;
@@ -370,7 +333,6 @@ body {
 
         .searchdiv {
             margin-top: 20px;
-            // width: 280px;
             input {
                 font-size: 2rem;
             }
@@ -400,6 +362,7 @@ body {
             display: flex;
             justify-content: center;
             flex-direction: column;
+            align-items: center;
         }
 
         .finder {
@@ -409,149 +372,149 @@ body {
 
     ////// POKESQUAD INDICATOR /////////////////////////
     .myPokemon {
-
         position: fixed;
-        right: 0;
-        top: 100px;
-        background-color: $poke-white;
+        width: 90%;
+        right: 5%;
+        bottom: 0;
+        background-color: #f0f0f0;
         z-index: 10;
-        @include pokebox();
-
+        border-radius: 5px;
+        padding: 8px;
+        font-family: "Pokemon GB", Arial, sans-serif;
+        background: #f4f4f4;
+        box-shadow: 0 0 0 3px #222224, 0 0 0 6px #fff, 0 0 0 10px #222224;
         border-right: none;
         border-top-right-radius: none;
-        border-bottom-right-radius: none;
+        border-top-left-radius: none;
 
         div {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             div {
-                width: 110px;
-                height: 110px;
+                width: 70px;
+                height: 45px;
                 position: relative;
+                margin: 0 15px;
 
                 img {
                     position: absolute;
                 }
                 .caughtSprite {
-                    width: 121px;
+                    width: 65px;
                     z-index: 10;
                     top: -7px;
-                    left: -7px;
                     // filter: drop-shadow(3px 2px 5px $poke-black);
                     background: $poke-white;
                 }
                 .caughtPokemon {
-                    max-width: 100px;
+                    max-width: 50px;
                     opacity: 0.7;
+                    right: -13px;
+                    bottom: 3px;
                 }
             }
         }
-
     }
 
     ////// POKEDEX COMPONENT  /////////////////////////
 
-    .top-bar{
-        form{
+    .top-bar {
+        form {
             display: flex;
             flex-direction: column;
-            input{
-                margin: 10px 25px;
+            align-items:center;
+            input {
+                // margin: 10px 25px;
             }
-            select{
-                margin: 10px 25px;
+            select {
+                // margin: 10px 25px;
             }
-            button{
-                margin: 10px 25px;
+            button {
+                // margin: 10px 25px;
             }
             .pulse:hover {
                 animation: pulse 1000ms infinite;
             }
-
-        }
-        
+        }  
     }
 
     #pokedex {
-       
         max-width: 1200px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin: 0 auto;
 
-        .catch:active {
-            // animation: bounce 2000ms;
+        .catch:hover {
+            filter: drop-shadow(0 0 20px white);
         }
 
         .bounce {
             animation: bounce 1000ms;
         }
 
-
         .tada:hover {
             // animation: bounce 2000ms infinite;
         }
+
         .pokemon {
-            min-height: 435px;
             width: 300px;
             max-width: 300px;
+            min-height: 400px;
+            position: relative;
             display: flex;
             flex-direction: column;
-            align-items: space-around;
-            margin: 20px; // border: 10px solid $lightyellow;
-            // border-radius: 10px;
-            padding: 10px 10px 5px 10px; // background-color: $lightblue;
-            // background: radial-gradient(circle at center, rgba(240, 240, 240, .5) 1%, white 60%);
+            margin: 20px;
+            padding: 10px 10px 5px 10px; 
             font-family: 'VT323', sans-serif;
-            font-size: 1.5rem;
+            font-size: 2rem;
             box-shadow: 4px 0px 0 white, 0 4px 0 white, -4px 0 0 white, 0 -4px 0 white, 8px 0px 0 $lightyellow, 0 8px 0 $lightyellow, 8px 8px 0 $lightyellow, -8px 0 0 $lightyellow, 0 -8px 0 $lightyellow, -8px -8px 0 $lightyellow, 8px -8px 0 $lightyellow, -8px 8px 0 $lightyellow, 12px 0px 0 $lightyellow, 0 12px 0 $lightyellow, -12px 0 0 $lightyellow, 0 -12px 0 $lightyellow, 12px 0 8px $poke-black, 0 12px 8px $poke-black, 8px 8px 8px $poke-black;
+
             .top {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
                 padding: 0;
-                .icon-box {
-                    width: 40px;
-                    height: 40px;
-                    background-color: $darkyellow;
-                    border: 4px outset $lightyellow;
-                    padding: 2px;
-                    margin: 0;
-                    .type-icon {
-                        filter: drop-shadow( 0px 0px 1px $poke-black);
-                        
-                        z-index: 5;
-                    }
-                }
+
                 h3 {
                     margin: 0;
                     font-family: 'VT323', sans-serif;
                     font-size: 38px;
                 }
+
                 p {
                     margin: 0;
                 }
             }
+
             img {
-                width: 100%; // margin: 8px 0;
+                width: 100%;
+                position: relative;
+                bottom: 10px;
             }
+
             .bottom {
                 width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-end;
-                padding: 0;
+                padding: 0 10px 5px 10px;
+
                 ul {
                     margin: 0;
                     padding: 0;
                 }
+
                 li {
                     list-style-type: none;
                     font-family: 'VT323', monospace;
                     font-size: 25px;
                 }
+
                 .catch {
                     width: 100px;
                     cursor: pointer;
@@ -563,96 +526,117 @@ body {
     .battle-form {
         display: flex;
         justify-content: center;
+        align-items: baseline;
+
         input {
             border-radius: 0;
             margin: 0 15px;
         }
     }
+
+    .battle-form :nth-child(5){
+        // width: 60%;
+    }
+
+    .battle-button {
+        margin: 40px auto 0 auto;
+    }
+
+
+
     .battleContainer {
         display: flex;
         padding: 0 20px;
         justify-content: space-between;
         max-width: 700px;
         margin: 0 auto;
+
         .pokebattle {
             display: flex;
             flex-direction: column;
             width: 40%;
+
             .battle-sprite {
                 max-width: 300px;
                 height: 300px;
             }
+
             .trainer-info {
                 text-align: center;
             }
         }
     }
 
-// CARD STYLES ///////////////////////
+///// CARD STYLES ///////////////////////
 
-.fire {
-    background: radial-gradient(circle at center, white 1%, rgb(191, 72, 72) 60%);
-}
+    .fire {
+        background: radial-gradient(circle at center, white 1%, rgb(191, 72, 72) 60%);
+    }
 
-.grass {
-    background: radial-gradient(circle at center, white 1%, rgb(72, 191, 100) 60%);
-}
+    .grass {
+        background: radial-gradient(circle at center, white 1%, rgb(72, 191, 100) 60%);
+    }
 
-.water {
-    background: radial-gradient(circle at center, white 1%, rgb(72, 139, 191) 60%);
-}
+    .water {
+        background: radial-gradient(circle at center, white 1%, rgb(72, 139, 191) 60%);
+    }
 
-.electric {
-    background: radial-gradient(circle at center, white 1%, rgb(191, 167, 72) 60%);
-}
+    .electric {
+        background: radial-gradient(circle at center, white 1%, rgb(191, 167, 72) 60%);
+    }
 
-.psychic {
-    background: radial-gradient(circle at center, white 1%, rgb(191, 72, 124) 60%);
-}
+    .psychic {
+        background: radial-gradient(circle at center, white 1%, rgb(191, 72, 124) 60%);
+    }
 
-.flying {
-    background: radial-gradient(circle at center, white 1%, rgb(198, 181, 249) 60%);
-}
+    .flying {
+        background: radial-gradient(circle at center, white 1%, rgb(198, 181, 249) 60%);
+    }
 
-.poison {
-    background: radial-gradient(circle at center, white 1%, rgb(181, 72, 191) 60%);
-}
+    .poison {
+        background: radial-gradient(circle at center, white 1%, rgb(181, 72, 191) 60%);
+    }
 
-.ghost {
-    background: radial-gradient(circle at center, white 1%, rgb(155, 72, 191) 60%);
-}
+    .ghost {
+        background: radial-gradient(circle at center, white 1%, rgb(155, 72, 191) 60%);
+    }
 
-.rock {
-    background: radial-gradient(circle at center, white 1%, rgb(155, 126, 95) 60%);
-}
+    .rock {
+        background: radial-gradient(circle at center, white 1%, rgb(155, 126, 95) 60%);
+    }
 
-.ground {
-    background: radial-gradient(circle at center, white 1%, rgb(191, 128, 72) 60%);
-}
+    .ground {
+        background: radial-gradient(circle at center, white 1%, rgb(191, 128, 72) 60%);
+    }
 
-.normal {
-    background: radial-gradient(circle at center, white 1%, rgb(160, 160, 160) 60%);
-}
+    .normal {
+        background: radial-gradient(circle at center, white 1%, rgb(160, 160, 160) 60%);
+    }
 
-.dragon {
-    background: radial-gradient(circle at center, white 1%, rgb(72, 191, 189) 60%);
-}
+    .dragon {
+        background: radial-gradient(circle at center, white 1%, rgb(72, 191, 189) 60%);
+    }
 
-.fighting {
-    background: radial-gradient(circle at center, white 1%, rgb(189, 117, 28) 60%);
-}
+    .fighting {
+        background: radial-gradient(circle at center, white 1%, rgb(189, 117, 28) 60%);
+    }
 
-.bug {
-    background: radial-gradient(circle at center, white 1%, rgb(72, 191, 116) 60%);
-}
+    .bug {
+        background: radial-gradient(circle at center, white 1%, rgb(72, 191, 116) 60%);
+    }
 
-.ice {
-    background: radial-gradient(circle at center, white 1%, rgb(134, 227, 233) 60%);
-}
+    .ice {
+        background: radial-gradient(circle at center, white 1%, rgb(134, 227, 233) 60%);
+    }
 
 }
 
 @media screen and (min-width: 768px) {
+
+    img.logo {
+        width: 500px;
+        max-width: 550px;
+    }
 
     start {
         .main {
@@ -666,21 +650,26 @@ body {
         .bg-gradient {
             border-radius: 30px;
         }
-        .start-logo {
-            min-width: 400px;
-            max-width: 500px;
+
+        .btnContainer {
+            width: 620px;
+            flex-direction: row !important;
+            justify-content: space-between;
+            // padding: 10px;
+
+            button {
+                margin: 10px;
+                max-width: none;
+            }
         }
     }
 
-    .nav {
+    topbar nav.nav {
         justify-content: space-between;
         flex-direction: row;
         padding: 20px;
+        margin-bottom: 50px;
         // margin-right: 20px;
-
-        .start-logo{
-            max-width: 500px;
-        }
 
         div {
             display: flex;
@@ -694,7 +683,7 @@ body {
     .nav :nth-child(2) { order: 2 !important;}
     .nav :nth-child(3) { order: 3;}
 
-
+//// QUIZ /////////////////////////////
     .quiz {
         border-radius: 30px;
         box-shadow: 0 0 40px $poke-black;
@@ -705,16 +694,12 @@ body {
         }
 
         .poke-guy {
-            width: 200px;
+            width: 200px !important;
             position: absolute;
             bottom: 10px;
             left: 10px;
         }
     }
-    .quiz img.start-logo {
-        max-width: 550px;
-    }
-
 
    section.trainer-header{
         max-width: 1024px;
@@ -734,14 +719,11 @@ body {
             // display: inline-block;
 
             input {
-                margin: 20px;
-                // width: 200px;
                 padding: 10px;
-                padding-bottom: 5px;
-
             }
-            button{
-                margin: 20px;
+
+            button {
+                // margin: 20px;
 
             }
             .pulse:hover {
@@ -753,10 +735,55 @@ body {
         margin: 20px 0;
 
         form {
-            flex-direction: row;
+            flex-direction: row !important;
             justify-content: center;
             align-items:center;
         }
+    }
+
+    ////// POKESQUAD INDICATOR /////////////////////////
+    section.myPokemon {
+
+        position: fixed;
+        width: 115px;
+        right: 0;
+        bottom: initial;
+        top: 100px;
+        background-color: $poke-white;
+        z-index: 10;
+        @include pokebox();
+
+        border-right: none;
+        border-top-right-radius: none;
+        border-bottom-right-radius: none;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            div {
+                width: 110px !important;
+                height: 110px !important;
+                position: relative;
+
+                img {
+                    position: absolute;
+                }
+                .caughtSprite {
+                    width: 121px !important;
+                    z-index: 10;
+                    top: -7px;
+                    right: 8px;
+                    // filter: drop-shadow(3px 2px 5px $poke-black);
+                    background: $poke-white;
+                }
+                .caughtPokemon {
+                    max-width: 100px;
+                    opacity: 0.7;
+                    right: 20px
+                }
+            }
+        }
+
     }
 
 }
