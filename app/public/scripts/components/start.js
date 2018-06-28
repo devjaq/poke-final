@@ -2,24 +2,24 @@
 
 const start = {
   template: `
-<section id="slideItem" class="main slide" ng-swipe-left="$ctrl.swipeLeft()" ng-swipe-right="$ctrl.swipeRight()">
-<div class="bg-gradient">
-  <img src="../../styles/full-logo.png" class="logo">
-  <img src="../../styles/lab-ready-grant.png" class="grant">
-  <div class="start">
-  <div class="textContainer pokeBox">
-  <p class="">Hello there! Welcome to the world of Pokémon! My name is Grant Chirpus! People call me the Pokémon Prof!<br><br> Your very own Pokémon adventure is about to unfold! A world of dreams and adventures with Pokémon awaits!<br><br>Let’s go!</p>
+  <section id="slideItem" class="main slide" ng-swipe-left="$ctrl.swipeLeft()" ng-swipe-right="$ctrl.swipeRight()">
+  <div class="bg-gradient">
+    <img src="../../styles/full-logo.png" class="logo">
+    <img src="../../styles/lab-ready-grant.png" class="grant">
+    <div class="start">
+    <div class="textContainer pokeBox">
+    <p class="">Hello there! Welcome to the world of Pokémon! My name is Grant Chirpus! People call me the Pokémon Prof!<br><br> Your very own Pokémon adventure is about to unfold! A world of dreams and adventures with Pokémon awaits!<br><br>Let’s go!</p>
+      </div>
+      <div class="btnContainer">
+        <button class="animated pulse" type="button" ng-click="$ctrl.start();">Get my First Pokémon!</button>
+        <button ng-click="$ctrl.battle();" class="animated pulse" type="button">Battle!</button>
+      </div>
     </div>
-    <div class="btnContainer">
-      <button class="animated pulse" type="button" ng-click="$ctrl.start();">Get my First Pokémon!</button>
-      <button ng-click="$ctrl.battle();" class="animated pulse" type="button">Battle!</button>
     </div>
-  </div>
-  </div>
-</section>
+  </section>
 `,
 
-  controller: ["$location", "dbService", "PokemonService", "TrainerService", function ($location, dbService, PokemonService, TrainerService) {
+  controller: ["$location", "dbService", "PokemonService", "TrainerService", "$window", function ($location, dbService, PokemonService, TrainerService, $window) {
     const vm = this;
     vm.start = () => {
       $location.path("/quiz");
