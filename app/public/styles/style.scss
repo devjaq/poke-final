@@ -525,11 +525,15 @@ body {
     .battle-form {
         display: flex;
         justify-content: center;
-        align-items: baseline;
-
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
         input {
             border-radius: 0;
             margin: 0 15px;
+        }
+        p{
+            margin: 15px auto;
         }
     }
 
@@ -538,7 +542,7 @@ body {
     }
 
     .battle-button {
-        margin: 40px auto 0 auto;
+        margin: 40px auto 20px auto;
     }
 
 
@@ -631,6 +635,13 @@ body {
 }
 
 @media screen and (min-width: 768px) {
+
+    .battle-form{
+        flex-direction: row !important;
+        p{
+            margin: 10px !important;
+        }
+    }
 
     img.logo {
         width: 500px;

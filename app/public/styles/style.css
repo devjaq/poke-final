@@ -338,12 +338,16 @@ body {
   body .battle-form {
     display: flex;
     justify-content: center;
-    align-items: baseline; }
+    align-items: center;
+    flex-direction: column;
+    text-align: center; }
     body .battle-form input {
       border-radius: 0;
       margin: 0 15px; }
+    body .battle-form p {
+      margin: 15px auto; }
   body .battle-button {
-    margin: 40px auto 0 auto; }
+    margin: 40px auto 20px auto; }
   body .battleContainer {
     display: flex;
     padding: 0 20px;
@@ -391,6 +395,11 @@ body {
     background: radial-gradient(circle at center, white 1%, #86e3e9 60%); }
 
 @media screen and (min-width: 768px) {
+  .battle-form {
+    flex-direction: row !important; }
+    .battle-form p {
+      margin: 10px !important; }
+
   img.logo {
     width: 500px;
     max-width: 550px; }
