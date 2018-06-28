@@ -195,46 +195,76 @@ const quiz = {
           vm.trainer = {
             username: vm.newUser.username,
             quiz_result: "cool",
-            pokemon_1: 7 
+            pokemon_1: 7,
+            pokemon_2:null,
+            pokemon_3:null,
+            pokemon_4:null,
+            pokemon_5:null,  
+            pokemon_6:null
           }
           PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
+          vm.counter = 0;
           $location.path('/pokedex');
         } else if(vm.adv > vm.cool && vm.adv > vm.char && vm.adv > vm.orig && vm.adv > vm.kind){
           vm.trainer = {
             username: vm.newUser.username,
             quiz_result: "adventurous",
-            pokemon_1: 4  
+            pokemon_1: 4,
+            pokemon_2:null,
+            pokemon_3:null,
+            pokemon_4:null,
+            pokemon_5:null,  
+            pokemon_6:null
           }
           PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
+          vm.counter = 0;
           $location.path('/pokedex');
         } else if(vm.char > vm.adv && vm.char > vm.cool && vm.char > vm.orig && vm.char > vm.kind){
           vm.trainer = {
             username: vm.newUser.username,
             quiz_result: "charismatic",
-            pokemon_1: 25  
+            pokemon_1: 25,
+            pokemon_2:null,
+            pokemon_3:null,
+            pokemon_4:null,
+            pokemon_5:null,  
+            pokemon_6:null
           }
           PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
+          vm.counter = 0;
           $location.path('/pokedex');
         } else if(vm.orig > vm.adv && vm.orig > vm.char && vm.orig > vm.cool && vm.orig > vm.kind){
           vm.trainer = {
             username: vm.newUser.username,
             quiz_result: "original",
-            pokemon_1: 151  
+            pokemon_1: 151,
+            pokemon_2:null,
+            pokemon_3:null,
+            pokemon_4:null,
+            pokemon_5:null,  
+            pokemon_6:null  
           }
           PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
+          vm.counter = 0;
           $location.path('/pokedex');
         } else if(vm.kind > vm.adv && vm.kind > vm.char && vm.kind > vm.orig && vm.kind > vm.cool){
           vm.trainer = {
             username: vm.newUser.username,
             quiz_result: "kind",
-            pokemon_1: 1  
+            pokemon_1: 1,
+            pokemon_2:null,
+            pokemon_3:null,
+            pokemon_4:null,
+            pokemon_5:null,  
+            pokemon_6:null
           }
           PokemonService.addTrainer(vm.trainer);
           TrainerService.addUser(vm.trainer);
+          vm.counter = 0;
           $location.path('/pokedex');
         } else{
             if(vm.dob==1 || vm.dob==2 ||vm.dob==3){
@@ -242,48 +272,70 @@ const quiz = {
               vm.trainer = {
                 username: vm.newUser.username,
                 quiz_result: "kind",
-                pokemon_1: 1  
+                pokemon_1: 1,
+                pokemon_2:null,
+                pokemon_3:null,
+                pokemon_4:null,
+                pokemon_5:null,  
+                pokemon_6:null
               }
               PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
+              vm.counter = 0;
               $location.path('/pokedex');
             } else if(vm.dob==4 || vm.dob==5 ||vm.dob==6){
               vm.adv++;
               vm.trainer = {
                 username: vm.newUser.username,
                 quiz_result: "adventurous",
-                pokemon_1: 4  
+                pokemon_1: 4,
+                pokemon_2:null,
+                pokemon_3:null,
+                pokemon_4:null,
+                pokemon_5:null,  
+                pokemon_6:null
               }
               PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
+              vm.counter = 0;
               $location.path('/pokedex');
             } else if(vm.dob==7 || vm.dob==8 ||vm.dob==9){
               vm.char++;
               vm.trainer = {
                 username: vm.newUser.username,
                 quiz_result: "charismatic",
-                pokemon_1: 25  
+                pokemon_1: 25,
+                pokemon_2:null,
+                pokemon_3:null,
+                pokemon_4:null,
+                pokemon_5:null,  
+                pokemon_6:null 
               }
               PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
+              vm.counter = 0;
               $location.path('/pokedex');
             } else if(vm.dob==10 || vm.dob==11 ||vm.dob==12){
               vm.cool++;
               vm.trainer = {
                 username: vm.newUser.username,
                 quiz_result: "cool",
-                pokemon_1: 7  
+                pokemon_1: 7,
+                pokemon_2:null,
+                pokemon_3:null,
+                pokemon_4:null,
+                pokemon_5:null,  
+                pokemon_6:null
               }
               PokemonService.addTrainer(vm.trainer);
               TrainerService.addUser(vm.trainer);
+              vm.counter = 0;
               $location.path('/pokedex');
             };
         };
       }
-      
     }
   }]
-
 }
 
 angular

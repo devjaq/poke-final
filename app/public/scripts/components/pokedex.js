@@ -1,10 +1,13 @@
 "use strict";
 const pokedex = {
   template: `
-  <topbar></topbar>
+  <nav class="nav">
+    <img class="logo" src="styles/logo-400.png" alt="PokeSquad logo">
+  </nav>
+
   <section class="top-bar">
     <form>
-      <input type="text" class="input" ng-model="$ctrl.search" placeholder="Search">
+      <input type="search" class="input" ng-model="$ctrl.search" placeholder="Search">
       <select name="type-selector" ng-model="$ctrl.typeSelector" id="type-selector">
         <option default value="">Select a Pokemon Type</option>
         <option value="bug">Bug</option>
@@ -179,8 +182,9 @@ const pokedex = {
       event.target.className = "catch animate tada bounce";
       
       $timeout(vm.reset, 1000);
-      
-  
+      console.log(vm.trainer);
+
+
       // pop up that says "you've caught pokemon!"
 
 

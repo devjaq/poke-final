@@ -13,6 +13,7 @@ const topbar = {
       const vm = this;
       vm.start = () => {
         $location.path("/start");
+        window.location.reload();
       }
 
       vm.battle = () => {

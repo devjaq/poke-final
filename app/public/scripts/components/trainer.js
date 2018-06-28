@@ -7,7 +7,7 @@ template: `
 
     <div class="namediv">
         <h1> {{ $ctrl.trainer.username }}'s PokeSquad </h1>
-        <p>Synergy Score: {{ $ctrl.synergy() | number:2 }} </p>
+        <p>Synergy Score:         {{ $ctrl.synergy() | number:2 }}  %</p>
     </div>
     <div class="searchdiv">
         <input type="text" placeholder="Find another Trainer" ng-model="$ctrl.newTrainer" ng-blur="$ctrl.trainerSearch($ctrl.newTrainer)">
