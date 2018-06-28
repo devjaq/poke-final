@@ -8,7 +8,7 @@ const quiz = {
     <img src="../../styles/full-logo.png" class="logo">
     <p class="pokeBox textContainer">We're about to find the first member of your squad, but I'll need to ask you some questions to find your perfect match!</p>
       <h3>Enter a Trainer name..</h3>
-      <input class="invalid trainer-name" type="text" placeholder="Ash Ketchum" ng-blur="$ctrl.checkUsername($ctrl.newUser.username);" ng-model="$ctrl.newUser.username">
+      <input class="trainer-name" type="text" placeholder="Ash Ketchum" ng-blur="$ctrl.checkUsername($ctrl.newUser.username);" ng-model="$ctrl.newUser.username" maxlength="10">
       <h3>Enter your Birth Month</h3>
 
       <div>
@@ -82,6 +82,7 @@ const quiz = {
     vm.randomPkmn = 0;
     vm.bounce = "";
     vm.trainer = {}
+    // vm.invalid = "";
 
     dbService.getData().then((response) => {
       vm.pokearr = response.data;
@@ -157,8 +158,8 @@ const quiz = {
 
     vm.checkUsername = (username) => {
       for (let i = 0; i < vm.allTrainers.length; i++) {
-        if (vm.allTrainers[i].username === vm.newUser.username) {
-          console.log("Pick a new username..");
+        if (vm.allTrainers[i].username.toLowerCase() == vm.newUser.username.toLowerCase()) {
+          alert("Choose another Trainer name");
           vm.disabled=true;
           break;
           // change border of input to red & make submit button not clickable
